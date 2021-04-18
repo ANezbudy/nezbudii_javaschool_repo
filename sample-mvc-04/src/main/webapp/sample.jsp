@@ -9,9 +9,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>This is the fucking sample ololo!!!</title>
+        <title>T</title>
     </head>
     <body>
-        This is the fucking sample ololo!!!
+        Sample
     </body>
 </html>
