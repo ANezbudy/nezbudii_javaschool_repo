@@ -1,0 +1,4 @@
+com/project/WebConfig.java
+ com.project.WebConfig
+com/project/MainWebAppInitializer.java
+ com.project.MainWebAppInitializer

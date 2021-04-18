@@ -1,0 +1,33 @@
+plugins {
+    id 'war'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven { url "https://repo.spring.io/release" }
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.11'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+
+    implementation 'org.springframework:spring-web:5.3.6'
+    implementation 'org.springframework:spring-webmvc:5.3.6'
+    implementation 'javax.servlet:javax.servlet-api:4.0.0'
+    implementation 'org.glassfish:javax.servlet.jsp.jstl:3.1.1-b11'
+    compile('javax.servlet:javax.servlet-api:4.0.0')
+    compile("org.springframework:spring-context:5.3.6")
+    testCompile("org.springframework:spring-test:5.3.6")
+}
+
+test {
+    useJUnitPlatform()
+}
+
+war {
+//    CopySpec webInf ('src/webapp')// adds a file-set to the WEB-INF dir.
+}
