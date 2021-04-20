@@ -19,6 +19,15 @@ dependencies {
     implementation 'org.springframework:spring-webmvc:5.3.6'
     implementation 'javax.servlet:javax.servlet-api:4.0.0'
     implementation 'org.glassfish:javax.servlet.jsp.jstl:3.1.1-b11'
+
+    implementation 'javax.servlet:jstl:1.2'
+
+    implementation 'org.springframework.data:spring-data-jpa:2.5.0'
+    implementation 'org.hibernate.orm:hibernate-core:6.0.0.Alpha7'
+    implementation 'mysql:mysql-connector-java:5.1.13'
+
+    implementation 'org.apache.tomcat:tomcat-dbcp:10.0.5'
+
     compile('javax.servlet:javax.servlet-api:4.0.0')
     compile("org.springframework:spring-context:5.3.6")
     testCompile("org.springframework:spring-test:5.3.6")
