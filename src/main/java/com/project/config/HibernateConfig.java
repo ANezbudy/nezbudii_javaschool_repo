@@ -1,13 +1,12 @@
 package com.project.config;
 
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
-import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
-import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -20,13 +19,31 @@ import javax.sql.DataSource;
 @EnableTransactionManagement
 public class HibernateConfig {
     @Bean
-    public DataSource dataSource() {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/nau");
-        dataSource.setUsername("root");
-        dataSource.setPassword("root");
-        return dataSource;
+    public HikariConfig hikariConfig() {
+        var config = new HikariConfig();
+        config.setDriverClassName("com.mysql.jdbc.Driver");
+        config.setJdbcUrl("jdbc:mysql://localhost:3306/nau");
+        config.setUsername("root");
+        config.setPassword("root");
+
+        config.setMaximumPoolSize(2);
+        config.setConnectionTestQuery("select 1");
+
+        return config;
+    }
+
+    @Bean
+    public DataSource dataSource(HikariConfig hikariConfig) {
+        return new HikariDataSource(hikariConfig);
+    }
+
+    @Bean
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource) {
+        LocalContainerEntityManagerFactoryBean lemfb = new LocalContainerEntityManagerFactoryBean();
+        lemfb.setDataSource(dataSource);
+        lemfb.setPackagesToScan("com.project");
+        lemfb.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
+        return lemfb;
     }
 
     @Bean
@@ -34,22 +51,5 @@ public class HibernateConfig {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(emf);
         return transactionManager;
-    }
-
-    @Bean
-    public JpaVendorAdapter jpaVendorAdapter() {
-        HibernateJpaVendorAdapter jpaVendorAdapter = new HibernateJpaVendorAdapter();
-        jpaVendorAdapter.setDatabase(Database.MYSQL);
-        jpaVendorAdapter.setGenerateDdl(true);
-        return jpaVendorAdapter;
-    }
-
-    @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-        LocalContainerEntityManagerFactoryBean lemfb = new LocalContainerEntityManagerFactoryBean();
-        lemfb.setDataSource(dataSource());
-        lemfb.setJpaVendorAdapter(jpaVendorAdapter());
-        lemfb.setPackagesToScan("com.project");
-        return lemfb;
     }
 }

@@ -10,13 +10,13 @@ com/project/dao/PersonDAO.java
  com.project.dao.PersonDAO
 com/project/Launcher.java
  com.project.Launcher
-com/project/service/PersonService.java
- com.project.service.PersonService
 com/project/service/PersonServiceImpl.java
  com.project.service.PersonServiceImpl
 com/project/config/HibernateConfig.java
  com.project.config.HibernateConfig
 com/project/controller/AppController.java
  com.project.controller.AppController
+com/project/service/PersonService.java
+ com.project.service.PersonService
 com/project/init/MainWebAppInitializer.java
  com.project.init.MainWebAppInitializer

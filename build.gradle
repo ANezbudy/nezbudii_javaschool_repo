@@ -11,26 +11,22 @@ repositories {
 }
 
 dependencies {
+    implementation 'org.springframework:spring-webmvc:5.3.6'
+    implementation 'org.springframework:spring-dao:2.0.8'
+    implementation 'org.springframework:spring-orm:5.3.6'
+
+    implementation 'javax.servlet:javax.servlet-api:4.0.0'
+    implementation 'org.glassfish:javax.servlet.jsp.jstl:3.1.1-b11'
+    implementation 'javax.servlet:jstl:1.2'
+
+    implementation 'mysql:mysql-connector-java:5.1.13'
+    implementation group: 'com.zaxxer', name: 'HikariCP', version: '3.4.5'
+    implementation 'org.hibernate:hibernate-core:5.4.+'
+
+    testCompile("org.springframework:spring-test:5.3.6")
     testImplementation 'junit:junit:4.11'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
-
-    implementation 'org.springframework:spring-web:5.3.6'
-    implementation 'org.springframework:spring-webmvc:5.3.6'
-    implementation 'javax.servlet:javax.servlet-api:4.0.0'
-    implementation 'org.glassfish:javax.servlet.jsp.jstl:3.1.1-b11'
-
-    implementation 'javax.servlet:jstl:1.2'
-
-    implementation 'org.springframework.data:spring-data-jpa:2.5.0'
-    implementation 'org.hibernate.orm:hibernate-core:6.0.0.Alpha7'
-    implementation 'mysql:mysql-connector-java:5.1.13'
-
-    implementation 'org.apache.tomcat:tomcat-dbcp:10.0.5'
-
-    compile('javax.servlet:javax.servlet-api:4.0.0')
-    compile("org.springframework:spring-context:5.3.6")
-    testCompile("org.springframework:spring-test:5.3.6")
 }
 
 test {

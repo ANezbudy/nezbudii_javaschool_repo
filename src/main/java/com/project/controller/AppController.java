@@ -3,6 +3,7 @@ package com.project.controller;
 import com.project.entity.Person;
 import com.project.service.PersonService;
 import com.project.service.PersonServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,7 +22,8 @@ public class AppController {
 //        person.setName("Momo");
 //    }
 
-    private PersonService personService = new PersonServiceImpl();
+    @Autowired
+    private PersonService personService;
 
 
 
