@@ -2,8 +2,10 @@ package com.project.service;
 
 import com.project.entity.Person;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
+@Transactional
 public interface PersonService {
-    List<Person> allPersons();
+    Person findPerson(int personID);
 }

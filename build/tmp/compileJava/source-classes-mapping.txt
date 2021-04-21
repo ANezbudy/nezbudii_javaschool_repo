@@ -1,7 +1,7 @@
 com/project/config/WebConfig.java
  com.project.config.WebConfig
-com/project/init/MainWebAppInitializer.java
- com.project.init.MainWebAppInitializer
+com/project/dao/PersonDAOImpl.java
+ com.project.dao.PersonDAOImpl
 com/project/entity/Person.java
  com.project.entity.Person
 com/project/model/Person.java
@@ -12,11 +12,11 @@ com/project/Launcher.java
  com.project.Launcher
 com/project/service/PersonService.java
  com.project.service.PersonService
+com/project/service/PersonServiceImpl.java
+ com.project.service.PersonServiceImpl
 com/project/config/HibernateConfig.java
  com.project.config.HibernateConfig
 com/project/controller/AppController.java
  com.project.controller.AppController
-com/project/dao/PersonDAOImpl.java
- com.project.dao.PersonDAOImpl
-com/project/service/PersonServiceImpl.java
- com.project.service.PersonServiceImpl
+com/project/init/MainWebAppInitializer.java
+ com.project.init.MainWebAppInitializer

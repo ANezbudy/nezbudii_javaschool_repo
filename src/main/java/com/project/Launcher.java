@@ -9,7 +9,7 @@ public class Launcher {
     public static void main(String[] args) {
         String url = "jdbc:mysql://localhost:3306/nau";
         String userName = "root";
-        String password = "Sheldon2049Spoke";
+        String password = "root";
         System.out.println("Connecting...");
 
         try (Connection connection = DriverManager.getConnection(url, userName, password)){
