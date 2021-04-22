@@ -10,15 +10,19 @@ import javax.transaction.Transactional;
 
 @Service
 @Transactional
-public class PersonServiceImpl implements PersonService {
+public class PersonServiceImpl implements PersonService{
 
-    @Autowired
+    @PersistenceContext
     protected EntityManager entityManager;
 
     @Override
     public Person findPerson(int personID) {
         Person person = entityManager.find(Person.class, personID);
-        entityManager.detach(person);
+
+        if (person != null) {
+            entityManager.detach(person);
+        }
+
         return person;
     }
 }

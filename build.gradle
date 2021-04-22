@@ -3,7 +3,6 @@ plugins {
 }
 
 group 'org.example'
-version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
@@ -12,14 +11,15 @@ repositories {
 
 dependencies {
     implementation 'org.springframework:spring-webmvc:5.3.6'
-    implementation 'org.springframework:spring-dao:2.0.8'
     implementation 'org.springframework:spring-orm:5.3.6'
 
     implementation 'javax.servlet:javax.servlet-api:4.0.0'
     implementation 'org.glassfish:javax.servlet.jsp.jstl:3.1.1-b11'
     implementation 'javax.servlet:jstl:1.2'
 
-    implementation 'mysql:mysql-connector-java:5.1.13'
+    implementation ("org.slf4j:slf4j-log4j12:1.7.30")
+
+    implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.24'
     implementation group: 'com.zaxxer', name: 'HikariCP', version: '3.4.5'
     implementation 'org.hibernate:hibernate-core:5.4.+'
 
