@@ -1,8 +1,7 @@
 package com.project.controller;
 
 import com.project.entity.Person;
-import com.project.service.PersonService;
-import com.project.service.PersonServiceImpl;
+import com.project.dao.PersonDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,16 +22,18 @@ public class AppController {
 //    }
 
     @Autowired
-    private PersonService personService;
+    private PersonDAO personService;
 
 
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView allNames() {
-        Person person = personService.findPerson(1);
+//        Person person = personService.findPerson(2);
+        personService.createPerson("Ololo");
+        List<Person> personsList = personService.findAllPersons();
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("sample");
-        modelAndView.addObject("person", person);
+        modelAndView.addObject("personsList", personsList);
         return modelAndView;
     }
 }

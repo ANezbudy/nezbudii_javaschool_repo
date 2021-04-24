@@ -1,28 +1,29 @@
 package com.project.service;
 
+import com.project.dao.PersonDAO;
+import com.project.dao.PersonDAOImpl;
 import com.project.entity.Person;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
-@Transactional
 public class PersonServiceImpl implements PersonService{
-
-    @PersistenceContext
-    protected EntityManager entityManager;
+    private PersonDAO personDAO = new PersonDAOImpl();
 
     @Override
     public Person findPerson(int personID) {
-        Person person = entityManager.find(Person.class, personID);
+        return personDAO.findPerson(personID);
+    }
 
-        if (person != null) {
-            entityManager.detach(person);
-        }
+    @Override
+    public List<Person> findAllPersons() {
+        return personDAO.findAllPersons();
+    }
 
-        return person;
+    @Override
+    public void createPerson(String name) {
+        personDAO.createPerson(name);
     }
 }
