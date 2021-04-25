@@ -14,9 +14,9 @@ com/project/dao/PersonDAOImpl.java
  com.project.dao.PersonDAOImpl
 com/project/dao/PersonDAO.java
  com.project.dao.PersonDAO
-com/project/service/PersonService.java
- com.project.service.PersonService
-com/project/controller/AppController.java
- com.project.controller.AppController
 com/project/service/PersonServiceImpl.java
  com.project.service.PersonServiceImpl
+com/project/controller/AppController.java
+ com.project.controller.AppController
+com/project/service/PersonService.java
+ com.project.service.PersonService

@@ -10,4 +10,8 @@ public interface PersonService {
     List<Person> findAllPersons();
 
     void createPerson(String name);
+
+    String deletePerson(int id);
+
+    void updatePerson(int id, String newName);
 }

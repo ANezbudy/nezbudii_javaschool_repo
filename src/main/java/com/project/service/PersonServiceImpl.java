@@ -26,4 +26,14 @@ public class PersonServiceImpl implements PersonService{
     public void createPerson(String name) {
         personDAO.createPerson(name);
     }
+
+    @Override
+    public String deletePerson(int id) {
+        return personDAO.deletePerson(id);
+    }
+
+    @Override
+    public void updatePerson(int id, String newName) {
+        personDAO.updatePerson(id, newName);
+    }
 }

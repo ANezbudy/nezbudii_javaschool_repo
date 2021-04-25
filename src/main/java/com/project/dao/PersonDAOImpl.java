@@ -39,4 +39,22 @@ public class PersonDAOImpl implements PersonDAO {
         person.setName(name);
         entityManager.persist(person);
     }
+
+    @Override
+    @Transactional
+    public String deletePerson(int id) {
+        Person person = entityManager.find(Person.class, id);
+        String personName = person.getName();
+        entityManager.remove(person);
+        return personName;
+    }
+
+    @Override
+    @Transactional
+    public void updatePerson(int id, String newName) {
+        Person person = findPerson(id);
+        entityManager.detach(person);
+        person.setName(newName);
+        entityManager.merge(person);
+    }
 }

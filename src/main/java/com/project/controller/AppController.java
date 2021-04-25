@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -29,11 +30,34 @@ public class AppController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView allNames() {
 //        Person person = personService.findPerson(2);
-        personService.createPerson("Ololo");
+//        personService.createPerson("Ololo");
         List<Person> personsList = personService.findAllPersons();
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("sample");
         modelAndView.addObject("personsList", personsList);
         return modelAndView;
+    }
+    @RequestMapping("/submit")
+    public String submit(HttpServletRequest request) {
+        String personName = request.getParameter("personName");
+        personService.createPerson(personName);
+        return "sample";
+    }
+
+    @RequestMapping("/delete")
+    public String delete(HttpServletRequest request) {
+        String personId = request.getParameter("personID");
+        int id = Integer.parseInt(personId);
+        personService.deletePerson(id);
+        return "sample";
+    }
+
+    @RequestMapping("/update")
+    public String update(HttpServletRequest request) {
+        String personId = request.getParameter("changePersonID");
+        int id = Integer.parseInt(personId);
+        String newPersonName = request.getParameter("newPersonName");
+        personService.updatePerson(id, newPersonName);
+        return "sample";
     }
 }
