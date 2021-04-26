@@ -29,8 +29,6 @@ public class AppController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView allNames() {
-//        Person person = personService.findPerson(2);
-//        personService.createPerson("Ololo");
         List<Person> personsList = personService.findAllPersons();
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("sample");
@@ -38,26 +36,26 @@ public class AppController {
         return modelAndView;
     }
     @RequestMapping("/submit")
-    public String submit(HttpServletRequest request) {
+    public ModelAndView submit(HttpServletRequest request) {
         String personName = request.getParameter("personName");
         personService.createPerson(personName);
-        return "sample";
+        return allNames();
     }
 
     @RequestMapping("/delete")
-    public String delete(HttpServletRequest request) {
+    public ModelAndView delete(HttpServletRequest request) {
         String personId = request.getParameter("personID");
         int id = Integer.parseInt(personId);
         personService.deletePerson(id);
-        return "sample";
+        return allNames();
     }
 
     @RequestMapping("/update")
-    public String update(HttpServletRequest request) {
+    public ModelAndView update(HttpServletRequest request) {
         String personId = request.getParameter("changePersonID");
         int id = Integer.parseInt(personId);
         String newPersonName = request.getParameter("newPersonName");
         personService.updatePerson(id, newPersonName);
-        return "sample";
+        return allNames();
     }
 }

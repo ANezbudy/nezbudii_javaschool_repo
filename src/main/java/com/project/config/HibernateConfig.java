@@ -26,7 +26,7 @@ public class HibernateConfig {
         config.setDriverClassName("com.mysql.jdbc.Driver");
         config.setJdbcUrl("jdbc:mysql://localhost:3306/nau?useUnicode=yes&characterEncoding=UTF-8");
         config.setUsername("root");
-        config.setPassword("root");
+        config.setPassword("Sheldon2049Spoke");
 
         config.setMaximumPoolSize(2);
         config.setConnectionTestQuery("select 1");

@@ -1007,30 +1007,59 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     <user id="285" parent="1" name="root">
       <Host>localhost</Host>
     </user>
-    <table id="286" parent="4" name="persons"/>
-    <column id="287" parent="286" name="ID">
+    <table id="286" parent="4" name="passengers"/>
+    <table id="287" parent="4" name="persons"/>
+    <column id="288" parent="286" name="ID">
       <Position>1</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="288" parent="286" name="name">
+    <column id="289" parent="286" name="name">
       <Position>2</Position>
       <DataType>varchar(45)|0s</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <index id="289" parent="286" name="idnau_table_UNIQUE">
+    <column id="290" parent="286" name="lastname">
+      <Position>3</Position>
+      <DataType>varchar(50)|0s</DataType>
+    </column>
+    <column id="291" parent="286" name="birthdate">
+      <Position>4</Position>
+      <DataType>date|0s</DataType>
+    </column>
+    <index id="292" parent="286" name="idnau_table_UNIQUE">
       <ColNames>ID</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="290" parent="286" name="PRIMARY">
+    <key id="293" parent="286" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>ID</ColNames>
+      <ColNames>name</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="291" parent="286" name="idnau_table_UNIQUE">
+    <key id="294" parent="286" name="idnau_table_UNIQUE">
       <ColNames>ID</ColNames>
       <UnderlyingIndexName>idnau_table_UNIQUE</UnderlyingIndexName>
+    </key>
+    <column id="295" parent="287" name="ID">
+      <Position>1</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="296" parent="287" name="name">
+      <Position>2</Position>
+      <DataType>varchar(45)|0s</DataType>
+    </column>
+    <index id="297" parent="287" name="persons_ID_uindex">
+      <ColNames>ID</ColNames>
+      <Unique>1</Unique>
+      <Type>btree</Type>
+    </index>
+    <key id="298" parent="287" name="persons_ID_uindex">
+      <ColNames>ID</ColNames>
+      <UnderlyingIndexName>persons_ID_uindex</UnderlyingIndexName>
     </key>
   </database-model>
 </dataSource>
