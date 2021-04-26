@@ -6,7 +6,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.orm.jpa.JpaTransactionManager;
-import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaDialect;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
@@ -26,7 +25,7 @@ public class HibernateConfig {
         config.setDriverClassName("com.mysql.jdbc.Driver");
         config.setJdbcUrl("jdbc:mysql://localhost:3306/nau?useUnicode=yes&characterEncoding=UTF-8");
         config.setUsername("root");
-        config.setPassword("root");
+        config.setPassword("Sheldon2049Spoke");
 
         config.setMaximumPoolSize(2);
         config.setConnectionTestQuery("select 1");

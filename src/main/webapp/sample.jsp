@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%--<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>--%>
 <!DOCTYPE html>
 <html>
@@ -14,32 +15,36 @@
         <title>T</title>
     </head>
     <body>
-<%--        ${person.name}--%>
-        <h3>Persons</h3>
-        <form action="processForm" method="GET">
-            <table>
+<%--        ${passenger.name}--%>
+        <h3>Passengers</h3>
+        <table>
+            <c:if test="${fn:length(passengersList) == 0}">
+                There is no passengers!
+            </c:if>
+            <c:if test="${fn:length(passengersList) > 0}">
                 <tr>
                     <th>id</th>
                     <th>name</th>
                 </tr>
-                <c:forEach var="person" items="${personsList}">
+                <c:forEach var="passenger" items="${passengersList}">
                     <tr>
-                        <td>${person.id}</td>
-                        <td>${person.name}</td>
+                        <td>${passenger.id}</td>
+                        <td>${passenger.name}</td>
                     </tr>
                 </c:forEach>
-            </table>
-
-            <input type="text" name="personName"/>
+            </c:if>
+        </table>
+        <form action="processForm" method="GET">
+            <input type="text" name="passengerName"/>
             <input formaction="submit" type="submit"/>
             <br>
             <br>
-            <input type="text" name="personID" />
+            <input type="text" name="passengerID" />
             <button formaction="delete">Delete</button>
             <br>
             <br>
-            <input type="text" name="changePersonID"/>
-            <input type="text" name="newPersonName"/>
+            <input type="text" name="changePassengerID"/>
+            <input type="text" name="newPassengerName"/>
             <button formaction="update">Change</button>
         </form>
     </body>

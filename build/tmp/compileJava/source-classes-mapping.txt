@@ -1,22 +1,22 @@
 com/project/config/WebConfig.java
  com.project.config.WebConfig
-com/project/init/MainWebAppInitializer.java
- com.project.init.MainWebAppInitializer
-com/project/entity/Person.java
- com.project.entity.Person
-com/project/model/Person.java
- com.project.model.Person
-com/project/config/HibernateConfig.java
- com.project.config.HibernateConfig
+com/project/entity/Passenger.java
+ com.project.entity.Passenger
 com/project/Launcher.java
  com.project.Launcher
-com/project/dao/PersonDAOImpl.java
- com.project.dao.PersonDAOImpl
-com/project/dao/PersonDAO.java
- com.project.dao.PersonDAO
-com/project/service/PersonServiceImpl.java
- com.project.service.PersonServiceImpl
 com/project/controller/AppController.java
  com.project.controller.AppController
-com/project/service/PersonService.java
- com.project.service.PersonService
+com/project/dao/PassengerDAO.java
+ com.project.dao.PassengerDAO
+com/project/service/PassengerService.java
+ com.project.service.PassengerService
+com/project/model/Passenger.java
+ com.project.model.Passenger
+com/project/init/MainWebAppInitializer.java
+ com.project.init.MainWebAppInitializer
+com/project/config/HibernateConfig.java
+ com.project.config.HibernateConfig
+com/project/service/PassengerServiceImpl.java
+ com.project.service.PassengerServiceImpl
+com/project/dao/PassengerDAOImpl.java
+ com.project.dao.PassengerDAOImpl
