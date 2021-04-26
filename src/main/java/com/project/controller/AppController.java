@@ -1,7 +1,7 @@
 package com.project.controller;
 
 import com.project.entity.Person;
-import com.project.dao.PersonDAO;
+import com.project.service.api.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,25 +13,15 @@ import java.util.List;
 
 @Controller
 public class AppController {
-//    // just to show smth in a page
-//    private static Person person;
-//
-//    static {
-//        person = new Person();
-//        person.setId(1);
-//        person.setName("Momo");
-//    }
-
     @Autowired
-    private PersonDAO personService;
+    private PersonService personService;
 
 
-
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/person", method = RequestMethod.GET)
     public ModelAndView allNames() {
         List<Person> personsList = personService.findAllPersons();
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("sample");
+        modelAndView.setViewName("person");
         modelAndView.addObject("personsList", personsList);
         return modelAndView;
     }
