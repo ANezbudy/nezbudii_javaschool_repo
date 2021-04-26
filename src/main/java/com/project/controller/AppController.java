@@ -1,7 +1,7 @@
 package com.project.controller;
 
-import com.project.entity.Passenger;
-import com.project.service.PassengerService;
+import com.project.entity.Person;
+import com.project.dao.PersonDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,40 +13,51 @@ import java.util.List;
 
 @Controller
 public class AppController {
+//    // just to show smth in a page
+//    private static Person person;
+//
+//    static {
+//        person = new Person();
+//        person.setId(1);
+//        person.setName("Momo");
+//    }
+
     @Autowired
-    private PassengerService passengerService;
+    private PersonDAO personService;
+
 
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView allNames() {
-        List<Passenger> passengersList = passengerService.findAllPassengers();
+//        Person person = personService.findPerson(2);
+//        personService.createPerson("Ololo");
+        List<Person> personsList = personService.findAllPersons();
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("sample");
-        modelAndView.addObject("passengersList", passengersList);
+        modelAndView.addObject("personsList", personsList);
         return modelAndView;
     }
-
     @RequestMapping("/submit")
-    public ModelAndView submit(HttpServletRequest request) {
-        String passengerName = request.getParameter("passengerName");
-        passengerService.createPassenger(passengerName);
-        return allNames();
+    public String submit(HttpServletRequest request) {
+        String personName = request.getParameter("personName");
+        personService.createPerson(personName);
+        return "sample";
     }
 
     @RequestMapping("/delete")
-    public ModelAndView delete(HttpServletRequest request) {
-        String passengerId = request.getParameter("passengerId");
-        int id = Integer.parseInt(passengerId);
-        passengerService.deletePassenger(id);
-        return allNames();
+    public String delete(HttpServletRequest request) {
+        String personId = request.getParameter("personID");
+        int id = Integer.parseInt(personId);
+        personService.deletePerson(id);
+        return "sample";
     }
 
     @RequestMapping("/update")
-    public ModelAndView update(HttpServletRequest request) {
-        String passengerId = request.getParameter("changePassengerID");
-        int id = Integer.parseInt(passengerId);
-        String newPassengerName = request.getParameter("newPassengerName");
-        passengerService.updatePassenger(id, newPassengerName);
-        return allNames();
+    public String update(HttpServletRequest request) {
+        String personId = request.getParameter("changePersonID");
+        int id = Integer.parseInt(personId);
+        String newPersonName = request.getParameter("newPersonName");
+        personService.updatePerson(id, newPersonName);
+        return "sample";
     }
 }
