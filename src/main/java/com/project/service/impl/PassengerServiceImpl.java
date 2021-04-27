@@ -4,13 +4,16 @@ import com.project.dao.api.PassengerDAO;
 import com.project.dao.impl.PassengerDAOImpl;
 import com.project.entity.Passenger;
 import com.project.service.api.PassengerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class PassengerServiceImpl implements PassengerService {
-    private PassengerDAO passengerDAO = new PassengerDAOImpl();
+
+    @Autowired
+    private PassengerDAO passengerDAO;
 
     @Override
     public Passenger findPassenger(String passengerName, String passengerLastName) {

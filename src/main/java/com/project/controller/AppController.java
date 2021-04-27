@@ -16,6 +16,13 @@ public class AppController {
     @Autowired
     private PersonService personService;
 
+//    @RequestMapping("/")
+//    public ModelAndView startPageOpens() {
+//        ModelAndView modelAndView = new ModelAndView();
+//        modelAndView.setViewName("start");
+//        return modelAndView;
+//    }
+
 
     @RequestMapping(value = "/person", method = RequestMethod.GET)
     public ModelAndView allNames() {

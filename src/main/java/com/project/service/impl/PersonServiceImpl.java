@@ -4,13 +4,16 @@ import com.project.dao.api.PersonDAO;
 import com.project.dao.impl.PersonDAOImpl;
 import com.project.entity.Person;
 import com.project.service.api.PersonService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class PersonServiceImpl implements PersonService {
-    private PersonDAO personDAO = new PersonDAOImpl();
+
+    @Autowired
+    private PersonDAO personDAO;
 
     @Override
     public Person findPerson(int personID) {

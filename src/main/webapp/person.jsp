@@ -30,6 +30,8 @@
                 </c:forEach>
             </table>
 
+
+
             <input type="text" name="personName"/>
             <input formaction="submit" type="submit"/>
             <br>
