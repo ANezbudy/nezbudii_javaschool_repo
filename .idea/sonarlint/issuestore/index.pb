@@ -21,8 +21,6 @@ X
 gradlew,5\b\5bbfa66edb4db3c7c33c5181f43510990d3307f9
 `
 0build/tmp/compileJava/source-classes-mapping.txt,2\5\25d63c82895f00480eb78dc94302837f612dbb52
-j
-:.idea/dataSources/144703e6-3e78-4159-b92d-0f2185b66152.xml,c\6\c6c3ef6e1e49a90bbde6ce0cbc28796e2b90ea1a
 J
 src/main/webapp/person.jsp,5\4\54410f5a97bea7d1e68d09a696fb1778e2574426
 M
@@ -49,3 +47,12 @@ p
 @src/main/java/com/project/service/impl/PassengerServiceImpl.java,c\2\c28f7bb060bf533eb5cf97f8fe951913b86d29e6
 m
 =src/main/java/com/project/service/impl/PersonServiceImpl.java,9\9\998832323270b0ad857bd25257c8ab8ce952881b
+:
+
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
+H
+src/main/webapp/edit.jsp,9\0\90d3c2045ebec1335c07730113ac62fc4210df60
+h
+8src/main/java/com/project/controller/EditController.java,2\4\2400ed1c362cf32ef2a1159f4ea97702d20b5afb
+I
+src/main/webapp/start.jsp,9\d\9de43657f6a20af700fb9edd9cf0cc88bd7e4c38
