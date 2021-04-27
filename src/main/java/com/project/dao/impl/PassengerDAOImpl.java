@@ -2,6 +2,7 @@ package com.project.dao.impl;
 
 import com.project.dao.api.PassengerDAO;
 import com.project.entity.Passenger;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
@@ -11,9 +12,10 @@ import java.util.List;
 
 @Service
 @Transactional
+@ComponentScan(basePackages = "com/project/config")
 public class PassengerDAOImpl implements PassengerDAO {
 
-    @PersistenceContext()
+    @PersistenceContext
     protected EntityManager entityManager;
 
     @Override
