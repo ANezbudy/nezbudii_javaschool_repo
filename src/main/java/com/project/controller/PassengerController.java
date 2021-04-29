@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -26,29 +27,32 @@ public class PassengerController {
     }
 
     @RequestMapping("/submitpassenger")
-    public ModelAndView submit(HttpServletRequest request) {
+    public RedirectView submit(HttpServletRequest request) {
         String passengerName = request.getParameter("passengerName");
         String passengerLastName = request.getParameter("passengerLastName");
         passengerService.createPassenger(passengerName, passengerLastName);
-        return allPassengers();
+        String contextPath = request.getContextPath();
+        return new RedirectView(contextPath + "/");
     }
 
     @RequestMapping("/deletepassenger")
-    public ModelAndView delete(HttpServletRequest request) {
+    public RedirectView delete(HttpServletRequest request) {
         String passengerId = request.getParameter("passengerID");
         int id = Integer.parseInt(passengerId);
         passengerService.deletePassengerById(id);
-        return allPassengers();
+        String contextPath = request.getContextPath();
+        return new RedirectView(contextPath + "/");
     }
 
     @RequestMapping("/startedit")
-    public ModelAndView openEditForm(HttpServletRequest request) {
+    public RedirectView openEditForm(HttpServletRequest request) {
         String passengerId = request.getParameter("passengerID");
         int id = Integer.parseInt(passengerId);
         Passenger passenger = passengerService.findPassengerByID(id);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("edit");
         modelAndView.addObject(passenger);
-        return modelAndView;
+        String contextPath = request.getContextPath();
+        return new RedirectView(contextPath + "/");
     }
 }

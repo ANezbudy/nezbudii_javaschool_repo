@@ -22,6 +22,10 @@ public class Passenger {
     @OneToOne(mappedBy = "passenger")
     private Tickets ticket;
 
+    public Tickets getTicket() {
+        return ticket;
+    }
+
     public String getPassengerName() {
         return passengerName;
     }

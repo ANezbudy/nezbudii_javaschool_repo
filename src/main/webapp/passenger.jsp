@@ -15,7 +15,7 @@
 <div class="container">
     <h3>Passengers</h3>
 
-    <form method="GET">
+    <form action="/allPassengers" method="GET">
         <table class="table">
             <thead>
             <tr>
@@ -23,7 +23,7 @@
 <%--                <th scope="col">id</th>--%>
                 <th scope="col">Name</th>
                 <th scope="col">Last Name</th>
-<%--                <th scope="col">Birth Date</th>--%>
+                <th scope="col">Birth Date</th>
                 <th scope="col">Edit</th>
                 <th scope="col">Remove</th>
             </tr>
@@ -36,7 +36,7 @@
 <%--                    <td>${passenger.id}</td>--%>
                     <td>${passenger.passengerName}</td>
                     <td>${passenger.passengerLastName}</td>
-<%--                    <td>${passenger.passengerBirthDate}</td>--%>
+                    <td>${passenger.passengerBirthDate}</td>
                     <td>
                         <form action="startedit">
                             <button type="submit" class="btn btn-success">Edit</button>
@@ -61,6 +61,7 @@
 
 
         </table>
+    </form>
 
         <div class="input-group mb-1">
             <span class="input-group-text">First and last name</span>
@@ -69,7 +70,7 @@
                    name="passengerLastName"/>
             <button type="submit" class="btn btn-success" formaction="submitpassenger">Submit</button>
         </div>
-    </form>
+
 </div>
 </body>
 </html>

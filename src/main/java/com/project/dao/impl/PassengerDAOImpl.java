@@ -35,6 +35,7 @@ public class PassengerDAOImpl implements PassengerDAO {
 
         if (passenger != null) {
             entityManager.detach(passenger);
+            entityManager.detach(passenger.getTicket());
         }
 
         return passenger;
@@ -75,7 +76,7 @@ public class PassengerDAOImpl implements PassengerDAO {
     @Override
     public void updatePassenger(int id, String passengerName, String passengerLastName) {
         Passenger passenger = findPassengerByID(id);
-        entityManager.detach(passenger);
+//        entityManager.detach(passenger);
         passenger.setPassengerName(passengerName);
         passenger.setPassengerLastName(passengerLastName);
         entityManager.merge(passenger);
