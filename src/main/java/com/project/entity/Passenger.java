@@ -1,9 +1,6 @@
 package com.project.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -21,6 +18,9 @@ public class Passenger {
 
     @Column(name = "birthdate")
     private Date passengerBirthDate;
+
+    @OneToOne(mappedBy = "passenger")
+    private Tickets ticket;
 
     public String getPassengerName() {
         return passengerName;
