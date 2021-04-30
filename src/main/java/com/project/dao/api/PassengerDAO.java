@@ -4,6 +4,7 @@ package com.project.dao.api;
 import com.project.entity.Passenger;
 
 import javax.transaction.Transactional;
+import java.util.Date;
 import java.util.List;
 @Transactional
 public interface PassengerDAO {
@@ -12,11 +13,10 @@ public interface PassengerDAO {
 
     List<Passenger> findAllPassengers();
 
-    void createPassenger(String passengerName, String passengerLastName);
+    void createPassenger(String passengerName, String passengerLastName, Date passengerBirthDate);
 
-    int deletePassenger(String passengerName, String passengerLastName);
-
+    // why returns int??
     int deletePassengerById(int id);
 
-    void updatePassenger(int id, String name, String lastName);
+    void updatePassenger(int id, String passengerName, String passengerLastName, Date passengerBirthDate);
 }

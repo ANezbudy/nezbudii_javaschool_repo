@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Controller
 public class EditController {
@@ -19,10 +22,12 @@ public class EditController {
     private PassengerController passengerController;
 
     @RequestMapping("/submitedit")
-    public ModelAndView edit(HttpServletRequest request) {
+    public ModelAndView edit(HttpServletRequest request) throws ParseException {
         String passengerId = request.getParameter("passengerID");
         int id = Integer.parseInt(passengerId);
-        passengerService.updatePassenger(id, request.getParameter("passengerName"), request.getParameter("passengerLastName"));
+        SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
+        Date passengerBirthDate = format.parse(request.getParameter("passengerBirthDate"));
+        passengerService.updatePassenger(id, request.getParameter("passengerName"), request.getParameter("passengerLastName"), passengerBirthDate);
         return passengerController.allPassengers();
     }
 }

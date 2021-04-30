@@ -8,10 +8,10 @@ import java.util.Set;
 public class Train {
     @Id
     @Column(name = "train_number")
-    private int train_number;
+    private int trainNumber;
 
     @Column(name = "num_places")
-    private int num_places;
+    private int numPlaces;
 
     @OneToMany(mappedBy = "train")
     private Set<Tickets> tickets;
@@ -20,19 +20,19 @@ public class Train {
     private Set<Stations> stations;
 
 
-    public int getTrain_number() {
-        return train_number;
+    public int getTrainNumber() {
+        return trainNumber;
     }
 
-    public void setTrain_number(int train_number) {
-        this.train_number = train_number;
+    public void setTrainNumber(int train_number) {
+        this.trainNumber = train_number;
     }
 
-    public int getNum_places() {
-        return num_places;
+    public int getNumPlaces() {
+        return numPlaces;
     }
 
-    public void setNum_places(int num_places) {
-        this.num_places = num_places;
+    public void setNumPlaces(int num_places) {
+        this.numPlaces = num_places;
     }
 }

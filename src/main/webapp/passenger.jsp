@@ -15,12 +15,11 @@
 <div class="container">
     <h3>Passengers</h3>
 
-    <form action="/allPassengers" method="GET">
+<%--    <form method="GET">--%>
         <table class="table">
             <thead>
             <tr>
                 <th scope="col">#</th>
-<%--                <th scope="col">id</th>--%>
                 <th scope="col">Name</th>
                 <th scope="col">Last Name</th>
                 <th scope="col">Birth Date</th>
@@ -33,7 +32,6 @@
             <c:forEach var="passenger" items="${passengerList}">
                 <tr>
                     <th scope="row">1</th>
-<%--                    <td>${passenger.id}</td>--%>
                     <td>${passenger.passengerName}</td>
                     <td>${passenger.passengerLastName}</td>
                     <td>${passenger.passengerBirthDate}</td>
@@ -61,16 +59,19 @@
 
 
         </table>
-    </form>
+<%--    </form>--%>
 
+    <form>
         <div class="input-group mb-1">
             <span class="input-group-text">First and last name</span>
             <input class="form-control" placeholder="Passenger name" aria-label="Passenger name" name="passengerName"/>
             <input class="form-control" placeholder="Passenger Last Name" aria-label="Passenger Last Name"
                    name="passengerLastName"/>
+            <input class="form-control" placeholder="Passenger Birth Date" aria-label="Passenger Birth Date"
+                   name="passengerBirthDate"/>
             <button type="submit" class="btn btn-success" formaction="submitpassenger">Submit</button>
         </div>
-
+    </form>
 </div>
 </body>
 </html>

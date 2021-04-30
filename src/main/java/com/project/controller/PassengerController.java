@@ -10,6 +10,9 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -26,11 +29,14 @@ public class PassengerController {
         return modelAndView;
     }
 
+    // handle exceptions and move somewhere better place
     @RequestMapping("/submitpassenger")
-    public RedirectView submit(HttpServletRequest request) {
+    public RedirectView submit(HttpServletRequest request) throws ParseException {
         String passengerName = request.getParameter("passengerName");
         String passengerLastName = request.getParameter("passengerLastName");
-        passengerService.createPassenger(passengerName, passengerLastName);
+        SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
+        Date passengerBithDate = format.parse(request.getParameter("passengerBirthDate"));
+        passengerService.createPassenger(passengerName, passengerLastName, passengerBithDate);
         String contextPath = request.getContextPath();
         return new RedirectView(contextPath + "/");
     }
@@ -45,14 +51,13 @@ public class PassengerController {
     }
 
     @RequestMapping("/startedit")
-    public RedirectView openEditForm(HttpServletRequest request) {
+    public ModelAndView openEditForm(HttpServletRequest request) {
         String passengerId = request.getParameter("passengerID");
         int id = Integer.parseInt(passengerId);
         Passenger passenger = passengerService.findPassengerByID(id);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("edit");
-        modelAndView.addObject(passenger);
-        String contextPath = request.getContextPath();
-        return new RedirectView(contextPath + "/");
+        modelAndView.addObject("passenger", passenger);
+        return modelAndView;
     }
 }

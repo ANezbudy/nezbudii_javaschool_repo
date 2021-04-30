@@ -7,16 +7,16 @@ import java.util.Date;
 @Table(name = "passengers")
 public class Passenger {
     @Id
-    @Column(name = "ID")
+    @Column(name = "ID", nullable = false)
     private int id;
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String passengerName;
 
-    @Column(name = "lastname")
+    @Column(name = "lastname", nullable = false)
     private String passengerLastName;
 
-    @Column(name = "birthdate")
+    @Column(name = "birthdate", nullable = false)
     private Date passengerBirthDate;
 
     @OneToOne(mappedBy = "passenger")

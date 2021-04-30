@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -35,7 +36,9 @@ public class PassengerDAOImpl implements PassengerDAO {
 
         if (passenger != null) {
             entityManager.detach(passenger);
-            entityManager.detach(passenger.getTicket());
+            if (passenger.getTicket() != null) {
+                entityManager.detach(passenger.getTicket());
+            }
         }
 
         return passenger;
@@ -48,19 +51,12 @@ public class PassengerDAOImpl implements PassengerDAO {
     }
 
     @Override
-    public void createPassenger(String passengerName, String passengerLastName) {
+    public void createPassenger(String passengerName, String passengerLastName, Date passengerBirthDate) {
         Passenger passenger = new Passenger();
         passenger.setPassengerName(passengerName);
         passenger.setPassengerLastName(passengerLastName);
+        passenger.setPassengerBirthDate(passengerBirthDate);
         entityManager.persist(passenger);
-    }
-
-    @Override
-    public int deletePassenger(String passengerName, String passengerLastName) {
-        Passenger passenger = entityManager.find(Passenger.class, passengerLastName);
-        int id = passenger.getId();
-        entityManager.remove(passenger);
-        return id;
     }
 
     @Override
@@ -74,11 +70,12 @@ public class PassengerDAOImpl implements PassengerDAO {
     }
 
     @Override
-    public void updatePassenger(int id, String passengerName, String passengerLastName) {
+    public void updatePassenger(int id, String passengerName, String passengerLastName, Date passengerBirthDate) {
         Passenger passenger = findPassengerByID(id);
-//        entityManager.detach(passenger);
+        entityManager.detach(passenger);
         passenger.setPassengerName(passengerName);
         passenger.setPassengerLastName(passengerLastName);
+        passenger.setPassengerBirthDate(passengerBirthDate);
         entityManager.merge(passenger);
     }
 }

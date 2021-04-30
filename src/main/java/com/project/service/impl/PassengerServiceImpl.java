@@ -7,6 +7,7 @@ import com.project.service.api.PassengerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -31,8 +32,8 @@ public class PassengerServiceImpl implements PassengerService {
     }
 
     @Override
-    public void createPassenger(String passengerName, String passengerLastName) {
-        passengerDAO.createPassenger(passengerName, passengerLastName);
+    public void createPassenger(String passengerName, String passengerLastName, Date passengerBirthDate) {
+        passengerDAO.createPassenger(passengerName, passengerLastName, passengerBirthDate);
     }
 
     @Override
@@ -46,7 +47,7 @@ public class PassengerServiceImpl implements PassengerService {
     }
 
     @Override
-    public void updatePassenger(int id, String name, String lastName) {
-        passengerDAO.updatePassenger(id, name, lastName);
+    public void updatePassenger(int id, String passengerName, String passengerLastName, Date passengerBirthDate) {
+        passengerDAO.updatePassenger(id, passengerName, passengerLastName, passengerBirthDate);
     }
 }

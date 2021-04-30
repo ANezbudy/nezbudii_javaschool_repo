@@ -22,6 +22,8 @@
         <input class="form-control" placeholder="Passenger name" aria-label="Passenger name" name="passengerName" value="${passenger.passengerName}"/>
         <input class="form-control" placeholder="Passenger Last Name" aria-label="Passenger Last Name" name="passengerLastName" value="${passenger.passengerLastName}"/>
         <input type="hidden" name="passengerID" value="${passenger.id}">
+        <input class="form-control" placeholder="Passenger Birth Date" aria-label="Passenger Birth Date"
+               name="passengerBirthDate" value="${passenger.passengerBirthDate}"/>
         <button type="submit" class="btn btn-success" formaction="submitedit">Submit</button>
       </div>
     </form>
