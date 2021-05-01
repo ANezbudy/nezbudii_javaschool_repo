@@ -2,8 +2,9 @@ package com.project.dao.api;
 
 import com.project.entity.Train;
 
+import javax.transaction.Transactional;
 import java.util.List;
-
+@Transactional
 public interface TrainDAO {
 
     Train findTrain(int trainNumber);

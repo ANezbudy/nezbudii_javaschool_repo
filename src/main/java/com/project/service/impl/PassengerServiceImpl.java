@@ -17,11 +17,6 @@ public class PassengerServiceImpl implements PassengerService {
     private PassengerDAO passengerDAO;
 
     @Override
-    public Passenger findPassenger(String passengerName, String passengerLastName) {
-        return passengerDAO.findPassenger(passengerName, passengerLastName);
-    }
-
-    @Override
     public Passenger findPassengerByID(int id) {
         return passengerDAO.findPassengerByID(id);
     }
@@ -34,11 +29,6 @@ public class PassengerServiceImpl implements PassengerService {
     @Override
     public void createPassenger(String passengerName, String passengerLastName, Date passengerBirthDate) {
         passengerDAO.createPassenger(passengerName, passengerLastName, passengerBirthDate);
-    }
-
-    @Override
-    public int deletePassenger(String passengerName, String passengerLastName) {
-        return passengerDAO.deletePassenger(passengerName, passengerLastName);
     }
 
     @Override

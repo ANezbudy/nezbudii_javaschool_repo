@@ -2,11 +2,17 @@ package com.project.dao.impl;
 
 import com.project.dao.api.TrainDAO;
 import com.project.entity.Train;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import java.util.List;
 
+@Service
+@Transactional
+@ComponentScan(basePackages = "com/project/config")
 public class TrainDAOImpl implements TrainDAO {
     @PersistenceContext
     protected EntityManager entityManager;
