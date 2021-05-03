@@ -14,6 +14,7 @@ import java.text.ParseException;
 import java.util.List;
 
 @Controller
+@RequestMapping("/admin")
 public class TrainController {
     @Autowired
     private TrainService trainService;

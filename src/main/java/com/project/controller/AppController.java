@@ -1,5 +1,6 @@
 package com.project.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -7,11 +8,13 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping("/")
 public class AppController {
+
+    @Autowired
+    private PassengerController passengerController;
+
     @RequestMapping("/admin")
     public ModelAndView greetAdmin() {
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("passenger");
-        return mv;
+        return passengerController.allPassengers();
     }
 
     @RequestMapping("/user")

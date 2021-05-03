@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
+@RequestMapping("/admin")
 public class EditTrainController {
 
     @Autowired

@@ -16,12 +16,12 @@ import java.util.Date;
 import java.util.List;
 
 @Controller
-@RequestMapping("/admin/")
+@RequestMapping("/admin")
 public class PassengerController {
     @Autowired
     private PassengerService passengerService;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/passenger")
     public ModelAndView allPassengers() {
         List<Passenger> passengerList = passengerService.findAllPassengers();
         ModelAndView modelAndView = new ModelAndView();
