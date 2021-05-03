@@ -4,14 +4,30 @@ plugins {
 
 group 'org.example'
 
+ext {
+    springframeworkVersion = "5.2.4.RELEASE"
+}
+
 repositories {
     mavenCentral()
     maven { url "https://repo.spring.io/release" }
 }
 
 dependencies {
-    implementation 'org.springframework:spring-webmvc:5.3.6'
-    implementation 'org.springframework:spring-orm:5.3.6'
+    implementation("org.springframework:spring-core:$springframeworkVersion")
+    implementation("org.springframework:spring-context:$springframeworkVersion")
+    implementation("org.springframework:spring-aop:$springframeworkVersion")
+    implementation("org.springframework:spring-webmvc:$springframeworkVersion")
+    implementation("org.springframework:spring-web:$springframeworkVersion")
+    implementation("org.springframework:spring-jdbc:$springframeworkVersion")
+
+
+    implementation("org.springframework:spring-orm:$springframeworkVersion")
+
+    implementation("org.springframework.security:spring-security-core:$springframeworkVersion")
+    implementation("org.springframework.security:spring-security-web:$springframeworkVersion")
+    implementation("org.springframework.security:spring-security-config:$springframeworkVersion")
+
 
     implementation 'javax.servlet:javax.servlet-api:4.0.0'
     implementation 'org.glassfish:javax.servlet.jsp.jstl:3.1.1-b11'

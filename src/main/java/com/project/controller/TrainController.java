@@ -40,7 +40,7 @@ public class TrainController {
 
     @RequestMapping("/deletetrain")
     public RedirectView deleteTrain(HttpServletRequest request) {
-        int trainNumber = Integer.parseInt(request.getParameter("passengerID"));
+        int trainNumber = Integer.parseInt(request.getParameter("trainNumber"));
         trainService.deleteTrain(trainNumber);
         String contextPath = request.getContextPath();
         return new RedirectView(contextPath + "/trains");

@@ -16,6 +16,7 @@ import java.util.Date;
 import java.util.List;
 
 @Controller
+@RequestMapping("/admin/")
 public class PassengerController {
     @Autowired
     private PassengerService passengerService;
