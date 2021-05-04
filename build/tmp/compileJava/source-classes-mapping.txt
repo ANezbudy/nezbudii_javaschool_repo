@@ -10,12 +10,12 @@ com/project/entity/Passenger.java
  com.project.entity.Passenger
 com/project/entity/Stations.java
  com.project.entity.Stations
-com/project/init/MainWebAppInitializer.java
- com.project.init.MainWebAppInitializer
+com/project/controller/EditController.java
+ com.project.controller.EditController
 com/project/service/api/TrainService.java
  com.project.service.api.TrainService
-com/project/config/SecurityConfig.java
- com.project.config.SecurityConfig
+com/project/controller/AppController.java
+ com.project.controller.AppController
 com/project/service/api/PassengerService.java
  com.project.service.api.PassengerService
 com/project/dao/impl/TrainDAOImpl.java
@@ -44,7 +44,11 @@ com/project/controller/EditTrainController.java
  com.project.controller.EditTrainController
 com/project/controller/PassengerController.java
  com.project.controller.PassengerController
-com/project/controller/EditController.java
- com.project.controller.EditController
-com/project/controller/AppController.java
- com.project.controller.AppController
+com/project/dto/PassengerDTO.java
+ com.project.dto.PassengerDTO
+com/project/config/SecurityConfig.java
+ com.project.config.SecurityConfig
+com/project/utils/PassengerMapping.java
+ com.project.utils.PassengerMapping
+com/project/init/MainWebAppInitializer.java
+ com.project.init.MainWebAppInitializer

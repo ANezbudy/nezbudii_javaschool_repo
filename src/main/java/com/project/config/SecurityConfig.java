@@ -20,6 +20,9 @@ import javax.sql.DataSource;
 @EnableGlobalMethodSecurity(prePostEnabled = true, jsr250Enabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Autowired
+    private DataSource dataSource;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -43,14 +46,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return hierarchy;
     }
 
-    // In memory authentication example
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
     @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-                .inMemoryAuthentication()
-                .withUser("user").password("{noop}user").roles("USER")
-                .and()
-                .withUser("admin").password("{noop}admin").roles("ADMIN");
+    public void configureGlobal(AuthenticationManagerBuilder auth)
+            throws Exception {
+        auth.jdbcAuthentication().dataSource(dataSource);
+//          .withDefaultSchema()
+//                .withUser("user").password(passwordEncoder().encode("password")).roles("USER")
+//                .and()
+//                .withUser("admin").password(passwordEncoder().encode("password")).roles("ADMIN");
     }
 
 
