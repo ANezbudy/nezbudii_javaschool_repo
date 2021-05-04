@@ -26,8 +26,7 @@ public class EditController {
     public ModelAndView edit(HttpServletRequest request) throws ParseException {
         String passengerId = request.getParameter("passengerID");
         int id = Integer.parseInt(passengerId);
-        SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
-        Date passengerBirthDate = format.parse(request.getParameter("passengerBirthDate"));
+        String passengerBirthDate = request.getParameter("passengerBirthDate");
         passengerService.updatePassenger(id, request.getParameter("passengerName"), request.getParameter("passengerLastName"), passengerBirthDate);
         return passengerController.allPassengers();
     }

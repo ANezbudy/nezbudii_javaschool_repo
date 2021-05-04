@@ -1,7 +1,10 @@
 package com.project.dao.impl;
 
 import com.project.dao.api.PassengerDAO;
+import com.project.dto.PassengerDTO;
 import com.project.entity.Passenger;
+import com.project.utils.PassengerMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +13,7 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -19,19 +23,22 @@ public class PassengerDAOImpl implements PassengerDAO {
     @PersistenceContext
     protected EntityManager entityManager;
 
+    @Autowired
+    private PassengerMapper passengerMapper;
+
+//    @Override
+//    public PassengerDTO findPassenger(String passengerName, String passengerLastName) {
+//        Passenger passenger = entityManager.find(Passenger.class, passengerName);
+//
+//        if (passenger != null) {
+//            entityManager.detach(passenger);
+//        }
+//
+//        return passengerMapper.toDto(passenger);
+//    }
+
     @Override
-    public Passenger findPassenger(String passengerName, String passengerLastName) {
-        Passenger passenger = entityManager.find(Passenger.class, passengerName);
-
-        if (passenger != null) {
-            entityManager.detach(passenger);
-        }
-
-        return passenger;
-    }
-
-    @Override
-    public Passenger findPassengerByID(int passengerId) {
+    public PassengerDTO findPassengerByID(int passengerId) {
         Passenger passenger = entityManager.find(Passenger.class, passengerId);
 
         if (passenger != null) {
@@ -41,22 +48,20 @@ public class PassengerDAOImpl implements PassengerDAO {
             }
         }
 
-        return passenger;
+        return passengerMapper.toDto(passenger);
     }
 
     @Override
-    public List<Passenger> findAllPassengers() {
+    public List<PassengerDTO> findAllPassengers() {
         List<Passenger> passengers = entityManager.createQuery("FROM Passenger").getResultList();
-        return passengers;
+        return passengers.stream().map(passengerMapper::toDto).collect(Collectors.toList());
     }
 
     @Override
-    public void createPassenger(String passengerName, String passengerLastName, Date passengerBirthDate) {
-        Passenger passenger = new Passenger();
-        passenger.setPassengerName(passengerName);
-        passenger.setPassengerLastName(passengerLastName);
-        passenger.setPassengerBirthDate(passengerBirthDate);
-        entityManager.persist(passenger);
+    public void createPassenger(String passengerName, String passengerLastName, String passengerBirthDate) {
+        PassengerDTO passengerDTO = new PassengerDTO(passengerName, passengerLastName, passengerBirthDate);
+        Passenger passenger = passengerMapper.toEntity(passengerDTO);
+        entityManager.merge(passenger);
     }
 
     @Override
@@ -70,12 +75,9 @@ public class PassengerDAOImpl implements PassengerDAO {
     }
 
     @Override
-    public void updatePassenger(int id, String passengerName, String passengerLastName, Date passengerBirthDate) {
-        Passenger passenger = findPassengerByID(id);
-        entityManager.detach(passenger);
-        passenger.setPassengerName(passengerName);
-        passenger.setPassengerLastName(passengerLastName);
-        passenger.setPassengerBirthDate(passengerBirthDate);
+    public void updatePassenger(int id, String passengerName, String passengerLastName, String passengerBirthDate) {
+        PassengerDTO passengerDTO = new PassengerDTO(id, passengerName, passengerLastName, passengerBirthDate);
+        Passenger passenger = passengerMapper.toEntity(passengerDTO);
         entityManager.merge(passenger);
     }
 }

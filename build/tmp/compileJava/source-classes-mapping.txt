@@ -1,54 +1,56 @@
 com/project/config/WebConfig.java
  com.project.config.WebConfig
-com/project/dao/impl/PassengerDAOImpl.java
- com.project.dao.impl.PassengerDAOImpl
+com/project/init/MainWebAppInitializer.java
+ com.project.init.MainWebAppInitializer
 com/project/model/Person.java
  com.project.model.Person
+com/project/entity/Tickets.java
+ com.project.entity.Tickets
 com/project/service/impl/TrainServiceImpl.java
  com.project.service.impl.TrainServiceImpl
 com/project/entity/Passenger.java
  com.project.entity.Passenger
 com/project/entity/Stations.java
  com.project.entity.Stations
-com/project/controller/EditController.java
- com.project.controller.EditController
+com/project/controller/PassengerController.java
+ com.project.controller.PassengerController
 com/project/service/api/TrainService.java
  com.project.service.api.TrainService
-com/project/controller/AppController.java
- com.project.controller.AppController
-com/project/service/api/PassengerService.java
- com.project.service.api.PassengerService
+com/project/init/SecurityWebApplicationInitializer.java
+ com.project.init.SecurityWebApplicationInitializer
+com/project/controller/EditController.java
+ com.project.controller.EditController
+com/project/controller/EditTrainController.java
+ com.project.controller.EditTrainController
 com/project/dao/impl/TrainDAOImpl.java
  com.project.dao.impl.TrainDAOImpl
-com/project/entity/Tickets.java
- com.project.entity.Tickets
-com/project/dao/api/PassengerDAO.java
- com.project.dao.api.PassengerDAO
+com/project/config/MapperConfig.java
+ com.project.config.MapperConfig
 com/project/Launcher.java
  com.project.Launcher
 com/project/dao/api/TrainDAO.java
  com.project.dao.api.TrainDAO
-com/project/init/SecurityWebApplicationInitializer.java
- com.project.init.SecurityWebApplicationInitializer
+com/project/controller/AppController.java
+ com.project.controller.AppController
 com/project/entity/Train.java
  com.project.entity.Train
-com/project/config/HibernateConfig.java
- com.project.config.HibernateConfig
-com/project/entity/Person.java
- com.project.entity.Person
-com/project/service/impl/PassengerServiceImpl.java
- com.project.service.impl.PassengerServiceImpl
 com/project/controller/TrainController.java
  com.project.controller.TrainController
-com/project/controller/EditTrainController.java
- com.project.controller.EditTrainController
-com/project/controller/PassengerController.java
- com.project.controller.PassengerController
-com/project/dto/PassengerDTO.java
- com.project.dto.PassengerDTO
+com/project/entity/Person.java
+ com.project.entity.Person
 com/project/config/SecurityConfig.java
  com.project.config.SecurityConfig
-com/project/utils/PassengerMapping.java
- com.project.utils.PassengerMapping
-com/project/init/MainWebAppInitializer.java
- com.project.init.MainWebAppInitializer
+com/project/config/HibernateConfig.java
+ com.project.config.HibernateConfig
+com/project/dao/impl/PassengerDAOImpl.java
+ com.project.dao.impl.PassengerDAOImpl
+com/project/dao/api/PassengerDAO.java
+ com.project.dao.api.PassengerDAO
+com/project/service/impl/PassengerServiceImpl.java
+ com.project.service.impl.PassengerServiceImpl
+com/project/dto/PassengerDTO.java
+ com.project.dto.PassengerDTO
+com/project/utils/PassengerMapper.java
+ com.project.utils.PassengerMapper
+com/project/service/api/PassengerService.java
+ com.project.service.api.PassengerService

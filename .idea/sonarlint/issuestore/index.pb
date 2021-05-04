@@ -21,8 +21,6 @@ X
 gradlew,5\b\5bbfa66edb4db3c7c33c5181f43510990d3307f9
 `
 0build/tmp/compileJava/source-classes-mapping.txt,2\5\25d63c82895f00480eb78dc94302837f612dbb52
-J
-src/main/webapp/person.jsp,5\4\54410f5a97bea7d1e68d09a696fb1778e2574426
 M
 src/main/webapp/passenger.jsp,6\8\686cf16c41f705a56afbc029f8cdc8d220bf5b23
 _
@@ -33,20 +31,12 @@ m
 =src/main/java/com/project/controller/PassengerController.java,d\0\d072bf7112120c7b03df09cc5b77cbb17290cb84
 c
 3src/main/java/com/project/dao/api/PassengerDAO.java,f\f\ff08cd6ff6fbfb8c6c9eca9d927c13cc70058877
-`
-0src/main/java/com/project/dao/api/PersonDAO.java,1\d\1d8e864bd8b9164da5cf6aab13c1efe79c1b6622
 h
 8src/main/java/com/project/dao/impl/PassengerDAOImpl.java,6\0\6083917b23a41f3853d234da0d6bae4f4084a9cc
-e
-5src/main/java/com/project/dao/impl/PersonDAOImpl.java,e\1\e1554800880a334282d42e6be3b55ce7ddb635c0
 k
 ;src/main/java/com/project/service/api/PassengerService.java,c\f\cfac0c8cd9d436e41bd8f9b41ebc94d7c6f041b2
-h
-8src/main/java/com/project/service/api/PersonService.java,d\9\d938f2e41b2cf4f2c3d9d424b1d80984cfd14341
 p
 @src/main/java/com/project/service/impl/PassengerServiceImpl.java,c\2\c28f7bb060bf533eb5cf97f8fe951913b86d29e6
-m
-=src/main/java/com/project/service/impl/PersonServiceImpl.java,9\9\998832323270b0ad857bd25257c8ab8ce952881b
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302

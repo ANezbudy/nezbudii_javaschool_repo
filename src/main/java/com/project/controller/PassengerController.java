@@ -1,5 +1,6 @@
 package com.project.controller;
 
+import com.project.dto.PassengerDTO;
 import com.project.entity.Passenger;
 import com.project.service.api.PassengerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class PassengerController {
 
     @RequestMapping(value = "/passenger")
     public ModelAndView allPassengers() {
-        List<Passenger> passengerList = passengerService.findAllPassengers();
+        List<PassengerDTO> passengerList = passengerService.findAllPassengers();
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("passenger");
         modelAndView.addObject("passengerList", passengerList);
@@ -35,8 +36,9 @@ public class PassengerController {
     public RedirectView submit(HttpServletRequest request) throws ParseException {
         String passengerName = request.getParameter("passengerName");
         String passengerLastName = request.getParameter("passengerLastName");
-        SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
-        Date passengerBithDate = format.parse(request.getParameter("passengerBirthDate"));
+        String passengerBithDate = request.getParameter("passengerBirthDate");
+//        SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
+//        Date passengerBithDate = format.parse(request.getParameter("passengerBirthDate"));
         passengerService.createPassenger(passengerName, passengerLastName, passengerBithDate);
         String contextPath = request.getContextPath();
         return new RedirectView(contextPath + "/");
@@ -55,10 +57,10 @@ public class PassengerController {
     public ModelAndView openEditForm(HttpServletRequest request) {
         String passengerId = request.getParameter("passengerID");
         int id = Integer.parseInt(passengerId);
-        Passenger passenger = passengerService.findPassengerByID(id);
+        PassengerDTO passengerDTO = passengerService.findPassengerByID(id);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("edit");
-        modelAndView.addObject("passenger", passenger);
+        modelAndView.addObject("passengerDTO", passengerDTO);
         return modelAndView;
     }
 }
