@@ -1,7 +1,7 @@
 package com.project.service.impl;
 
 import com.project.dao.api.TrainDAO;
-import com.project.entity.Train;
+import com.project.dto.TrainDTO;
 import com.project.service.api.TrainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,27 +15,34 @@ public class TrainServiceImpl implements TrainService {
     private TrainDAO trainDAO;
 
     @Override
-    public Train findTrain(int trainNumber) {
+    public TrainDTO findTrain(int trainNumber) {
         return trainDAO.findTrain(trainNumber);
     }
 
     @Override
-    public List<Train> findAllTrains() {
+    public List<TrainDTO> findAllTrains() {
         return trainDAO.findAllTrains();
     }
 
     @Override
     public void createTrain(int trainNumber, int numPlaces) {
-        trainDAO.createTrain(trainNumber, numPlaces);
+        TrainDTO trainDTO = new TrainDTO(trainNumber, numPlaces);
+        trainDAO.createTrain(trainDTO);
     }
 
+    // returns deleted train number or 0 if train not found
     @Override
     public int deleteTrain(int trainNumber) {
-        return trainDAO.deleteTrain(trainNumber);
+        TrainDTO trainDTO = new TrainDTO();
+        trainDTO.setTrainNumber(trainNumber);
+        return trainDAO.deleteTrain(trainDTO) == 1 ? trainNumber : 0;
     }
 
     @Override
     public void updateTrain(int trainNumber, int numPlaces) {
-        trainDAO.updateTrain(trainNumber, numPlaces);
+        TrainDTO trainDTO = new TrainDTO();
+        trainDTO.setTrainNumber(trainNumber);
+        trainDTO.setNumPlaces(numPlaces);
+        trainDAO.updateTrain(trainDTO);
     }
 }

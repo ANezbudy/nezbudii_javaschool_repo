@@ -1,6 +1,6 @@
 package com.project.controller;
 
-import com.project.entity.Train;
+import com.project.dto.TrainDTO;
 import com.project.service.api.TrainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,10 +21,10 @@ public class TrainController {
 
     @RequestMapping(value = "/trains", method = RequestMethod.GET)
     public ModelAndView allTrains() {
-        List<Train> trainList = trainService.findAllTrains();
+        List<TrainDTO> trainDTOList = trainService.findAllTrains();
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("trains");
-        modelAndView.addObject("trainList", trainList);
+        modelAndView.addObject("trainDTOList", trainDTOList);
         return modelAndView;
     }
 
@@ -36,7 +36,7 @@ public class TrainController {
         int numPlaces = Integer.parseInt(request.getParameter("numPlaces"));
         trainService.createTrain(trainNumber, numPlaces);
         String contextPath = request.getContextPath();
-        return new RedirectView(contextPath + "/trains");
+        return new RedirectView(contextPath + "admin/trains");
     }
 
     @RequestMapping("/deletetrain")
@@ -44,13 +44,13 @@ public class TrainController {
         int trainNumber = Integer.parseInt(request.getParameter("trainNumber"));
         trainService.deleteTrain(trainNumber);
         String contextPath = request.getContextPath();
-        return new RedirectView(contextPath + "/trains");
+        return new RedirectView(contextPath + "admin/trains");
     }
 
     @RequestMapping("/startedittrain")
     public ModelAndView openTrainEditForm(HttpServletRequest request) {
         int trainNumber = Integer.parseInt(request.getParameter("trainNumber"));
-        Train train = trainService.findTrain(trainNumber);
+        TrainDTO train = trainService.findTrain(trainNumber);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("edittrain");
         modelAndView.addObject("train", train);

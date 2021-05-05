@@ -1,20 +1,19 @@
 package com.project.dao.api;
 
-import com.project.entity.Train;
+import com.project.dto.TrainDTO;
 
 import javax.transaction.Transactional;
 import java.util.List;
 @Transactional
 public interface TrainDAO {
 
-    Train findTrain(int trainNumber);
+    TrainDTO findTrain(int trainNumber);
 
-    List<Train> findAllTrains();
+    List<TrainDTO> findAllTrains();
 
-    void createTrain(int trainNumber, int numPlaces);
+    void createTrain(TrainDTO trainDTO);
 
-    // why returns int??
-    int deleteTrain(int trainNumber);
+    int deleteTrain(TrainDTO trainNumber);
 
-    void updateTrain(int trainNumber, int numPlaces);
+    void updateTrain(TrainDTO trainDTO);
 }

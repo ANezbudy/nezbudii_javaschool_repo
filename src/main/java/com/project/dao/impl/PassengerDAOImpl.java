@@ -26,17 +26,6 @@ public class PassengerDAOImpl implements PassengerDAO {
     @Autowired
     private PassengerMapper passengerMapper;
 
-//    @Override
-//    public PassengerDTO findPassenger(String passengerName, String passengerLastName) {
-//        Passenger passenger = entityManager.find(Passenger.class, passengerName);
-//
-//        if (passenger != null) {
-//            entityManager.detach(passenger);
-//        }
-//
-//        return passengerMapper.toDto(passenger);
-//    }
-
     @Override
     public PassengerDTO findPassengerByID(int passengerId) {
         Passenger passenger = entityManager.find(Passenger.class, passengerId);
@@ -61,7 +50,7 @@ public class PassengerDAOImpl implements PassengerDAO {
     public void createPassenger(String passengerName, String passengerLastName, String passengerBirthDate) {
         PassengerDTO passengerDTO = new PassengerDTO(passengerName, passengerLastName, passengerBirthDate);
         Passenger passenger = passengerMapper.toEntity(passengerDTO);
-        entityManager.merge(passenger);
+        entityManager.persist(passenger);
     }
 
     @Override

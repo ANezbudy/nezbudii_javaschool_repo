@@ -1,5 +1,6 @@
 package com.project.config;
 
+import com.project.utils.UrlAuthenticationSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,6 +13,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 import javax.sql.DataSource;
 
@@ -34,6 +36,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anonymous()
                 .and()
                 .formLogin()
+//                    .loginPage("/login")
+//                    .loginProcessingUrl("/login")
+                    .successHandler(authenticationSuccessHandler())
                 .and()
                 .logout();
     }
@@ -58,10 +63,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configureGlobal(AuthenticationManagerBuilder auth)
             throws Exception {
         auth.jdbcAuthentication().dataSource(dataSource);
-//          .withDefaultSchema()
-//                .withUser("user").password(passwordEncoder().encode("password")).roles("USER")
-//                .and()
-//                .withUser("admin").password(passwordEncoder().encode("password")).roles("ADMIN");
+    }
+
+    @Bean
+    public AuthenticationSuccessHandler authenticationSuccessHandler() {
+        return new UrlAuthenticationSuccessHandler();
     }
 
 

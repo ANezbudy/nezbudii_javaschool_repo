@@ -41,7 +41,7 @@ public class PassengerController {
 //        Date passengerBithDate = format.parse(request.getParameter("passengerBirthDate"));
         passengerService.createPassenger(passengerName, passengerLastName, passengerBithDate);
         String contextPath = request.getContextPath();
-        return new RedirectView(contextPath + "/");
+        return new RedirectView(contextPath + "/admin/passenger");
     }
 
     @RequestMapping("/deletepassenger")
@@ -50,7 +50,7 @@ public class PassengerController {
         int id = Integer.parseInt(passengerId);
         passengerService.deletePassengerById(id);
         String contextPath = request.getContextPath();
-        return new RedirectView(contextPath + "/");
+        return new RedirectView(contextPath + "/admin/passenger");
     }
 
     @RequestMapping("/startedit")
