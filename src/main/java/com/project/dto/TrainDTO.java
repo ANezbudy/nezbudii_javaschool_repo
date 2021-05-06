@@ -1,15 +1,12 @@
 package com.project.dto;
 
-import com.project.entity.Stations;
-import com.project.entity.Tickets;
-
 import java.util.Set;
 
 public class TrainDTO {
     private int trainNumber;
     private int numPlaces;
-    private Set<Tickets> tickets;
-    private Set<Stations> stations;
+    private Set<TicketsDTO> ticketsDTOs;
+    private Set<StationsDTO> stationsDTOS;
 
     public TrainDTO() {
 
@@ -20,11 +17,11 @@ public class TrainDTO {
         this.numPlaces = numPlaces;
     }
 
-    public TrainDTO(int trainNumber, int numPlaces, Set<Tickets> tickets, Set<Stations> stations) {
+    public TrainDTO(int trainNumber, int numPlaces, Set<TicketsDTO> ticketsDTOs, Set<StationsDTO> stationsDTOS) {
         this.trainNumber = trainNumber;
         this.numPlaces = numPlaces;
-        this.tickets = tickets;
-        this.stations = stations;
+        this.ticketsDTOs = ticketsDTOs;
+        this.stationsDTOS = stationsDTOS;
     }
 
     public int getTrainNumber() {
@@ -43,19 +40,19 @@ public class TrainDTO {
         this.numPlaces = numPlaces;
     }
 
-    public Set<Tickets> getTickets() {
-        return tickets;
+    public Set<TicketsDTO> getTicketsDTOs() {
+        return ticketsDTOs;
     }
 
-    public void setTickets(Set<Tickets> tickets) {
-        this.tickets = tickets;
+    public void setTicketsDTOs(Set<TicketsDTO> ticketsDTOs) {
+        this.ticketsDTOs = ticketsDTOs;
     }
 
-    public Set<Stations> getStations() {
-        return stations;
+    public Set<StationsDTO> getStationsDTOS() {
+        return stationsDTOS;
     }
 
-    public void setStations(Set<Stations> stations) {
-        this.stations = stations;
+    public void setStationsDTOS(Set<StationsDTO> stationsDTOS) {
+        this.stationsDTOS = stationsDTOS;
     }
 }

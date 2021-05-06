@@ -49,7 +49,7 @@ public class TrainDAOImpl implements TrainDAO {
 
     @Override
     public int deleteTrain(TrainDTO trainDTO) {
-        Train train = trainMapper.toEntity(trainDTO);
+        Train train = entityManager.find(Train.class, trainDTO.getTrainNumber());
         if (train != null) {
             entityManager.remove(train);
             return 1;

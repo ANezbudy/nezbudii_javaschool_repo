@@ -19,12 +19,12 @@
 
     <form method="GET">
       <div class="mb-1">
-        <h3>Edit Train #${train.trainNumber}</h3>
+        <h3>Edit Train #${trainDTO.trainNumber}</h3>
       </div>
       <div class="input-group mb-1">
         <span class="input-group-text">Number of places </span>
-        <input class="form-control" placeholder="Number Of Places" aria-label="Number Of Places" name="numPlaces" value="${train.numPlaces}"/>
-        <input type="hidden" name="trainNumber" value="${train.trainNumber}">
+        <input class="form-control" placeholder="Number Of Places" aria-label="Number Of Places" name="numPlaces" value="${trainDTO.numPlaces}"/>
+        <input type="hidden" name="trainNumber" value="${trainDTO.trainNumber}">
         <button type="submit" class="btn btn-success" formaction="submitedittrain">Submit</button>
       </div>
     </form>

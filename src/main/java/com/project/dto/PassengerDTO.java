@@ -1,14 +1,11 @@
 package com.project.dto;
 
-import com.project.entity.Tickets;
-import java.util.Date;
-
 public class PassengerDTO {
     private int id;
     private String passengerName;
     private String passengerLastName;
     private String passengerBirthDate;
-    private Tickets ticket;
+    private TicketsDTO ticketsDTO;
 
     public PassengerDTO() {
     }
@@ -26,12 +23,12 @@ public class PassengerDTO {
         this.passengerBirthDate = passengerBirthDate;
     }
 
-    public PassengerDTO(int id, String passengerName, String passengerLastName, String passengerBirthDate, Tickets ticket) {
+    public PassengerDTO(int id, String passengerName, String passengerLastName, String passengerBirthDate, TicketsDTO ticketsDTO) {
         this.id = id;
         this.passengerName = passengerName;
         this.passengerLastName = passengerLastName;
         this.passengerBirthDate = passengerBirthDate;
-        this.ticket = ticket;
+        this.ticketsDTO = ticketsDTO;
     }
 
     public int getId() {
@@ -66,11 +63,11 @@ public class PassengerDTO {
         this.passengerBirthDate = passengerBirthDate;
     }
 
-    public Tickets getTicket() {
-        return ticket;
+    public TicketsDTO getTicketsDTO() {
+        return ticketsDTO;
     }
 
-    public void setTicket(Tickets ticket) {
-        this.ticket = ticket;
+    public void setTicketsDTO(TicketsDTO ticketsDTO) {
+        this.ticketsDTO = ticketsDTO;
     }
 }

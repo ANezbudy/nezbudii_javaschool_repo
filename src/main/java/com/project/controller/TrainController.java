@@ -36,7 +36,7 @@ public class TrainController {
         int numPlaces = Integer.parseInt(request.getParameter("numPlaces"));
         trainService.createTrain(trainNumber, numPlaces);
         String contextPath = request.getContextPath();
-        return new RedirectView(contextPath + "admin/trains");
+        return new RedirectView(contextPath + "/admin/trains");
     }
 
     @RequestMapping("/deletetrain")
@@ -44,16 +44,16 @@ public class TrainController {
         int trainNumber = Integer.parseInt(request.getParameter("trainNumber"));
         trainService.deleteTrain(trainNumber);
         String contextPath = request.getContextPath();
-        return new RedirectView(contextPath + "admin/trains");
+        return new RedirectView(contextPath + "/admin/trains");
     }
 
     @RequestMapping("/startedittrain")
     public ModelAndView openTrainEditForm(HttpServletRequest request) {
         int trainNumber = Integer.parseInt(request.getParameter("trainNumber"));
-        TrainDTO train = trainService.findTrain(trainNumber);
+        TrainDTO trainDTO = trainService.findTrain(trainNumber);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("edittrain");
-        modelAndView.addObject("train", train);
+        modelAndView.addObject("trainDTO", trainDTO);
         return modelAndView;
     }
 }
