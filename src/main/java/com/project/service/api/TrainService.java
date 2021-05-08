@@ -1,17 +1,17 @@
 package com.project.service.api;
 
-import com.project.entity.Train;
+import com.project.dto.TrainDTO;
 
 import java.util.List;
 
 public interface TrainService {
-    Train findTrain(int trainNumber);
+    TrainDTO findTrain(int trainNumber);
 
-    List<Train> findAllTrains();
+    List<TrainDTO> findAllTrains();
 
-    void createTrain(int trainNumber, int numPlaces);
+    void createTrain(TrainDTO trainDTO);
 
-    int deleteTrain(int trainNumber);
+    int deleteTrain(TrainDTO trainDTO);
 
-    void updateTrain(int trainNumber, int numPlaces);
+    void updateTrain(TrainDTO trainDTO);
 }

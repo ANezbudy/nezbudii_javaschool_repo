@@ -1,12 +1,14 @@
 package com.project.service.impl;
 
 import com.project.dao.api.TrainDAO;
-import com.project.entity.Train;
+import com.project.dto.TrainDTO;
 import com.project.service.api.TrainService;
+import com.project.utils.TrainMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class TrainServiceImpl implements TrainService {
@@ -14,29 +16,32 @@ public class TrainServiceImpl implements TrainService {
     @Autowired
     private TrainDAO trainDAO;
 
+    @Autowired
+    private TrainMapper trainMapper;
+
     @Override
-    public Train findTrain(int trainNumber) {
-        return trainDAO.findTrain(trainNumber);
+    public TrainDTO findTrain(int trainNumber) {
+        return trainMapper.toDto(trainDAO.findTrain(trainNumber));
     }
 
     @Override
-    public List<Train> findAllTrains() {
-        return trainDAO.findAllTrains();
+    public List<TrainDTO> findAllTrains() {
+        return trainDAO.findAllTrains().stream().map(s -> trainMapper.toDto(s)).collect(Collectors.toList());
     }
 
     @Override
-    public void createTrain(int trainNumber, int numPlaces) {
-        trainDAO.createTrain(trainNumber, numPlaces);
+    public void createTrain(TrainDTO trainDTO) {
+        trainDAO.createTrain(trainDTO.getTrainNumber(), trainDTO.getNumPlaces());
     }
 
     // returns deleted train number or 0 if train not found
     @Override
-    public int deleteTrain(int trainNumber) {
-        return trainDAO.deleteTrain(trainNumber) == 1 ? trainNumber : 0;
+    public int deleteTrain(TrainDTO trainDTO) {
+        return trainDAO.deleteTrain(trainDTO.getTrainNumber()) == 1 ? trainDTO.getTrainNumber() : 0;
     }
 
     @Override
-    public void updateTrain(int trainNumber, int numPlaces) {
-        trainDAO.updateTrain(trainNumber, numPlaces);
+    public void updateTrain(TrainDTO trainDTO) {
+        trainDAO.updateTrain(trainDTO.getTrainNumber(), trainDTO.getNumPlaces());
     }
 }

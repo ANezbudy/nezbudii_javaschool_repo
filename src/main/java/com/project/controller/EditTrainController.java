@@ -1,5 +1,6 @@
 package com.project.controller;
 
+import com.project.dto.TrainDTO;
 import com.project.service.api.TrainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,8 +21,9 @@ public class EditTrainController {
 
     @RequestMapping("/submitedittrain")
     public ModelAndView edit(HttpServletRequest request){
-        int trainNumber = Integer.parseInt(request.getParameter("trainNumber"));
-        trainService.updateTrain(trainNumber, Integer.parseInt(request.getParameter("numPlaces")));
+        TrainDTO trainDTO = new TrainDTO();
+        trainDTO.setTrainNumber(request.getParameter("trainNumber"));
+        trainService.updateTrain(trainDTO);
         return trainController.allTrains();
     }
 }
