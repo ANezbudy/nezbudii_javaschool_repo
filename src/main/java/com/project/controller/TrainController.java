@@ -1,6 +1,6 @@
 package com.project.controller;
 
-import com.project.dto.TrainDTO;
+import com.project.entity.Train;
 import com.project.service.api.TrainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,7 +21,7 @@ public class TrainController {
 
     @RequestMapping(value = "/trains", method = RequestMethod.GET)
     public ModelAndView allTrains() {
-        List<TrainDTO> trainDTOList = trainService.findAllTrains();
+        List<Train> trainDTOList = trainService.findAllTrains();
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("trains");
         modelAndView.addObject("trainDTOList", trainDTOList);
@@ -50,7 +50,7 @@ public class TrainController {
     @RequestMapping("/startedittrain")
     public ModelAndView openTrainEditForm(HttpServletRequest request) {
         int trainNumber = Integer.parseInt(request.getParameter("trainNumber"));
-        TrainDTO trainDTO = trainService.findTrain(trainNumber);
+        Train trainDTO = trainService.findTrain(trainNumber);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("edittrain");
         modelAndView.addObject("trainDTO", trainDTO);

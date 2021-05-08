@@ -14,10 +14,10 @@ public class Train {
     private int numPlaces;
 
     @OneToMany(mappedBy = "train")
-    private Set<Tickets> tickets;
+    private Set<Ticket> tickets;
 
     @OneToMany(mappedBy = "train")
-    private Set<Stations> stations;
+    private Set<Station> stations;
 
 
     public int getTrainNumber() {

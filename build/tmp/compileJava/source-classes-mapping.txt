@@ -2,61 +2,89 @@ com/project/config/WebConfig.java
  com.project.config.WebConfig
 com/project/init/MainWebAppInitializer.java
  com.project.init.MainWebAppInitializer
-com/project/entity/Train.java
- com.project.entity.Train
-com/project/controller/TrainController.java
- com.project.controller.TrainController
-com/project/entity/Passenger.java
- com.project.entity.Passenger
-com/project/entity/Stations.java
- com.project.entity.Stations
-com/project/config/MapperConfig.java
- com.project.config.MapperConfig
-com/project/config/SecurityConfig.java
- com.project.config.SecurityConfig
-com/project/init/SecurityWebApplicationInitializer.java
- com.project.init.SecurityWebApplicationInitializer
-com/project/entity/Tickets.java
- com.project.entity.Tickets
-com/project/controller/EditController.java
- com.project.controller.EditController
-com/project/config/HibernateConfig.java
- com.project.config.HibernateConfig
-com/project/dto/StationsDTO.java
- com.project.dto.StationsDTO
-com/project/Launcher.java
- com.project.Launcher
-com/project/utils/UrlAuthenticationSuccessHandler.java
- com.project.utils.UrlAuthenticationSuccessHandler
 com/project/controller/PassengerController.java
  com.project.controller.PassengerController
-com/project/utils/TrainMapper.java
- com.project.utils.TrainMapper
+com/project/controller/TrainController.java
+ com.project.controller.TrainController
+com/project/Launcher.java
+ com.project.Launcher
+com/project/controller/EditTrainController.java
+ com.project.controller.EditTrainController
+com/project/config/MapperConfig.java
+ com.project.config.MapperConfig
+com/project/controller/EditController.java
+ com.project.controller.EditController
+com/project/init/SecurityWebApplicationInitializer.java
+ com.project.init.SecurityWebApplicationInitializer
+com/project/config/HibernateConfig.java
+ com.project.config.HibernateConfig
+com/project/utils/ScheduleMapper.java
+ com.project.utils.ScheduleMapper
 com/project/utils/TicketMapper.java
  com.project.utils.TicketMapper
 com/project/dao/impl/PassengerDAOImpl.java
  com.project.dao.impl.PassengerDAOImpl
-com/project/dao/api/PassengerDAO.java
- com.project.dao.api.PassengerDAO
 com/project/dto/PassengerDTO.java
  com.project.dto.PassengerDTO
 com/project/service/impl/TrainServiceImpl.java
  com.project.service.impl.TrainServiceImpl
-com/project/dto/TrainDTO.java
- com.project.dto.TrainDTO
-com/project/dao/api/TrainDAO.java
- com.project.dao.api.TrainDAO
+com/project/dao/api/StationDAO.java
+ com.project.dao.api.StationDAO
+com/project/entity/Passenger.java
+ com.project.entity.Passenger
 com/project/dto/TicketsDTO.java
  com.project.dto.TicketsDTO
+com/project/service/impl/StationServiceImpl.java
+ com.project.service.impl.StationServiceImpl
 com/project/service/api/TrainService.java
  com.project.service.api.TrainService
+com/project/service/api/StationService.java
+ com.project.service.api.StationService
+com/project/dao/impl/TrainDAOImpl.java
+ com.project.dao.impl.TrainDAOImpl
+com/project/config/SecurityConfig.java
+ com.project.config.SecurityConfig
+com/project/utils/TrainMapper.java
+ com.project.utils.TrainMapper
+com/project/dao/api/PassengerDAO.java
+ com.project.dao.api.PassengerDAO
+com/project/service/api/PassengerService.java
+ com.project.service.api.PassengerService
+com/project/dto/TrainDTO.java
+ com.project.dto.TrainDTO
+com/project/dto/StationDTO.java
+ com.project.dto.StationDTO
+com/project/dao/api/TrainDAO.java
+ com.project.dao.api.TrainDAO
+com/project/entity/Train.java
+ com.project.entity.Train
+com/project/utils/UrlAuthenticationSuccessHandler.java
+ com.project.utils.UrlAuthenticationSuccessHandler
+com/project/entity/Ticket.java
+ com.project.entity.Ticket
 com/project/service/impl/PassengerServiceImpl.java
  com.project.service.impl.PassengerServiceImpl
 com/project/utils/PassengerMapper.java
  com.project.utils.PassengerMapper
-com/project/service/api/PassengerService.java
- com.project.service.api.PassengerService
-com/project/controller/EditTrainController.java
- com.project.controller.EditTrainController
-com/project/dao/impl/TrainDAOImpl.java
- com.project.dao.impl.TrainDAOImpl
+com/project/entity/Station.java
+ com.project.entity.Station
+com/project/dao/impl/StationDAOImpl.java
+ com.project.dao.impl.StationDAOImpl
+com/project/controller/ScheduleController.java
+ com.project.controller.ScheduleController
+com/project/dao/impl/ScheduleDAOImpl.java
+ com.project.dao.impl.ScheduleDAOImpl
+com/project/dto/ScheduleDTO.java
+ com.project.dto.ScheduleDTO
+com/project/dao/api/ScheduleDAO.java
+ com.project.dao.api.ScheduleDAO
+com/project/entity/Schedule.java
+ com.project.entity.Schedule
+com/project/utils/StationMapper.java
+ com.project.utils.StationMapper
+com/project/service/impl/ScheduleServiceImpl.java
+ com.project.service.impl.ScheduleServiceImpl
+com/project/service/api/ScheduleService.java
+ com.project.service.api.ScheduleService
+com/project/controller/StationController.java
+ com.project.controller.StationController

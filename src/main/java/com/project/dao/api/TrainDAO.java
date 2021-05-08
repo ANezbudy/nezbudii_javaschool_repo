@@ -1,19 +1,19 @@
 package com.project.dao.api;
 
-import com.project.dto.TrainDTO;
+import com.project.entity.Train;
 
 import javax.transaction.Transactional;
 import java.util.List;
 @Transactional
 public interface TrainDAO {
 
-    TrainDTO findTrain(int trainNumber);
+    Train findTrain(int trainNumber);
 
-    List<TrainDTO> findAllTrains();
+    List<Train> findAllTrains();
 
-    void createTrain(TrainDTO trainDTO);
+    void createTrain(int trainNumber, int numPlaces);
 
-    int deleteTrain(TrainDTO trainNumber);
+    int deleteTrain(int trainNumber);
 
-    void updateTrain(TrainDTO trainDTO);
+    void updateTrain(int trainNumber, int numPlaces);
 }

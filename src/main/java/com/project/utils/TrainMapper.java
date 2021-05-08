@@ -1,7 +1,6 @@
 package com.project.utils;
 
 import com.project.dto.TrainDTO;
-import com.project.entity.Passenger;
 import com.project.entity.Train;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

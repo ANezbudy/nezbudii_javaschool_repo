@@ -20,9 +20,9 @@ public class Passenger {
     private Date passengerBirthDate;
 
     @OneToOne(mappedBy = "passenger")
-    private Tickets ticket;
+    private Ticket ticket;
 
-    public Tickets getTicket() {
+    public Ticket getTicket() {
         return ticket;
     }
 

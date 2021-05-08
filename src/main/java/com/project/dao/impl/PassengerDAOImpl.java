@@ -4,6 +4,8 @@ import com.project.dao.api.PassengerDAO;
 import com.project.dto.PassengerDTO;
 import com.project.entity.Passenger;
 import com.project.utils.PassengerMapper;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Service;
@@ -19,6 +21,9 @@ import java.util.stream.Collectors;
 @Transactional
 @ComponentScan(basePackages = "com/project/config")
 public class PassengerDAOImpl implements PassengerDAO {
+
+    private static final Logger LOG = LogManager.getLogger(PassengerDAOImpl.class);
+
 
     @PersistenceContext
     protected EntityManager entityManager;

@@ -6,7 +6,7 @@ public class TrainDTO {
     private int trainNumber;
     private int numPlaces;
     private Set<TicketsDTO> ticketsDTOs;
-    private Set<StationsDTO> stationsDTOS;
+    private Set<StationDTO> stationDTOS;
 
     public TrainDTO() {
 
@@ -17,11 +17,11 @@ public class TrainDTO {
         this.numPlaces = numPlaces;
     }
 
-    public TrainDTO(int trainNumber, int numPlaces, Set<TicketsDTO> ticketsDTOs, Set<StationsDTO> stationsDTOS) {
+    public TrainDTO(int trainNumber, int numPlaces, Set<TicketsDTO> ticketsDTOs, Set<StationDTO> stationDTOS) {
         this.trainNumber = trainNumber;
         this.numPlaces = numPlaces;
         this.ticketsDTOs = ticketsDTOs;
-        this.stationsDTOS = stationsDTOS;
+        this.stationDTOS = stationDTOS;
     }
 
     public int getTrainNumber() {
@@ -48,11 +48,11 @@ public class TrainDTO {
         this.ticketsDTOs = ticketsDTOs;
     }
 
-    public Set<StationsDTO> getStationsDTOS() {
-        return stationsDTOS;
+    public Set<StationDTO> getStationsDTOS() {
+        return stationDTOS;
     }
 
-    public void setStationsDTOS(Set<StationsDTO> stationsDTOS) {
-        this.stationsDTOS = stationsDTOS;
+    public void setStationsDTOS(Set<StationDTO> stationDTOS) {
+        this.stationDTOS = stationDTOS;
     }
 }

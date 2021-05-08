@@ -21,35 +21,33 @@ public class TrainDAOImpl implements TrainDAO {
     @PersistenceContext
     protected EntityManager entityManager;
 
-    @Autowired
-    private TrainMapper trainMapper;
-
     @Override
-    public TrainDTO findTrain(int trainNumber) {
+    public Train findTrain(int trainNumber) {
         Train train = entityManager.find(Train.class, trainNumber);
 
         if(train != null) {
             entityManager.detach(train);
         }
 
-        return trainMapper.toDto(train);
+        return train;
     }
 
     @Override
-    public List<TrainDTO> findAllTrains() {
-        List<Train> trains = entityManager.createQuery("FROM Train").getResultList();
-        return trains.stream().map(trainMapper::toDto).collect(Collectors.toList());
+    public List<Train> findAllTrains() {
+        return entityManager.createQuery("FROM Train").getResultList();
     }
 
     @Override
-    public void createTrain(TrainDTO trainDTO) {
-        Train train = trainMapper.toEntity(trainDTO);
+    public void createTrain(int trainNumber, int numPlaces) {
+        Train train = new Train();
+        train.setTrainNumber(trainNumber);
+        train.setNumPlaces(numPlaces);
         entityManager.persist(train);
     }
 
     @Override
-    public int deleteTrain(TrainDTO trainDTO) {
-        Train train = entityManager.find(Train.class, trainDTO.getTrainNumber());
+    public int deleteTrain(int trainNumber) {
+        Train train = entityManager.find(Train.class, trainNumber);
         if (train != null) {
             entityManager.remove(train);
             return 1;
@@ -58,10 +56,10 @@ public class TrainDAOImpl implements TrainDAO {
     }
 
     @Override
-    public void updateTrain(TrainDTO trainDTO) {
-        Train train = entityManager.find(Train.class, trainDTO.getTrainNumber());
+    public void updateTrain(int trainNumber, int numPlaces) {
+        Train train = entityManager.find(Train.class, trainNumber);
         entityManager.detach(train);
-        train = trainMapper.toEntity(trainDTO);
+        train.setNumPlaces(numPlaces);
         entityManager.merge(train);
     }
 }
