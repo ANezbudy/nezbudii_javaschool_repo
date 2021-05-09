@@ -2,9 +2,7 @@ package com.project.service.api;
 
 
 import com.project.dto.PassengerDTO;
-import com.project.entity.Passenger;
 
-import java.util.Date;
 import java.util.List;
 
 public interface PassengerService {
@@ -12,10 +10,9 @@ public interface PassengerService {
 
     List<PassengerDTO> findAllPassengers();
 
-    void createPassenger(String passengerName, String passengerLastName, String passengerBirthDate);
+    void createPassenger(PassengerDTO passengerDTO);
 
+    int deletePassengerById(PassengerDTO passengerDTO);
 
-    int deletePassengerById(int id);
-
-    void updatePassenger(int id, String passengerName, String passengerLastName, String passengerBirthDate);
+    void updatePassenger(PassengerDTO passengerDTO);
 }

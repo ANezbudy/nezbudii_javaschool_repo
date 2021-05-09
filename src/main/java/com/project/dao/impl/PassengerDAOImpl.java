@@ -21,9 +21,8 @@ import java.util.stream.Collectors;
 @Transactional
 @ComponentScan(basePackages = "com/project/config")
 public class PassengerDAOImpl implements PassengerDAO {
-
+    //the example of the logging
     private static final Logger LOG = LogManager.getLogger(PassengerDAOImpl.class);
-
 
     @PersistenceContext
     protected EntityManager entityManager;
@@ -32,7 +31,7 @@ public class PassengerDAOImpl implements PassengerDAO {
     private PassengerMapper passengerMapper;
 
     @Override
-    public PassengerDTO findPassengerByID(int passengerId) {
+    public Passenger findPassengerByID(int passengerId) {
         Passenger passenger = entityManager.find(Passenger.class, passengerId);
 
         if (passenger != null) {
@@ -41,20 +40,16 @@ public class PassengerDAOImpl implements PassengerDAO {
                 entityManager.detach(passenger.getTicket());
             }
         }
-
-        return passengerMapper.toDto(passenger);
+        return passenger;
     }
 
     @Override
-    public List<PassengerDTO> findAllPassengers() {
-        List<Passenger> passengers = entityManager.createQuery("FROM Passenger").getResultList();
-        return passengers.stream().map(passengerMapper::toDto).collect(Collectors.toList());
+    public List<Passenger> findAllPassengers() {
+        return entityManager.createQuery("FROM Passenger").getResultList();
     }
 
     @Override
-    public void createPassenger(String passengerName, String passengerLastName, String passengerBirthDate) {
-        PassengerDTO passengerDTO = new PassengerDTO(passengerName, passengerLastName, passengerBirthDate);
-        Passenger passenger = passengerMapper.toEntity(passengerDTO);
+    public void createPassenger(Passenger passenger) {
         entityManager.persist(passenger);
     }
 
@@ -69,9 +64,11 @@ public class PassengerDAOImpl implements PassengerDAO {
     }
 
     @Override
-    public void updatePassenger(int id, String passengerName, String passengerLastName, String passengerBirthDate) {
-        PassengerDTO passengerDTO = new PassengerDTO(id, passengerName, passengerLastName, passengerBirthDate);
-        Passenger passenger = passengerMapper.toEntity(passengerDTO);
+    public void updatePassenger(int id, String passengerName, String passengerLastName, Date passengerBirthDate) {
+        Passenger passenger = entityManager.find(Passenger.class, id);
+        passenger.setPassengerName(passengerName);
+        passenger.setPassengerLastName(passengerLastName);
+        passenger.setPassengerBirthDate(passengerBirthDate);
         entityManager.merge(passenger);
     }
 }

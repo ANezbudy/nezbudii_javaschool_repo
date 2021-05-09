@@ -5,11 +5,13 @@ import com.project.dao.impl.PassengerDAOImpl;
 import com.project.dto.PassengerDTO;
 import com.project.entity.Passenger;
 import com.project.service.api.PassengerService;
+import com.project.utils.PassengerMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PassengerServiceImpl implements PassengerService {
@@ -17,28 +19,37 @@ public class PassengerServiceImpl implements PassengerService {
     @Autowired
     private PassengerDAO passengerDAO;
 
+    @Autowired
+    private PassengerMapper passengerMapper;
+
     @Override
     public PassengerDTO findPassengerByID(int id) {
-        return passengerDAO.findPassengerByID(id);
+        return passengerMapper.toDto(passengerDAO.findPassengerByID(id));
     }
 
     @Override
     public List<PassengerDTO> findAllPassengers() {
-        return passengerDAO.findAllPassengers();
+        return passengerDAO.findAllPassengers().stream().map(s -> passengerMapper.toDto(s)).collect(Collectors.toList());
     }
 
     @Override
-    public void createPassenger(String passengerName, String passengerLastName, String passengerBirthDate) {
-        passengerDAO.createPassenger(passengerName, passengerLastName, passengerBirthDate);
+    public void createPassenger(PassengerDTO passengerDTO) {
+        Passenger passenger = passengerMapper.toEntity(passengerDTO);
+        passengerDAO.createPassenger(passenger);
     }
 
     @Override
-    public int deletePassengerById(int id) {
-        return passengerDAO.deletePassengerById(id);
+    public int deletePassengerById(PassengerDTO passengerDTO) {
+        return passengerDAO.deletePassengerById(passengerDTO.getId());
     }
 
     @Override
-    public void updatePassenger(int id, String passengerName, String passengerLastName, String passengerBirthDate) {
-        passengerDAO.updatePassenger(id, passengerName, passengerLastName, passengerBirthDate);
+    public void updatePassenger(PassengerDTO passengerDTO) {
+        Passenger passenger = passengerMapper.toEntity(passengerDTO);
+        passengerDAO.updatePassenger(
+                passenger.getId(),
+                passenger.getPassengerName(),
+                passenger.getPassengerLastName(),
+                passenger.getPassengerBirthDate());
     }
 }
