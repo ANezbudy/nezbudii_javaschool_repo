@@ -1,7 +1,6 @@
 package com.project.service.impl;
 
 import com.project.dao.api.PassengerDAO;
-import com.project.dao.impl.PassengerDAOImpl;
 import com.project.dto.PassengerDTO;
 import com.project.entity.Passenger;
 import com.project.service.api.PassengerService;
@@ -9,7 +8,6 @@ import com.project.utils.PassengerMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,8 +21,8 @@ public class PassengerServiceImpl implements PassengerService {
     private PassengerMapper passengerMapper;
 
     @Override
-    public PassengerDTO findPassengerByID(int id) {
-        return passengerMapper.toDto(passengerDAO.findPassengerByID(id));
+    public PassengerDTO findPassenger(PassengerDTO passengerDTO) {
+        return passengerMapper.toDto(passengerDAO.findPassengerByID(passengerDTO.getId()));
     }
 
     @Override

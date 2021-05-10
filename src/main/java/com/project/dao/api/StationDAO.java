@@ -1,19 +1,19 @@
 package com.project.dao.api;
 
-import com.project.dto.StationDTO;
+import com.project.entity.Station;
 
 import javax.transaction.Transactional;
 import java.util.List;
 
 @Transactional
 public interface StationDAO {
-    StationDTO findStation(int id);
+    Station findStation(int id);
 
-    List<StationDTO> findAllStations();
+    List<Station> findAllStations();
 
-    void createStation(StationDTO stationDTO);
+    void createStation(Station station);
 
-    int deleteStation(StationDTO stationDTO);
+    int deleteStation(int stationId);
 
-    void updateStation(StationDTO stationDTO);
+    void updateStation(int stationId, String stationName);
 }

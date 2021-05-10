@@ -1,7 +1,6 @@
 package com.project.dao.impl;
 
 import com.project.dao.api.StationDAO;
-import com.project.dto.StationDTO;
 import com.project.entity.Station;
 import com.project.utils.StationMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -21,33 +19,29 @@ public class StationDAOImpl implements StationDAO {
     @PersistenceContext
     protected EntityManager entityManager;
 
-    @Autowired
-    protected StationMapper stationMapper;
-
     @Override
-    public StationDTO findStation(int id) {
-        Station station = entityManager.find(Station.class, id);
+    public Station findStation(int stationId) {
+        Station station = entityManager.find(Station.class, stationId);
         if(station != null) {
             entityManager.detach(station);
         }
-        return stationMapper.toDto(station);
+        return station;
     }
 
     @Override
-    public List<StationDTO> findAllStations() {
-        List<Station> stations = entityManager.createQuery("FROM Station").getResultList();
-        return stations.stream().map(stationMapper::toDto).collect(Collectors.toList());
+    public List<Station> findAllStations() {
+        //TODO make pagination
+        return entityManager.createQuery("FROM Station").getResultList();
     }
 
     @Override
-    public void createStation(StationDTO stationDTO) {
-        Station station = stationMapper.toEntity(stationDTO);
+    public void createStation(Station station) {
         entityManager.persist(station);
     }
 
     @Override
-    public int deleteStation(StationDTO stationDTO) {
-        Station station = entityManager.find(Station.class, stationDTO.getId());
+    public int deleteStation(int stationId) {
+        Station station = entityManager.find(Station.class, stationId);
         if(station != null) {
             entityManager.remove(station);
             return 1;
@@ -56,10 +50,10 @@ public class StationDAOImpl implements StationDAO {
     }
 
     @Override
-    public void updateStation(StationDTO stationDTO) {
-        Station station = entityManager.find(Station.class, stationDTO.getId());
+    public void updateStation(int stationId, String stationName) {
+        Station station = entityManager.find(Station.class, stationId);
         entityManager.detach(station);
-        station = stationMapper.toEntity(stationDTO);
+        station.setStationName(stationName);
         entityManager.merge(station);
     }
 }

@@ -11,7 +11,7 @@ public interface TrainDAO {
 
     List<Train> findAllTrains();
 
-    void createTrain(int trainNumber, int numPlaces);
+    void createTrain(Train train);
 
     int deleteTrain(int trainNumber);
 

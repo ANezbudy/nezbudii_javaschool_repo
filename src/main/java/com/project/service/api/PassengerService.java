@@ -6,7 +6,7 @@ import com.project.dto.PassengerDTO;
 import java.util.List;
 
 public interface PassengerService {
-    PassengerDTO findPassengerByID(int id);
+    PassengerDTO findPassenger(PassengerDTO passengerDTO);
 
     List<PassengerDTO> findAllPassengers();
 

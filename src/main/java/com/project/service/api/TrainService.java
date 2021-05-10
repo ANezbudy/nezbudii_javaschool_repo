@@ -5,7 +5,7 @@ import com.project.dto.TrainDTO;
 import java.util.List;
 
 public interface TrainService {
-    TrainDTO findTrain(int trainNumber);
+    TrainDTO findTrain(TrainDTO trainDTO);
 
     List<TrainDTO> findAllTrains();
 

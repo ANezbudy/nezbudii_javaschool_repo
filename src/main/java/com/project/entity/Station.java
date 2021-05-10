@@ -6,9 +6,8 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "stations")
 public class Station {
-
     @Id
-    @Column(name = "ID")
+    @Column(name = "ID", nullable = false)
     private int id;
 
     @Column(name = "station_name")

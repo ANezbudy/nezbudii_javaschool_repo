@@ -32,13 +32,14 @@ public class StationController {
 
     @RequestMapping("/stationedit")
     public ModelAndView openEditStationForm(HttpServletRequest request) {
-        int stationId = Integer.parseInt(request.getParameter("stationId"));
-        StationDTO stationDTO = stationService.findStation(stationId);
-        List<ScheduleDTO> scheduleDTOList = scheduleService.findStationSchedules(stationId);
+        StationDTO stationDTO = new StationDTO();
+        stationDTO.setId(request.getParameter("stationId"));
+        StationDTO resultStationDTO = stationService.findStation(stationDTO);
+        List<ScheduleDTO> scheduleDTOList = scheduleService.findStationSchedules(resultStationDTO);
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("station");
-        modelAndView.addObject("stationDTO", stationDTO);
+        modelAndView.addObject("resultStationDTO", resultStationDTO);
         modelAndView.addObject("scheduleDTOList", scheduleDTOList);
         return modelAndView;
     }

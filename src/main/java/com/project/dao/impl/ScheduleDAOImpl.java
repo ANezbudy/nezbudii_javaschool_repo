@@ -1,7 +1,6 @@
 package com.project.dao.impl;
 
 import com.project.dao.api.ScheduleDAO;
-import com.project.dto.ScheduleDTO;
 import com.project.entity.Schedule;
 import com.project.utils.ScheduleMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +8,10 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
+import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -23,24 +23,31 @@ public class ScheduleDAOImpl implements ScheduleDAO {
     private ScheduleMapper scheduleMapper;
 
     @Override
-    public ScheduleDTO findSchedule(int id) {
+    public Schedule findSchedule(int id) {
         Schedule schedule = entityManager.find(Schedule.class, id);
 
         if(schedule != null) {
             entityManager.detach(schedule);
         }
-        return scheduleMapper.toDto(schedule);
+        return schedule;
+    }
+    //TODO implement pagination
+    @Override
+    public List<Schedule> findAllSchedules() {
+        return entityManager.createQuery("FROM Schedule").getResultList();
     }
 
     @Override
-    public List<ScheduleDTO> findAllSchedules() {
-        List<Schedule> schedules = entityManager.createQuery("FROM Schedule").getResultList();
-        return schedules.stream().map(scheduleMapper::toDto).collect(Collectors.toList());
+    public List<Schedule> findStationSchedule(int stationId) {
+        Query query = entityManager.createQuery("FROM Schedule WHERE stationId = :id");
+        query.setParameter("id", stationId);
+        return query.getResultList();
     }
 
+
     @Override
-    public int deleteScheduleById(ScheduleDTO scheduleDTO) {
-        Schedule schedule = entityManager.find(Schedule.class, scheduleDTO.getId());
+    public int deleteScheduleById(int scheduleId) {
+        Schedule schedule = entityManager.find(Schedule.class, scheduleId);
         if (schedule != null) {
             entityManager.remove(schedule);
             return 1;
@@ -49,10 +56,12 @@ public class ScheduleDAOImpl implements ScheduleDAO {
     }
 
     @Override
-    public void updateSchedule(ScheduleDTO scheduleDTO) {
-        Schedule schedule = entityManager.find(Schedule.class, scheduleDTO.getId());
+    public void updateSchedule(int scheduleId, int trainNumber, int stationId, Date time) {
+        Schedule schedule = entityManager.find(Schedule.class, scheduleId);
         entityManager.detach(schedule);
-        schedule = scheduleMapper.toEntity(scheduleDTO);
+        schedule.setTrainNumber(trainNumber);
+        schedule.setStationId(stationId);
+        schedule.setTime(time);
         entityManager.merge(schedule);
     }
 }

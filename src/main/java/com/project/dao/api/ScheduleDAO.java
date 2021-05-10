@@ -1,17 +1,20 @@
 package com.project.dao.api;
 
-import com.project.dto.ScheduleDTO;
+import com.project.entity.Schedule;
 
 import javax.transaction.Transactional;
+import java.util.Date;
 import java.util.List;
 
 @Transactional
 public interface ScheduleDAO {
-    ScheduleDTO findSchedule(int id);
+    Schedule findSchedule(int id);
 
-    List<ScheduleDTO> findAllSchedules();
+    List<Schedule> findAllSchedules();
 
-    int deleteScheduleById(ScheduleDTO scheduleDTO);
+    List<Schedule> findStationSchedule(int stationId);
 
-    void updateSchedule(ScheduleDTO scheduleDTO);
+    int deleteScheduleById(int scheduleId);
+
+    void updateSchedule(int scheduleId, int trainNumber, int stationId, Date time);
 }

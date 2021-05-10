@@ -2,6 +2,7 @@ package com.project.service.impl;
 
 import com.project.dao.api.TrainDAO;
 import com.project.dto.TrainDTO;
+import com.project.entity.Train;
 import com.project.service.api.TrainService;
 import com.project.utils.TrainMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,8 @@ public class TrainServiceImpl implements TrainService {
     private TrainMapper trainMapper;
 
     @Override
-    public TrainDTO findTrain(int trainNumber) {
-        return trainMapper.toDto(trainDAO.findTrain(trainNumber));
+    public TrainDTO findTrain(TrainDTO trainDTO) {
+        return trainMapper.toDto(trainDAO.findTrain(trainDTO.getTrainNumber()));
     }
 
     @Override
@@ -31,7 +32,8 @@ public class TrainServiceImpl implements TrainService {
 
     @Override
     public void createTrain(TrainDTO trainDTO) {
-        trainDAO.createTrain(trainDTO.getTrainNumber(), trainDTO.getNumPlaces());
+        Train train = trainMapper.toEntity(trainDTO);
+        trainDAO.createTrain(train);
     }
 
     // returns deleted train number or 0 if train not found

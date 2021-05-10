@@ -21,8 +21,9 @@ public class StationDTO {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    //TODO deal with exceptions
+    public void setId(String id) {
+        this.id = Integer.parseInt(id);
     }
 
     public String getStationName() {

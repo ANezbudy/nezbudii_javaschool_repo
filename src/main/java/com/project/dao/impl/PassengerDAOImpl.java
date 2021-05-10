@@ -27,9 +27,6 @@ public class PassengerDAOImpl implements PassengerDAO {
     @PersistenceContext
     protected EntityManager entityManager;
 
-    @Autowired
-    private PassengerMapper passengerMapper;
-
     @Override
     public Passenger findPassengerByID(int passengerId) {
         Passenger passenger = entityManager.find(Passenger.class, passengerId);
@@ -45,6 +42,7 @@ public class PassengerDAOImpl implements PassengerDAO {
 
     @Override
     public List<Passenger> findAllPassengers() {
+        //TODO create pagination
         return entityManager.createQuery("FROM Passenger").getResultList();
     }
 

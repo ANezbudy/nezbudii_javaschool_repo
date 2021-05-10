@@ -50,12 +50,12 @@ public class PassengerController {
 
     @RequestMapping("/startedit")
     public ModelAndView openEditForm(HttpServletRequest request) {
-        String passengerId = request.getParameter("passengerID");
-        int id = Integer.parseInt(passengerId);
-        PassengerDTO passengerDTO = passengerService.findPassengerByID(id);
+        PassengerDTO passengerDTO = new PassengerDTO();
+        passengerDTO.setId(request.getParameter("passengerID"));
+        PassengerDTO resultPassengerDTO = passengerService.findPassenger(passengerDTO);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("edit");
-        modelAndView.addObject("passengerDTO", passengerDTO);
+        modelAndView.addObject("resultPassengerDTO", resultPassengerDTO);
         return modelAndView;
     }
 }

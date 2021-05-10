@@ -6,13 +6,13 @@ import com.project.dto.StationDTO;
 import java.util.List;
 
 public interface StationService {
-    StationDTO findStation(int id);
+    StationDTO findStation(StationDTO stationDTO);
 
     List<StationDTO> findAllStations();
 
-    void createStation(String stationName);
+    void createStation(StationDTO stationDTO);
 
-    int deleteStation(int stationId);
+    int deleteStation(StationDTO stationDTO);
 
-    void updateStation(int stationId, String statioinName);
+    void updateStation(StationDTO stationDTO);
 }

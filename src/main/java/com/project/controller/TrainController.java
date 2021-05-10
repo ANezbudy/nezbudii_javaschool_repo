@@ -50,11 +50,12 @@ public class TrainController {
 
     @RequestMapping("/startedittrain")
     public ModelAndView openTrainEditForm(HttpServletRequest request) {
-        int trainNumber = Integer.parseInt(request.getParameter("trainNumber"));
-        TrainDTO trainDTO = trainService.findTrain(trainNumber);
+        TrainDTO trainDTO = new TrainDTO();
+        trainDTO.setTrainNumber(request.getParameter("trainNumber"));
+        TrainDTO resultTrainDTO = trainService.findTrain(trainDTO);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("edittrain");
-        modelAndView.addObject("trainDTO", trainDTO);
+        modelAndView.addObject("trainDTO", resultTrainDTO);
         return modelAndView;
     }
 }

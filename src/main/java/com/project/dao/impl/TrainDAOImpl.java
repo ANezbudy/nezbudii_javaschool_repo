@@ -38,10 +38,7 @@ public class TrainDAOImpl implements TrainDAO {
     }
 
     @Override
-    public void createTrain(int trainNumber, int numPlaces) {
-        Train train = new Train();
-        train.setTrainNumber(trainNumber);
-        train.setNumPlaces(numPlaces);
+    public void createTrain(Train train) {
         entityManager.persist(train);
     }
 

@@ -2,7 +2,9 @@ package com.project.service.impl;
 
 import com.project.dao.api.ScheduleDAO;
 import com.project.dto.ScheduleDTO;
+import com.project.dto.StationDTO;
 import com.project.service.api.ScheduleService;
+import com.project.utils.ScheduleMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,21 +17,23 @@ public class ScheduleServiceImpl implements ScheduleService {
     @Autowired
     private ScheduleDAO scheduleDAO;
 
-    @Override
-    public ScheduleDTO findSchedule(int id) {
+    @Autowired
+    private ScheduleMapper scheduleMapper;
 
-        return null;
+    @Override
+    public ScheduleDTO findSchedule(ScheduleDTO scheduleDTO) {
+        return scheduleMapper.toDto(scheduleDAO.findSchedule(scheduleDTO.getId()));
     }
 
     @Override
     public List<ScheduleDTO> findAllSchedules() {
-        return scheduleDAO.findAllSchedules();
+        return scheduleDAO.findAllSchedules().stream().map(s -> scheduleMapper.toDto(s)).collect(Collectors.toList());
     }
 
     @Override
-    public List<ScheduleDTO> findStationSchedules(int stationId) {
-        List<ScheduleDTO> scheduleDTOList = findAllSchedules();
-        return scheduleDTOList.stream().filter(dto -> dto.getStationId() == stationId).collect(Collectors.toList());
+    public List<ScheduleDTO> findStationSchedules(StationDTO stationDTO) {
+        return scheduleDAO.findStationSchedule(stationDTO.getId()).stream()
+                .map(s -> scheduleMapper.toDto(s)).collect(Collectors.toList());
     }
 
     @Override
@@ -39,6 +43,11 @@ public class ScheduleServiceImpl implements ScheduleService {
 
     @Override
     public void updateSchedule(ScheduleDTO scheduleDTO) {
-        scheduleDAO.updateSchedule(scheduleDTO);
+        scheduleDAO.updateSchedule(
+                scheduleDTO.getId(),
+                scheduleDTO.getTrainNumber(),
+                scheduleDTO.getStationId(),
+                scheduleDTO.getTime()
+        );
     }
 }
