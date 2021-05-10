@@ -21,7 +21,7 @@
     <form>
         <div class="col-md-4">
             <label for="validationCustom01" class="form-label">${stationDTO.stationName}</label>
-            <input type="text" class="form-control" id="validationCustom01" value="" required>
+            <input type="text" class="form-control" id="validationCustom01" value="" required name = "stationName">
             <div class="valid-feedback">
                 Looks good!
             </div>
@@ -70,6 +70,12 @@
 
 
     </table>
+
+    <form>
+        <div class="mb-1">
+            <button type="submit" class="btn btn-success" formaction="stationsubmit">Add Station</button>
+        </div>
+    </form>
 
 
 

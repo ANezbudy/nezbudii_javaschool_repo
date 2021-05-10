@@ -1,7 +1,7 @@
 package com.project.entity;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
+import java.util.List;
 
 @Entity
 @Table(name = "stations")
@@ -16,12 +16,13 @@ public class Station {
 //    @Column(name = "train_number")
 //    private int train_number;
 
-    @Column(name = "time")
-    private Timestamp time;
 
-    @ManyToOne
-    @JoinColumn(name = "train_number", nullable = false)
-    private Train train;
+    @ManyToMany
+    @JoinTable(name = "schedule",
+        joinColumns = @JoinColumn (name = "station_id"),
+        inverseJoinColumns = @JoinColumn(name = "train_numder")
+    )
+    private List<Train> trains;
 
     public int getId() {
         return id;
@@ -47,11 +48,4 @@ public class Station {
 //        this.train_number = train_number;
 //    }
 
-    public Timestamp getTime() {
-        return time;
-    }
-
-    public void setTime(Timestamp time) {
-        this.time = time;
-    }
 }

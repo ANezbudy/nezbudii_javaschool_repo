@@ -1,6 +1,7 @@
 package com.project.entity;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -16,8 +17,15 @@ public class Train {
     @OneToMany(mappedBy = "train")
     private Set<Ticket> tickets;
 
-    @OneToMany(mappedBy = "train")
-    private Set<Station> stations;
+    @ManyToMany
+    @JoinTable(name = "schedule",
+        joinColumns = @JoinColumn (name = "train_number"),
+            inverseJoinColumns = @JoinColumn(name = "station_id")
+    )
+    private List<Station> stations;
+
+//    @OneToMany(mappedBy = "train")
+//    private Set<Station> stations;
 
 
     public int getTrainNumber() {
