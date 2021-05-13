@@ -13,58 +13,37 @@
 </head>
 <body>
 <div class="container">
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Train Number</th>
-            <th scope="col">Time</th>
-            <th scope="col">Edit</th>
-            <th scope="col">Remove</th>
-        </tr>
-        </thead>
+    <h3>Station: ${resultStationDTO.stationName}</h3>
 
-        <tbody>
-        <c:forEach var="scheduleDTO" items="${scheduleDTOList}">
-            <tr>
-                <th scope="row">1</th>
-                <td>${scheduleDTO.trainNumber}</td>
-                <td>${scheduleDTO.time}</td>
-                <td>
-                    <form action="starteditschedule">
-                        <button type="submit" class="btn btn-success">Edit</button>
-                        <input type="hidden" name="trainNumber" value="${scheduleDTO.id}">
-                    </form>
-                </td>
-                <td>
-                    <form action="deleteschedule">
-                        <button type="submit" class="btn btn-secondary">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                 class="bi bi-basket2" viewBox="0 0 16 16">
-                                <path d="M4 10a1 1 0 0 1 2 0v2a1 1 0 0 1-2 0v-2zm3 0a1 1 0 0 1 2 0v2a1 1 0 0 1-2 0v-2zm3 0a1 1 0 1 1 2 0v2a1 1 0 0 1-2 0v-2z"/>
-                                <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-.623l-1.844 6.456a.75.75 0 0 1-.722.544H3.69a.75.75 0 0 1-.722-.544L1.123 8H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 6h1.717L5.07 1.243a.5.5 0 0 1 .686-.172zM2.163 8l1.714 6h8.246l1.714-6H2.163z"/>
-                            </svg>
-                        </button>
-                        <input type="hidden" name="trainNumber" value="${scheduleDTO.id}">
-                    </form>
-                </td>
-            </tr>
-        </c:forEach>
-        </tbody>
+    <form>
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Add new train to schedule
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <div class="input-group mb-1">
+                            <label class="input-group-text" for="inputGroupSelect01">Trains</label>
+                            <select class="form-select" id="inputGroupSelect01">
+                                <option selected>Choose...</option>
+                                <c:forEach var="train" items="${trains}">
+                                    <option name="trainNumber" value="${train.trainNumber}">${train.trainNumber}</option>
+                                </c:forEach>
+                            </select>
+                            <span class="input-group-text">Train time</span>
+                            <input class="form-control" placeholder="Arrival time" aria-label="Train time" name="trainTime"/>
+                            <button type="submit" class="btn btn-success" formaction="stationsubmit">Add new train for station</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
-    </table>
-    <%--    </form>--%>
-
-<%--    <form>--%>
-<%--        <div class="input-group mb-1">--%>
-<%--            <span class="input-group-text">Train Number</span>--%>
-<%--            <input class="form-control" placeholder="Train Number" aria-label="Train Number" name="trainNumber"/>--%>
-<%--            <input class="form-control" placeholder="Number of places" aria-label="Number of places"--%>
-<%--                   name="numPlaces"/>--%>
-<%--            <button type="submit" class="btn btn-success" formaction="submittrain">Submit</button>--%>
-<%--        </div>--%>
-<%--    </form>--%>
+    </form>
 </div>
 </body>
 </html>

@@ -17,11 +17,11 @@ public class Station {
 //    private int train_number;
 
 
-    @ManyToMany
-    @JoinTable(name = "schedule",
-        joinColumns = @JoinColumn (name = "station_id"),
-        inverseJoinColumns = @JoinColumn(name = "train_numder")
-    )
+    @ManyToMany(mappedBy = "stations")
+//    @JoinTable(name = "schedule",
+//        joinColumns = @JoinColumn (name = "station_id"),
+//        inverseJoinColumns = @JoinColumn(name = "train_numder")
+//    )
     private List<Train> trains;
 
     public int getId() {
@@ -39,13 +39,5 @@ public class Station {
     public void setStationName(String station_name) {
         this.stationName = station_name;
     }
-
-//    public int getTrain_number() {
-//        return train_number;
-//    }
-//
-//    public void setTrain_number(int train_number) {
-//        this.train_number = train_number;
-//    }
 
 }

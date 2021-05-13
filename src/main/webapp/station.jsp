@@ -18,23 +18,29 @@
 
     <h3>Station:</h3>
 
-    <form>
-        <div class="col-md-4">
-            <label for="validationCustom01" class="form-label">${stationDTO.stationName}</label>
-            <input type="text" class="form-control" id="validationCustom01" value="" required name = "stationName">
-            <div class="valid-feedback">
-                Looks good!
-            </div>
-        </div>
+            <form class="row g-3">
+                <div class="col-auto">
+                    <input type="text" class="form-control" id="validationCustom01" value="${resultStationDTO.stationName}" required name = "stationName">
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
 
-    </form>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-success" formaction="stationsubmitedit">Submit</button>
+                    <input type="hidden" name="stationId" value="${resultStationDTO.id}">
+                </div>
+            </form>
+
+
 
     <table class="table">
         <thead>
         <tr>
             <th scope="col">#</th>
             <th scope="col">Train Number</th>
-            <th scope="col">Time</th>
+            <th scope="col">Arrival Time</th>
+            <th scope="col">Departure Time</th>
             <th scope="col">Edit</th>
             <th scope="col">Remove</th>
         </tr>
@@ -45,7 +51,8 @@
             <tr>
                 <th scope="row">1</th>
                 <td>${scheduleDTO.trainNumber}</td>
-                <td>${scheduleDTO.time}</td>
+                <td>${scheduleDTO.arrivalTime}</td>
+                <td>${scheduleDTO.departureTime}</td>
                 <td>
                     <form action="starteditschedule">
                         <button type="submit" class="btn btn-success">Edit</button>
@@ -61,7 +68,8 @@
                                 <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-.623l-1.844 6.456a.75.75 0 0 1-.722.544H3.69a.75.75 0 0 1-.722-.544L1.123 8H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 6h1.717L5.07 1.243a.5.5 0 0 1 .686-.172zM2.163 8l1.714 6h8.246l1.714-6H2.163z"/>
                             </svg>
                         </button>
-                        <input type="hidden" name="trainNumber" value="${scheduleDTO.id}">
+                        <input type="hidden" name="scheduleID" value="${scheduleDTO.id}">
+                        <input type="hidden" name="stationId" value="${resultStationDTO.id}">
                     </form>
                 </td>
             </tr>
@@ -72,13 +80,29 @@
     </table>
 
     <form>
-        <div class="mb-1">
-            <button type="submit" class="btn btn-success" formaction="stationsubmit">Add Station</button>
+        <div class="input-group mb-1">
+            <label class="input-group-text" for="inputGroupSelect01">Trains</label>
+            <select class="form-select" name="trainNumber" id="inputGroupSelect01">
+                <option selected>Choose...</option>
+                <c:forEach var="trainDTO" items="${trainDTOList}">
+                    <option value="${trainDTO.trainNumber}">${trainDTO.trainNumber}</option>
+                </c:forEach>
+            </select>
+        </div>
+        <div class="input-group mb-1">
+            <span class="input-group-text">Train arrival</span>
+            <input class="form-control" type="datetime-local" aria-label="Time" name="arrivalTime"/>
+        </div>
+        <div class="input-group mb-1">
+            <span class="input-group-text">Train departure</span>
+            <input class="form-control" type="datetime-local" aria-label="Hour" name="departureTime"/>
+        </div>
+
+        <div class="input-group mb-1">
+            <input type="hidden" name="stationId" value="${resultStationDTO.id}">
+            <button type="submit" class="btn btn-success" formaction="schedulesubmit">Add new train for station</button>
         </div>
     </form>
-
-
-
 </div>
 </body>
 </html>

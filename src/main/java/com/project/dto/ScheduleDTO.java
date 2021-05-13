@@ -1,43 +1,51 @@
 package com.project.dto;
 
-import javax.persistence.Column;
-import java.util.Date;
-
 public class ScheduleDTO {
     private int id;
     private int trainNumber;
     private int stationId;
-    private Date time;
+    private String arrivalTime;
+    private String departureTime;
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(String id) {
+        this.id = Integer.parseInt(id);
     }
 
     public int getTrainNumber() {
         return trainNumber;
     }
 
-    public void setTrainNumber(int trainNumber) {
-        this.trainNumber = trainNumber;
+    public void setTrainNumber(String trainNumber) {
+        int number = Integer.parseInt(trainNumber);
+        this.trainNumber = number;
     }
 
     public int getStationId() {
         return stationId;
     }
 
-    public void setStationId(int stationId) {
-        this.stationId = stationId;
+    public void setStationId(String stationId) {
+        int id = Integer.parseInt(stationId);
+        this.stationId = id;
     }
 
-    public Date getTime() {
-        return time;
+    public String getArrivalTime() {
+        return arrivalTime;
     }
 
-    public void setTime(Date time) {
-        this.time = time;
+    public void setArrivalTime(String arrivalTime) {
+        this.arrivalTime = arrivalTime;
+    }
+
+    public String getDepartureTime() {
+        return departureTime;
+    }
+
+    public void setDepartureTime(String departureTime) {
+        this.departureTime = departureTime;
     }
 }

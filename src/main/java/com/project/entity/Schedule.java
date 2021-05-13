@@ -19,8 +19,11 @@ public class Schedule {
     @Column(name = "station_id")
     private int stationId;
 
-    @Column(name = "time")
-    private Date time;
+    @Column(name = "arrival_time")
+    private Date arrivalTime;
+
+    @Column(name = "departure_time")
+    private Date departureTime;
 
     public int getId() {
         return id;
@@ -46,11 +49,19 @@ public class Schedule {
         this.stationId = stationId;
     }
 
-    public Date getTime() {
-        return time;
+    public Date getArrivalTime() {
+        return arrivalTime;
     }
 
-    public void setTime(Date time) {
-        this.time = time;
+    public void setArrivalTime(Date time) {
+        this.arrivalTime = time;
+    }
+
+    public Date getDepartureTime() {
+        return departureTime;
+    }
+
+    public void setDepartureTime(Date departureTime) {
+        this.departureTime = departureTime;
     }
 }

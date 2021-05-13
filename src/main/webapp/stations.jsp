@@ -8,10 +8,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <title>Trains</title>
-
+    <% System.out.println("welcome to jsp"); %>
 
 </head>
 <body>
+
 <div class="container">
 
     <jsp:include page="header.jsp" />
@@ -30,9 +31,17 @@
         </thead>
 
         <tbody>
+        <%
+            int i = 0;
+        %>
         <c:forEach var="stationDTO" items="${stationDTOList}">
+            <%
+                ++i;
+            %>
             <tr>
-                <th scope="row">1</th>
+                <th scope="row">
+                    <%=i%>
+                </th>
                 <td>${stationDTO.stationName}</td>
                 <td>
                     <form action="stationedit">
@@ -61,11 +70,10 @@
     <%--    </form>--%>
 
     <form>
-        <div class="mb-1">
-<%--            <a href="/admin/station" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">Add Station</a>--%>
-
-            <button type="submit" class="btn btn-success" formaction="stationcreate">Add Station</button>
-<%--            <input type="hidden" name="stationId" value="${stationDTO.id}">--%>
+        <div class="input-group mb-1">
+            <span class="input-group-text">Station Name</span>
+            <input class="form-control" placeholder="Station name" aria-label="Station name name" name="stationName"/>
+            <button type="submit" class="btn btn-success" formaction="stationsubmit">Save new station</button>
         </div>
     </form>
 </div>

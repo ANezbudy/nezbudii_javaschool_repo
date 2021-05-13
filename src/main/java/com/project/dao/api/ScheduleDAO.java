@@ -3,7 +3,6 @@ package com.project.dao.api;
 import com.project.entity.Schedule;
 
 import javax.transaction.Transactional;
-import java.util.Date;
 import java.util.List;
 
 @Transactional
@@ -14,7 +13,9 @@ public interface ScheduleDAO {
 
     List<Schedule> findStationSchedule(int stationId);
 
-    int deleteScheduleById(int scheduleId);
+    int deleteSchedule(int scheduleId);
 
-    void updateSchedule(int scheduleId, int trainNumber, int stationId, Date time);
+    void updateSchedule(Schedule schedule);
+
+    void createSchedule(Schedule schedule);
 }

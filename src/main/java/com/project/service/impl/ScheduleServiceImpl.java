@@ -37,17 +37,24 @@ public class ScheduleServiceImpl implements ScheduleService {
     }
 
     @Override
-    public int deleteScheduleById(ScheduleDTO scheduleDTO) {
-        return 0;
+    public int deleteSchedule(ScheduleDTO scheduleDTO) {
+        return scheduleDAO.deleteSchedule(scheduleDTO.getId());
+    }
+
+    //TODO use mapper to pass the entity
+    @Override
+    public void updateSchedule(ScheduleDTO scheduleDTO) {
+//        scheduleDAO.updateSchedule(
+//                scheduleDTO.getId(),
+//                scheduleDTO.getTrainNumber(),
+//                scheduleDTO.getStationId(),
+//                scheduleDTO.getArrivalTime()
+//        );
+        scheduleDAO.updateSchedule(scheduleMapper.toEntity(scheduleDTO));
     }
 
     @Override
-    public void updateSchedule(ScheduleDTO scheduleDTO) {
-        scheduleDAO.updateSchedule(
-                scheduleDTO.getId(),
-                scheduleDTO.getTrainNumber(),
-                scheduleDTO.getStationId(),
-                scheduleDTO.getTime()
-        );
+    public void createSchedule(ScheduleDTO scheduleDTO) {
+        scheduleDAO.createSchedule(scheduleMapper.toEntity(scheduleDTO));
     }
 }

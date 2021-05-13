@@ -19,7 +19,7 @@ public class Train {
 
     @ManyToMany
     @JoinTable(name = "schedule",
-        joinColumns = @JoinColumn (name = "train_number"),
+            joinColumns = @JoinColumn (name = "train_number"),
             inverseJoinColumns = @JoinColumn(name = "station_id")
     )
     private List<Station> stations;

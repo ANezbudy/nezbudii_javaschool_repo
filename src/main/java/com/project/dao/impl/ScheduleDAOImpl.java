@@ -46,7 +46,7 @@ public class ScheduleDAOImpl implements ScheduleDAO {
 
 
     @Override
-    public int deleteScheduleById(int scheduleId) {
+    public int deleteSchedule(int scheduleId) {
         Schedule schedule = entityManager.find(Schedule.class, scheduleId);
         if (schedule != null) {
             entityManager.remove(schedule);
@@ -56,12 +56,18 @@ public class ScheduleDAOImpl implements ScheduleDAO {
     }
 
     @Override
-    public void updateSchedule(int scheduleId, int trainNumber, int stationId, Date time) {
-        Schedule schedule = entityManager.find(Schedule.class, scheduleId);
-        entityManager.detach(schedule);
-        schedule.setTrainNumber(trainNumber);
-        schedule.setStationId(stationId);
-        schedule.setTime(time);
-        entityManager.merge(schedule);
+    public void updateSchedule(Schedule schedule) {
+        Schedule foundSchedule = entityManager.find(Schedule.class, schedule.getId());
+        entityManager.detach(foundSchedule);
+        foundSchedule.setTrainNumber(schedule.getTrainNumber());
+        foundSchedule.setStationId(schedule.getStationId());
+        foundSchedule.setArrivalTime(schedule.getArrivalTime());
+        foundSchedule.setDepartureTime(schedule.getDepartureTime());
+        entityManager.merge(foundSchedule);
+    }
+
+    @Override
+    public void createSchedule(Schedule schedule) {
+        entityManager.persist(schedule);
     }
 }

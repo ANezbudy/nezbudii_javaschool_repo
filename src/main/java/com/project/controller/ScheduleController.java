@@ -2,7 +2,10 @@ package com.project.controller;
 
 import com.project.dto.ScheduleDTO;
 import com.project.dto.StationDTO;
+import com.project.dto.TrainDTO;
 import com.project.service.api.ScheduleService;
+import com.project.service.api.StationService;
+import com.project.service.api.TrainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,14 +20,51 @@ public class ScheduleController {
     @Autowired
     private ScheduleService scheduleService;
 
-    @RequestMapping("/schedule")
-    public ModelAndView allSchedulesForStation(HttpServletRequest request) {
+    @Autowired
+    private StationService stationService;
+
+    @Autowired
+    private TrainService trainService;
+
+    public ModelAndView returnScheduleForStation(String stationID) {
+        //refreshing the view
         StationDTO stationDTO = new StationDTO();
-        stationDTO.setId(request.getParameter("stationId"));
-        List<ScheduleDTO> scheduleDTOList = scheduleService.findStationSchedules(stationDTO);
+        stationDTO.setId(stationID);
+        StationDTO resultStationDTO = stationService.findStation(stationDTO);
+        //getting the schedule for the table
+        List<ScheduleDTO> scheduleDTOList = scheduleService.findStationSchedules(resultStationDTO);
+
+        List<TrainDTO> trainDTOList = trainService.findAllTrains();
+
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("schedule");
+        modelAndView.setViewName("station");
+        modelAndView.addObject("resultStationDTO", resultStationDTO);
         modelAndView.addObject("scheduleDTOList", scheduleDTOList);
+        modelAndView.addObject("trainDTOList", trainDTOList);
         return modelAndView;
+    }
+
+    @RequestMapping("/schedulesubmit")
+    public ModelAndView scheduleCreate(HttpServletRequest request) {
+        //prepare DTO to transfere
+        ScheduleDTO scheduleDTO = new ScheduleDTO();
+        scheduleDTO.setStationId(request.getParameter("stationId"));
+        scheduleDTO.setTrainNumber(request.getParameter("trainNumber"));
+        scheduleDTO.setArrivalTime(request.getParameter("arrivalTime"));
+        scheduleDTO.setDepartureTime(request.getParameter("departureTime"));
+
+        //create schedule
+        scheduleService.createSchedule(scheduleDTO);
+
+        return returnScheduleForStation(request.getParameter("stationId"));
+    }
+
+    @RequestMapping("/deleteschedule")
+    public ModelAndView deleteSchedule(HttpServletRequest request) {
+        ScheduleDTO scheduleDTO = new ScheduleDTO();
+        scheduleDTO.setId(request.getParameter("scheduleID"));
+        scheduleService.deleteSchedule(scheduleDTO);
+
+        return returnScheduleForStation(request.getParameter("stationId"));
     }
 }

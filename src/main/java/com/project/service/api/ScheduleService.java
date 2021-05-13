@@ -12,7 +12,9 @@ public interface ScheduleService {
 
     List<ScheduleDTO> findStationSchedules(StationDTO stationDTO);
 
-    int deleteScheduleById(ScheduleDTO scheduleDTO);
+    int deleteSchedule(ScheduleDTO scheduleDTO);
 
     void updateSchedule(ScheduleDTO scheduleDTO);
+
+    void createSchedule(ScheduleDTO scheduleDTO);
 }

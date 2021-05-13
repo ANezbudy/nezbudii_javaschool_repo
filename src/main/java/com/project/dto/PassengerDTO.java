@@ -7,30 +7,6 @@ public class PassengerDTO {
     private String passengerBirthDate;
     private TicketsDTO ticketsDTO;
 
-//    public PassengerDTO() {
-//    }
-//
-//    public PassengerDTO(String passengerName, String passengerLastName, String passengerBirthDate) {
-//        this.passengerName = passengerName;
-//        this.passengerLastName = passengerLastName;
-//        this.passengerBirthDate = passengerBirthDate;
-//    }
-//
-//    public PassengerDTO(int id, String passengerName, String passengerLastName, String passengerBirthDate) {
-//        this.id = id;
-//        this.passengerName = passengerName;
-//        this.passengerLastName = passengerLastName;
-//        this.passengerBirthDate = passengerBirthDate;
-//    }
-//
-//    public PassengerDTO(int id, String passengerName, String passengerLastName, String passengerBirthDate, TicketsDTO ticketsDTO) {
-//        this.id = id;
-//        this.passengerName = passengerName;
-//        this.passengerLastName = passengerLastName;
-//        this.passengerBirthDate = passengerBirthDate;
-//        this.ticketsDTO = ticketsDTO;
-//    }
-
     public int getId() {
         return id;
     }

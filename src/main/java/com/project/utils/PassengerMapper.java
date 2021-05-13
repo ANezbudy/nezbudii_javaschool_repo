@@ -10,10 +10,6 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.TemporalAccessor;
-import java.util.Date;
-import java.util.Locale;
 import java.util.Objects;
 
 @Component
@@ -62,13 +58,13 @@ public class PassengerMapper {
     // will convert the data from DB to view in a needed format
     public void mapSpecificFields(Passenger source, PassengerDTO destination) {
         destination.setPassengerBirthDate(
-                new SimpleDateFormat("dd.MM.yyyy").format(source.getPassengerBirthDate())
+                new SimpleDateFormat("dd-MM-yyyy").format(source.getPassengerBirthDate())
         );
     }
 
     // will convert the data from view to DTO in a needed format. Not sure if it is needed
     public void mapSpecificFields(PassengerDTO source, Passenger destination) throws ParseException {
-        SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
         destination.setPassengerBirthDate(format.parse(source.getPassengerBirthDate()));
     }
 

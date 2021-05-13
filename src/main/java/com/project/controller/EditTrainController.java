@@ -23,6 +23,7 @@ public class EditTrainController {
     public ModelAndView edit(HttpServletRequest request){
         TrainDTO trainDTO = new TrainDTO();
         trainDTO.setTrainNumber(request.getParameter("trainNumber"));
+        trainDTO.setNumPlaces(request.getParameter("numPlaces"));
         trainService.updateTrain(trainDTO);
         return trainController.allTrains();
     }

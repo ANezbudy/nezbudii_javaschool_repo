@@ -58,4 +58,15 @@ public class PassengerController {
         modelAndView.addObject("resultPassengerDTO", resultPassengerDTO);
         return modelAndView;
     }
+
+    @RequestMapping("/submitedit")
+    public ModelAndView edit(HttpServletRequest request) throws ParseException {
+        PassengerDTO passengerDTO = new PassengerDTO();
+        passengerDTO.setId(request.getParameter("passengerID"));
+        passengerDTO.setPassengerName(request.getParameter("passengerName"));
+        passengerDTO.setPassengerLastName(request.getParameter("passengerLastName"));
+        passengerDTO.setPassengerBirthDate(request.getParameter("passengerBirthDate"));
+        passengerService.updatePassenger(passengerDTO);
+        return allPassengers();
+    }
 }
