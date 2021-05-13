@@ -61,10 +61,10 @@ public class ScheduleMapper {
 
     public void mapSpecificFields(Schedule source, ScheduleDTO destination) {
         destination.setArrivalTime(
-                new SimpleDateFormat("dd/MM/yyyy hh:mm").format(source.getArrivalTime())
+                new SimpleDateFormat("yyyy-MM-dd hh:mm").format(source.getArrivalTime()).replace(' ', 'T')
         );
         destination.setDepartureTime(
-                new SimpleDateFormat("dd/MM/yyyy hh:mm").format(source.getDepartureTime())
+                new SimpleDateFormat("yyyy-MM-dd hh:mm").format(source.getDepartureTime()).replace(' ', 'T')
         );
     }
     //TODO exception!

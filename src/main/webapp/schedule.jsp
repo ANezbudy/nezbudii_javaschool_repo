@@ -13,36 +13,26 @@
 </head>
 <body>
 <div class="container">
-    <h3>Station: ${resultStationDTO.stationName}</h3>
+
+<%--    <jsp:include page="header.jsp" />--%>
+
+    <h3>Schedule for station: ${resultStationDTO.stationName}</h3>
+    <h4>Train number: ${resultScheduleDTO.trainNumber}</h4>
 
     <form>
-        <div class="accordion" id="accordionExample">
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="headingOne">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        Add new train to schedule
-                    </button>
-                </h2>
-                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        <div class="input-group mb-1">
-                            <label class="input-group-text" for="inputGroupSelect01">Trains</label>
-                            <select class="form-select" id="inputGroupSelect01">
-                                <option selected>Choose...</option>
-                                <c:forEach var="train" items="${trains}">
-                                    <option name="trainNumber" value="${train.trainNumber}">${train.trainNumber}</option>
-                                </c:forEach>
-                            </select>
-                            <span class="input-group-text">Train time</span>
-                            <input class="form-control" placeholder="Arrival time" aria-label="Train time" name="trainTime"/>
-                            <button type="submit" class="btn btn-success" formaction="stationsubmit">Add new train for station</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="input-group mb-1">
+            <span class="input-group-text">Train arrival</span>
+            <input class="form-control" type="datetime-local" aria-label="Time" name="arrivalTime" value="${resultScheduleDTO.arrivalTime}"/>
+        </div>
+        <div class="input-group mb-1">
+            <span class="input-group-text">Train departure</span>
+            <input class="form-control" type="datetime-local" aria-label="Hour" name="departureTime" value="${resultScheduleDTO.departureTime}"/>
         </div>
 
-
+        <div class="input-group mb-1">
+            <input type="hidden" name="scheduleID" value="${resultScheduleDTO.id}">
+            <button type="submit" class="btn btn-success" formaction="schduleeditsubmit">Submit</button>
+        </div>
     </form>
 </div>
 </body>

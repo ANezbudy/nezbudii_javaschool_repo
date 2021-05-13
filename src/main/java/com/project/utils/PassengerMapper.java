@@ -58,7 +58,7 @@ public class PassengerMapper {
     // will convert the data from DB to view in a needed format
     public void mapSpecificFields(Passenger source, PassengerDTO destination) {
         destination.setPassengerBirthDate(
-                new SimpleDateFormat("dd-MM-yyyy").format(source.getPassengerBirthDate())
+                new SimpleDateFormat("yyyy-MM-dd").format(source.getPassengerBirthDate())
         );
     }
 

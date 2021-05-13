@@ -67,4 +67,30 @@ public class ScheduleController {
 
         return returnScheduleForStation(request.getParameter("stationId"));
     }
+
+    @RequestMapping("/edittrainschedule")
+    public ModelAndView editTrainSchedule(HttpServletRequest request) {
+        ScheduleDTO scheduleDTO = new ScheduleDTO();
+        scheduleDTO.setId(request.getParameter("scheduleID"));
+        ScheduleDTO resultScheduleDTO = scheduleService.findSchedule(scheduleDTO);
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("schedule");
+        modelAndView.addObject("resultScheduleDTO", resultScheduleDTO);
+        return modelAndView;
+    }
+
+    @RequestMapping("/schduleeditsubmit")
+    public ModelAndView submitScheduleEdit(HttpServletRequest request) {
+        ScheduleDTO scheduleDTO = new ScheduleDTO();
+        scheduleDTO.setId(request.getParameter("scheduleID"));
+        ScheduleDTO resultScheduleDTO = scheduleService.findSchedule(scheduleDTO);
+        resultScheduleDTO.setArrivalTime(request.getParameter("arrivalTime"));
+        resultScheduleDTO.setDepartureTime(request.getParameter("departureTime"));
+
+        //create schedule
+        scheduleService.updateSchedule(resultScheduleDTO);
+
+        return returnScheduleForStation(String.valueOf(resultScheduleDTO.getStationId()));
+    }
 }

@@ -31,9 +31,9 @@
         </thead>
 
         <tbody>
-        <c:forEach var="trainDTO" items="${trainDTOList}">
+        <c:forEach var="trainDTO" items="${trainDTOList}" varStatus="theCount">
             <tr>
-                <th scope="row">1</th>
+                <th scope="row">${theCount.count}</th>
                 <td>${trainDTO.trainNumber}</td>
                 <td>${trainDTO.numPlaces}</td>
                 <td>

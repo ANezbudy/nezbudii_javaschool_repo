@@ -8,8 +8,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <title>Trains</title>
-    <% System.out.println("welcome to jsp"); %>
-
 </head>
 <body>
 
@@ -18,8 +16,6 @@
     <jsp:include page="header.jsp" />
 
     <h3>Stations</h3>
-
-    <%--    <form method="GET">--%>
     <table class="table">
         <thead>
         <tr>
@@ -31,16 +27,10 @@
         </thead>
 
         <tbody>
-        <%
-            int i = 0;
-        %>
-        <c:forEach var="stationDTO" items="${stationDTOList}">
-            <%
-                ++i;
-            %>
+        <c:forEach var="stationDTO" items="${stationDTOList}" varStatus="theCount">
             <tr>
                 <th scope="row">
-                    <%=i%>
+                    ${theCount.count}
                 </th>
                 <td>${stationDTO.stationName}</td>
                 <td>

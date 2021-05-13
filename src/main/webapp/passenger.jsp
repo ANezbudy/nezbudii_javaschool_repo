@@ -30,9 +30,9 @@
             </thead>
 
             <tbody>
-            <c:forEach var="passengerDto" items="${passengerList}">
+            <c:forEach var="passengerDto" items="${passengerList}" varStatus="theCount">
                 <tr>
-                    <th scope="row">1</th>
+                    <th scope="row">${theCount.count}</th>
                     <td>${passengerDto.passengerName}</td>
                     <td>${passengerDto.passengerLastName}</td>
                     <td>${passengerDto.passengerBirthDate}</td>

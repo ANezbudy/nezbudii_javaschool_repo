@@ -33,7 +33,7 @@
             </form>
 
 
-
+<c:if test="${ scheduleDTOList.size() > 0 }">
     <table class="table">
         <thead>
         <tr>
@@ -47,16 +47,16 @@
         </thead>
 
         <tbody>
-        <c:forEach var="scheduleDTO" items="${scheduleDTOList}">
+        <c:forEach var="scheduleDTO" items="${scheduleDTOList}" varStatus="theCount">
             <tr>
-                <th scope="row">1</th>
+                <th scope="row">${theCount.count}</th>
                 <td>${scheduleDTO.trainNumber}</td>
                 <td>${scheduleDTO.arrivalTime}</td>
                 <td>${scheduleDTO.departureTime}</td>
                 <td>
-                    <form action="starteditschedule">
+                    <form action="edittrainschedule">
                         <button type="submit" class="btn btn-success">Edit</button>
-                        <input type="hidden" name="trainNumber" value="${scheduleDTO.id}">
+                        <input type="hidden" name="scheduleID" value="${scheduleDTO.id}">
                     </form>
                 </td>
                 <td>
@@ -75,9 +75,8 @@
             </tr>
         </c:forEach>
         </tbody>
-
-
     </table>
+</c:if>
 
     <form>
         <div class="input-group mb-1">
