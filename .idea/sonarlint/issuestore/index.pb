@@ -36,5 +36,3 @@ p
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
 H
 src/main/webapp/edit.jsp,9\0\90d3c2045ebec1335c07730113ac62fc4210df60
-I
-src/main/webapp/start.jsp,9\d\9de43657f6a20af700fb9edd9cf0cc88bd7e4c38

@@ -19,4 +19,5 @@ public interface PassengerDAO {
     int deletePassengerById(int id);
 
     void updatePassenger(int id, String passengerName, String passengerLastName, Date passengerBirthDate);
+
 }

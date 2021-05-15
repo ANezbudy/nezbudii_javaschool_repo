@@ -69,4 +69,5 @@ public class PassengerController {
         passengerService.updatePassenger(passengerDTO);
         return allPassengers();
     }
+
 }

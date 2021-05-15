@@ -10,17 +10,17 @@ public class Ticket {
     private int id;
 
 //    @Column(name = "train_number")
-//    private int train_number;
-
+//    private int trainNumber;
+//
 //    @Column(name = "passenger_id")
-//    private int passenger_id;
+//    private int passengerId;
 
     @ManyToOne
-    @JoinColumn(name = "train_number", nullable = false)
+    @JoinColumn(name = "trainNumber")
     private Train train;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "passenger_id", referencedColumnName = "ID", insertable = false, updatable = false)
+    @ManyToOne
+    @JoinColumn(name = "passengerId")
     private Passenger passenger;
 
 
@@ -32,19 +32,7 @@ public class Ticket {
         this.id = id;
     }
 
-//    public int getTrain_number() {
-//        return train_number;
-//    }
-//
-//    public void setTrain_number(int train_number) {
-//        this.train_number = train_number;
-//    }
-//
-//    public int getPassenger_id() {
-//        return passenger_id;
-//    }
-//
-//    public void setPassenger_id(int passenger_id) {
-//        this.passenger_id = passenger_id;
-//    }
+    public Passenger getPassenger() {
+        return passenger;
+    }
 }

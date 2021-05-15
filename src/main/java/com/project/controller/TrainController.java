@@ -1,6 +1,8 @@
 package com.project.controller;
 
 import com.project.dto.TrainDTO;
+import com.project.dto.TrainPassengerDTO;
+import com.project.service.api.TicketService;
 import com.project.service.api.TrainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,9 @@ import java.util.List;
 public class TrainController {
     @Autowired
     private TrainService trainService;
+
+    @Autowired
+    private TicketService ticketService;
 
     @RequestMapping(value = "/trains", method = RequestMethod.GET)
     public ModelAndView allTrains() {
@@ -53,9 +58,24 @@ public class TrainController {
         TrainDTO trainDTO = new TrainDTO();
         trainDTO.setTrainNumber(request.getParameter("trainNumber"));
         TrainDTO resultTrainDTO = trainService.findTrain(trainDTO);
+
+        List<TrainPassengerDTO> trainPassengerDTOList = ticketService.findTrainPassengers(resultTrainDTO.getTrainNumber());
+
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("edittrain");
         modelAndView.addObject("trainDTO", resultTrainDTO);
+        modelAndView.addObject("trainPassengerDTOList", trainPassengerDTOList);
         return modelAndView;
     }
+
+    @RequestMapping("/submitedittrain")
+    public ModelAndView edit(HttpServletRequest request){
+        TrainDTO trainDTO = new TrainDTO();
+        trainDTO.setTrainNumber(request.getParameter("trainNumber"));
+        trainDTO.setNumPlaces(request.getParameter("numPlaces"));
+        trainService.updateTrain(trainDTO);
+        return allTrains();
+    }
+
+
 }

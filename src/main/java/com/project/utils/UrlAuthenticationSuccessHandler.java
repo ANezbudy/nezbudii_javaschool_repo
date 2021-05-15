@@ -1,7 +1,5 @@
 package com.project.utils;
 
-import com.mysql.cj.log.Log;
-import com.mysql.cj.log.LogFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.DefaultRedirectStrategy;
@@ -9,8 +7,6 @@ import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.WebAttributes;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
-import javax.persistence.Column;
-import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -54,7 +50,7 @@ public class UrlAuthenticationSuccessHandler implements AuthenticationSuccessHan
 
     protected String determineTargetUrl(final Authentication authentication) {
         Map<String, String> roleTargetUrlMap = new HashMap<>();
-        roleTargetUrlMap.put("ROLE_USER", "user/trip");
+        roleTargetUrlMap.put("ROLE_USER", "user/");
         roleTargetUrlMap.put("ROLE_ADMIN", "admin/stations");
 
         final Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();

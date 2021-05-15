@@ -27,7 +27,40 @@
         <input type="hidden" name="trainNumber" value="${trainDTO.trainNumber}">
         <button type="submit" class="btn btn-success" formaction="submitedittrain">Submit</button>
       </div>
+
     </form>
+    <c:choose>
+      <c:when test="${ trainPassengerDTOList.size() == 0 }">
+        <h3>There are no registered passengers</h3>
+      </c:when>
+      <c:when test="${ trainPassengerDTOList.size() > 0 }">
+
+        <h3>Passengers</h3>
+
+        <%--    <form method="GET">--%>
+        <table class="table">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Birth Date</th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <c:forEach var="trainPassengerDTO" items="${trainPassengerDTOList}" varStatus="theCount">
+            <tr>
+              <th scope="row">${theCount.count}</th>
+              <td>${trainPassengerDTO.passengerName}</td>
+              <td>${trainPassengerDTO.passengerLastName}</td>
+              <td>${trainPassengerDTO.passengerBirthDate}</td>
+            </tr>
+          </c:forEach>
+          </tbody>
+        </table>
+      </c:when>
+    </c:choose>
   </div>
 
 </body>

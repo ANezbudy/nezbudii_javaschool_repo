@@ -1,21 +1,18 @@
 package com.project.dao.impl;
 
 import com.project.dao.api.PassengerDAO;
-import com.project.dto.PassengerDTO;
 import com.project.entity.Passenger;
-import com.project.utils.PassengerMapper;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -33,9 +30,9 @@ public class PassengerDAOImpl implements PassengerDAO {
 
         if (passenger != null) {
             entityManager.detach(passenger);
-            if (passenger.getTicket() != null) {
-                entityManager.detach(passenger.getTicket());
-            }
+//            if (passenger.getTicket() != null) {
+//                entityManager.detach(passenger.getTicket());
+//            }
         }
         return passenger;
     }

@@ -46,4 +46,5 @@ public class TrainServiceImpl implements TrainService {
     public void updateTrain(TrainDTO trainDTO) {
         trainDAO.updateTrain(trainDTO.getTrainNumber(), trainDTO.getNumPlaces());
     }
+
 }

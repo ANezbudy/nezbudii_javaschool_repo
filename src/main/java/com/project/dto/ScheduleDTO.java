@@ -1,11 +1,19 @@
 package com.project.dto;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
+
 public class ScheduleDTO {
     private int id;
     private int trainNumber;
     private int stationId;
-    private String arrivalTime;
-    private String departureTime;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'hh:mm")
+    private Date arrivalTime;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'hh:mm")
+    private Date departureTime;
 
     public int getId() {
         return id;
@@ -33,19 +41,19 @@ public class ScheduleDTO {
         this.stationId = id;
     }
 
-    public String getArrivalTime() {
+    public Date getArrivalTime() {
         return arrivalTime;
     }
 
-    public void setArrivalTime(String arrivalTime) {
+    public void setArrivalTime(Date arrivalTime) {
         this.arrivalTime = arrivalTime;
     }
 
-    public String getDepartureTime() {
+    public Date getDepartureTime() {
         return departureTime;
     }
 
-    public void setDepartureTime(String departureTime) {
+    public void setDepartureTime(Date departureTime) {
         this.departureTime = departureTime;
     }
 }

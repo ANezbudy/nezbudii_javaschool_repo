@@ -50,7 +50,7 @@
         <c:forEach var="scheduleDTO" items="${scheduleDTOList}" varStatus="theCount">
             <tr>
                 <th scope="row">${theCount.count}</th>
-                <td>${scheduleDTO.trainNumber}</td>
+                <td type="date">${scheduleDTO.trainNumber}</td>
                 <td>${scheduleDTO.arrivalTime}</td>
                 <td>${scheduleDTO.departureTime}</td>
                 <td>

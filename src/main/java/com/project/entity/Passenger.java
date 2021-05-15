@@ -2,6 +2,7 @@ package com.project.entity;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "passengers")
@@ -19,11 +20,12 @@ public class Passenger {
     @Column(name = "birthdate", nullable = false)
     private Date passengerBirthDate;
 
-    @OneToOne(mappedBy = "passenger")
-    private Ticket ticket;
+    @OneToMany (mappedBy = "passenger", fetch = FetchType.EAGER)
+    private List<Ticket> tickets;
 
-    public Ticket getTicket() {
-        return ticket;
+
+    public List<Ticket> getTickets() {
+        return tickets;
     }
 
     public String getPassengerName() {

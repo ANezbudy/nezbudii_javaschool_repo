@@ -48,8 +48,6 @@
           <li><a href="/admin/stations" class="nav-link px-2 link-dark">Stations</a></li>
           <li><a href="/admin/passenger" class="nav-link px-2 link-dark">Passengers</a></li>
           <li><a href="/admin/trains" class="nav-link px-2 link-dark">Trains</a></li>
-          <li><a href="#" class="nav-link px-2 link-dark">FAQs</a></li>
-          <li><a href="#" class="nav-link px-2 link-dark">About</a></li>
         </ul>
 
         <div class="col-md-3 text-end">

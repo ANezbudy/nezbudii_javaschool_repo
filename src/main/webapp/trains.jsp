@@ -38,7 +38,7 @@
                 <td>${trainDTO.numPlaces}</td>
                 <td>
                     <form action="startedittrain">
-                        <button type="submit" class="btn btn-success">Edit</button>
+                        <button type="submit" class="btn btn-success">Open</button>
                         <input type="hidden" name="trainNumber" value="${trainDTO.trainNumber}">
                     </form>
                 </td>

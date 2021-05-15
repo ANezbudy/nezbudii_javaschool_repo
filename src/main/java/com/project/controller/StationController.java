@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
-@RequestMapping("/admin")
+//@RequestMapping("/admin")
 public class StationController {
     @Autowired
     private StationService stationService;
@@ -27,7 +27,7 @@ public class StationController {
     @Autowired
     private TrainService trainService;
 
-    @RequestMapping("/stations")
+    @RequestMapping("/admin/stations")
     public ModelAndView allStations() {
         List<StationDTO> stationDTOList = stationService.findAllStations();
         ModelAndView modelAndView = new ModelAndView();
@@ -36,7 +36,7 @@ public class StationController {
         return modelAndView;
     }
 
-    @RequestMapping("/stationedit")
+    @RequestMapping("/admin/stationedit")
     public ModelAndView openEditStationForm(HttpServletRequest request) {
         StationDTO stationDTO = new StationDTO();
         stationDTO.setId(request.getParameter("stationId"));
@@ -52,7 +52,13 @@ public class StationController {
         return modelAndView;
     }
 
-    @RequestMapping("/stationsubmit")
+    @RequestMapping("/user")
+    public ModelAndView allStationsForUser() {
+        return allStations();
+    }
+
+
+    @RequestMapping("/admin/stationsubmit")
     public ModelAndView submitStation(HttpServletRequest request) {
         StationDTO stationDTO = new StationDTO();
         stationDTO.setStationName(request.getParameter("stationName"));
@@ -61,7 +67,7 @@ public class StationController {
         return allStations();
     }
 
-    @RequestMapping("/stationsubmitedit")
+    @RequestMapping("/admin/stationsubmitedit")
     public ModelAndView submitEditStation(HttpServletRequest request) {
         StationDTO stationDTO = new StationDTO();
         stationDTO.setStationName(request.getParameter("stationName"));
@@ -70,7 +76,7 @@ public class StationController {
         return allStations();
     }
 
-    @RequestMapping("/deletestation")
+    @RequestMapping("/admin/deletestation")
     public RedirectView deletStation(HttpServletRequest request) {
         StationDTO stationDTO = new StationDTO();
         stationDTO.setId(request.getParameter("stationId"));
