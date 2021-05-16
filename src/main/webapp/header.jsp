@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
 <!DOCTYPE html>
@@ -44,15 +45,21 @@
         </a>
 
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="/admin" class="nav-link px-2 link-secondary">Home</a></li>
-          <li><a href="/admin/stations" class="nav-link px-2 link-dark">Stations</a></li>
-          <li><a href="/admin/passenger" class="nav-link px-2 link-dark">Passengers</a></li>
-          <li><a href="/admin/trains" class="nav-link px-2 link-dark">Trains</a></li>
+          <sec:authorize access="hasRole('ADMIN')">
+            <li><a href="/admin/stations" class="nav-link px-2 link-dark">Stations</a></li>
+            <li><a href="/admin/passenger" class="nav-link px-2 link-dark">Passengers</a></li>
+            <li><a href="/admin/trains" class="nav-link px-2 link-dark">Trains</a></li>
+          </sec:authorize>
+          <sec:authorize access="hasRole('USER')">
+            <li><a href="/user/select" class="nav-link px-2 link-dark">Routes</a></li>
+            <li><a href="/user/stations" class="nav-link px-2 link-dark">Stations</a></li>
+          </sec:authorize>
         </ul>
 
         <div class="col-md-3 text-end">
-          <button type="button" class="btn btn-outline-primary me-2">Login</button>
-          <button type="button" class="btn btn-primary">Sign-up</button>
+<%--          <button type="button" class="btn btn-outline-primary me-2">Login</button>--%>
+          <a href="<c:url value="/logout" />" class="btn btn-primary" tabindex="-1" role="button">Logout</a>
+<%--          <button type="button" class="btn btn-primary" >Logout</button>--%>
         </div>
       </header>
     </div>

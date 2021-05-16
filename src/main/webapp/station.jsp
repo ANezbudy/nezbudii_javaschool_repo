@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
 <!DOCTYPE html>
@@ -14,23 +15,28 @@
 <body>
 <div class="container">
 
-<%--    <jsp:include page="header.jsp" />--%>
+    <sec:authorize access="hasRole('ADMIN')">
+        <h3>Station:</h3>
 
-    <h3>Station:</h3>
-
-            <form class="row g-3">
-                <div class="col-auto">
-                    <input type="text" class="form-control" id="validationCustom01" value="${resultStationDTO.stationName}" required name = "stationName">
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
+        <form class="row g-3">
+            <div class="col-auto">
+                <input type="text" class="form-control" id="validationCustom01" value="${resultStationDTO.stationName}" required name = "stationName">
+                <div class="valid-feedback">
+                    Looks good!
                 </div>
+            </div>
 
-                <div class="col-auto">
-                    <button type="submit" class="btn btn-success" formaction="stationsubmitedit">Submit</button>
-                    <input type="hidden" name="stationId" value="${resultStationDTO.id}">
-                </div>
-            </form>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-success" formaction="stationsubmitedit">Submit</button>
+                <input type="hidden" name="stationId" value="${resultStationDTO.id}">
+            </div>
+        </form>
+    </sec:authorize>
+
+    <sec:authorize access="hasRole('USER')">
+        <h3>Station: ${resultStationDTO.stationName}</h3>
+    </sec:authorize>
+
 
 
 <c:if test="${ scheduleDTOList.size() > 0 }">
@@ -41,8 +47,10 @@
             <th scope="col">Train Number</th>
             <th scope="col">Arrival Time</th>
             <th scope="col">Departure Time</th>
-            <th scope="col">Edit</th>
-            <th scope="col">Remove</th>
+            <sec:authorize access="hasRole('ADMIN')">
+                <th scope="col">Edit</th>
+                <th scope="col">Remove</th>
+            </sec:authorize>
         </tr>
         </thead>
 
@@ -53,6 +61,7 @@
                 <td type="date">${scheduleDTO.trainNumber}</td>
                 <td>${scheduleDTO.arrivalTime}</td>
                 <td>${scheduleDTO.departureTime}</td>
+                <sec:authorize access="hasRole('ADMIN')">
                 <td>
                     <form action="edittrainschedule">
                         <button type="submit" class="btn btn-success">Edit</button>
@@ -72,12 +81,13 @@
                         <input type="hidden" name="stationId" value="${resultStationDTO.id}">
                     </form>
                 </td>
+                </sec:authorize>
             </tr>
         </c:forEach>
         </tbody>
     </table>
 </c:if>
-
+    <sec:authorize access="hasRole('ADMIN')">
     <form>
         <div class="input-group mb-1">
             <label class="input-group-text" for="inputGroupSelect01">Trains</label>
@@ -102,6 +112,7 @@
             <button type="submit" class="btn btn-success" formaction="schedulesubmit">Add new train for station</button>
         </div>
     </form>
+    </sec:authorize>
 </div>
 </body>
 </html>

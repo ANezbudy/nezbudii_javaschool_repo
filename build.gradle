@@ -27,6 +27,7 @@ dependencies {
     implementation("org.springframework.security:spring-security-core:$springframeworkVersion")
     implementation("org.springframework.security:spring-security-web:$springframeworkVersion")
     implementation("org.springframework.security:spring-security-config:$springframeworkVersion")
+    implementation("org.springframework.security:spring-security-taglibs:$springframeworkVersion")
 
 
     implementation 'javax.servlet:javax.servlet-api:4.0.0'

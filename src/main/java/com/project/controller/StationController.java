@@ -52,9 +52,14 @@ public class StationController {
         return modelAndView;
     }
 
-    @RequestMapping("/user")
+    @RequestMapping("/user/stations")
     public ModelAndView allStationsForUser() {
         return allStations();
+    }
+
+    @RequestMapping("/user/stationedit")
+    public ModelAndView openStationForUser(HttpServletRequest request) {
+        return openEditStationForm(request);
     }
 
 
