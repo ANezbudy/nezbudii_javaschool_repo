@@ -1,6 +1,6 @@
 package com.project.service.api;
 
-import com.project.entity.Schedule;
+import com.project.dto.TripDTO;
 
 import java.text.ParseException;
 import java.util.List;
@@ -8,7 +8,5 @@ import java.util.List;
 public interface SelectService {
     List<Integer> findCommonTrains(int stationAiD, int stationBiD);
 
-    List<Schedule> findDepartureTrainsForTrip(List<Integer> commonTrains, String departureTimeA) throws ParseException;
-
-    List<Schedule> findArrivalTrainsForTrip(List<Integer> commonTrains, String arrivalTimeB) throws ParseException;
+    List<TripDTO> findDepartureTrainsForTrip(int stationAiD, int stationBiD, String timeOne, String  timeTwo) throws ParseException;
 }

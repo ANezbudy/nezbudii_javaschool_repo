@@ -20,4 +20,6 @@ public class TicketDAOImpl implements TicketDAO {
         query.setParameter("trainNumber", trainNumber);
         return query.getResultList();
     }
+
+
 }

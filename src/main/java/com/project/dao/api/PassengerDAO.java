@@ -20,4 +20,6 @@ public interface PassengerDAO {
 
     void updatePassenger(int id, String passengerName, String passengerLastName, Date passengerBirthDate);
 
+    List<Passenger> findPassenger(String fistName, String lastName, Date birthDate);
+
 }

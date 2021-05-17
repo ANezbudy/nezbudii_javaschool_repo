@@ -22,8 +22,8 @@ com/project/entity/Schedule.java
  com.project.entity.Schedule
 com/project/utils/TrainMapper.java
  com.project.utils.TrainMapper
-com/project/service/api/SelectService.java
- com.project.service.api.SelectService
+com/project/init/MainWebAppInitializer.java
+ com.project.init.MainWebAppInitializer
 com/project/dao/api/PassengerDAO.java
  com.project.dao.api.PassengerDAO
 com/project/Launcher.java
@@ -32,8 +32,8 @@ com/project/utils/StationMapper.java
  com.project.utils.StationMapper
 com/project/dto/TrainDTO.java
  com.project.dto.TrainDTO
-com/project/service/impl/SelectServiceImpl.java
- com.project.service.impl.SelectServiceImpl
+com/project/entity/Ticket.java
+ com.project.entity.Ticket
 com/project/dao/api/TrainDAO.java
  com.project.dao.api.TrainDAO
 com/project/entity/Train.java
@@ -78,6 +78,8 @@ com/project/service/api/StationService.java
  com.project.service.api.StationService
 com/project/dao/impl/TrainDAOImpl.java
  com.project.dao.impl.TrainDAOImpl
+com/project/dto/TripDTO.java
+ com.project.dto.TripDTO
 com/project/dao/impl/TicketDAOImpl.java
  com.project.dao.impl.TicketDAOImpl
 com/project/dao/impl/ScheduleDAOImpl.java
@@ -88,15 +90,15 @@ com/project/dao/api/ScheduleDAO.java
  com.project.dao.api.ScheduleDAO
 com/project/service/impl/TicketServiceImpl.java
  com.project.service.impl.TicketServiceImpl
-com/project/init/MainWebAppInitializer.java
- com.project.init.MainWebAppInitializer
+com/project/entity/Station.java
+ com.project.entity.Station
 com/project/utils/ScheduleMapper.java
  com.project.utils.ScheduleMapper
 com/project/dto/StationDTO.java
  com.project.dto.StationDTO
-com/project/entity/Ticket.java
- com.project.entity.Ticket
-com/project/entity/Station.java
- com.project.entity.Station
+com/project/service/api/SelectService.java
+ com.project.service.api.SelectService
 com/project/controller/SelectController.java
  com.project.controller.SelectController
+com/project/service/impl/SelectServiceImpl.java
+ com.project.service.impl.SelectServiceImpl

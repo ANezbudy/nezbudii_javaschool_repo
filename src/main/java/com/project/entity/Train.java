@@ -13,6 +13,29 @@ public class Train {
     @Column(name = "num_places")
     private int numPlaces;
 
+    public int getEmptyPlaces() {
+        return emptyPlaces;
+    }
+
+    public void setEmptyPlaces(int emptyPlaces) {
+        this.emptyPlaces = emptyPlaces;
+    }
+
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
+    }
+
+    public List<Schedule> getSchedules() {
+        return schedules;
+    }
+
+    public void setSchedules(List<Schedule> schedules) {
+        this.schedules = schedules;
+    }
+
+    @Column(name = "emptyPlaces")
+    private int emptyPlaces;
+
     @OneToMany(mappedBy = "train", fetch = FetchType.EAGER)
     private List<Ticket> tickets;
 

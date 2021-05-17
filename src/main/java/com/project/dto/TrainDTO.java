@@ -8,22 +8,6 @@ public class TrainDTO {
     private Set<TicketsDTO> ticketsDTOs;
     private Set<StationDTO> stationDTOS;
 
-//    public TrainDTO() {
-//
-//    }
-//
-//    public TrainDTO(int trainNumber, int numPlaces) {
-//        this.trainNumber = trainNumber;
-//        this.numPlaces = numPlaces;
-//    }
-//
-//    public TrainDTO(int trainNumber, int numPlaces, Set<TicketsDTO> ticketsDTOs, Set<StationDTO> stationDTOS) {
-//        this.trainNumber = trainNumber;
-//        this.numPlaces = numPlaces;
-//        this.ticketsDTOs = ticketsDTOs;
-//        this.stationDTOS = stationDTOS;
-//    }
-
     public int getTrainNumber() {
         return trainNumber;
     }

@@ -33,8 +33,8 @@
                         </select>
                     </div>
                     <div class="input-group mb-1">
-                        <span class="input-group-text">Departure time:</span>
-                        <input class="form-control" type="datetime-local" aria-label="Time" name="departureTimeA"/>
+                        <span class="input-group-text">From:</span>
+                        <input class="form-control" type="datetime-local" aria-label="Time" name="timeOne"/>
                     </div>
                 </div>
 
@@ -49,8 +49,8 @@
                         </select>
                     </div>
                     <div class="input-group mb-1">
-                        <span class="input-group-text">Arrival time:</span>
-                        <input class="form-control" type="datetime-local" aria-label="Time" name="arrivalTimeB"/>
+                        <span class="input-group-text">To:</span>
+                        <input class="form-control" type="datetime-local" aria-label="Time" name="timeTwo"/>
                     </div>
                 </div>
             </div>

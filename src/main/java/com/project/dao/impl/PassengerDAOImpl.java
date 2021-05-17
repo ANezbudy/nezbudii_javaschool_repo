@@ -66,4 +66,13 @@ public class PassengerDAOImpl implements PassengerDAO {
         passenger.setPassengerBirthDate(passengerBirthDate);
         entityManager.merge(passenger);
     }
+
+    @Override
+    public List<Passenger> findPassenger(String fistName, String lastName, Date birthDate) {
+        Query query = entityManager.createQuery("FROM (FROM (FROM Passenger WHERE passengerName = :fistName) WHERE passengerLastName = :lastName) WHERE passengerBirthDate = :birthDate");
+        query.setParameter("fistName", fistName);
+        query.setParameter("lastName", lastName);
+        query.setParameter("birthDate", birthDate);
+        return query.getResultList();
+    }
 }

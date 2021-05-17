@@ -1,8 +1,8 @@
 package com.project.service.impl;
 
 import com.project.dao.api.StationDAO;
+import com.project.dto.TripDTO;
 import com.project.entity.Schedule;
-import com.project.entity.Station;
 import com.project.service.api.SelectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,38 +35,48 @@ public class SelectServiceImpl implements SelectService {
     }
 
     @Override
-    public List<Schedule> findDepartureTrainsForTrip(List<Integer> commonTrains, String departureTimeA) throws ParseException {
+    public List<TripDTO> findDepartureTrainsForTrip(int stationAiD, int stationBiD, String timeOne, String  timeTwo) throws ParseException {
+        List<Integer> commonTrains = findCommonTrains(stationAiD, stationBiD);
         List<Schedule> resultSchedulesA = new ArrayList<Schedule>();
+        List<Schedule> resultSchedulesB = new ArrayList<Schedule>();
+        List<Schedule> schedulesA = stationDAO.findStation(stationAiD).getSchedules();
+        List<Schedule> schedulesB = stationDAO.findStation(stationBiD).getSchedules();
 
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm");
-        Date departureTimeFormatedA = format.parse(departureTimeA);
+        Date timeOneFormated = format.parse(timeOne);
+        Date timeTwoFormated = format.parse(timeTwo);
 
         for (int train:commonTrains) {
+            for (Schedule schedule:schedulesB) {
+                if(schedule.getTrain().getTrainNumber() == train) {
+                    resultSchedulesB.add(schedule);
+                }
+            }
+
             for (Schedule schedule:schedulesA) {
-                if(schedule.getTrain().getTrainNumber() == train && schedule.getDepartureTime().before(departureTimeFormatedA)) {
+                if(schedule.getTrain().getTrainNumber() == train && schedule.getDepartureTime().after(timeOneFormated)
+                        && schedule.getDepartureTime().before(timeTwoFormated)) {
                     resultSchedulesA.add(schedule);
                 }
             }
         }
-        return resultSchedulesA;
-    }
 
-    @Override
-    public List<Schedule> findArrivalTrainsForTrip(List<Integer> commonTrains, String arrivalTimeB) throws ParseException {
-        List<Schedule> resultSchedulesB = new ArrayList<Schedule>();
+        return resultSchedulesA.stream().map(schedule -> {
+            TripDTO tripDTO = new TripDTO();
+            tripDTO.setDepartureStationName(schedule.getStation().getStationName());
+            tripDTO.setDepartureTime(schedule.getDepartureTime());
+            tripDTO.setTrainNumber(schedule.getTrain().getTrainNumber());
+            tripDTO.setScheduleId(schedule.getId());
 
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm");
-        Date arrivalTimeFormatedB = format.parse(arrivalTimeB);
-
-        for (int train:commonTrains) {
-            for (Schedule schedule:schedulesB) {
-                if(schedule.getTrain().getTrainNumber() == train && arrivalTimeFormatedB.before(schedule.getArrivalTime())) {
-                    resultSchedulesB.add(schedule);
+            for(Schedule schedule1 : resultSchedulesB) {
+                if(schedule.getTrain().getTrainNumber() == schedule.getTrain().getTrainNumber()
+                    && schedule1.getArrivalTime().after(schedule.getDepartureTime())) {
+                    tripDTO.setArrivalTime(schedule1.getArrivalTime());
+                    tripDTO.setArrivalStationName(schedule1.getStation().getStationName());
                 }
             }
-        }
-        return resultSchedulesB;
+            return tripDTO;
+        }).collect(Collectors.toList());
     }
-
 
 }
