@@ -20,14 +20,9 @@ public class SelectServiceImpl implements SelectService {
     StationDAO stationDAO;
 
     @Override
-    public List<Integer> findCommonTrains(String stationNameA, String stationNameB) {
-        List<Station> stationsA = stationDAO.findStationsByName(stationNameA);
-        List<Station> stationsB = stationDAO.findStationsByName(stationNameB);
-        Station stationA = stationsA.get(0);
-        Station stationB = stationsB.get(0);
-
-        List<Schedule> schedulesA = stationA.getSchedules();
-        List<Schedule> schedulesB = stationB.getSchedules();
+    public List<Integer> findCommonTrains(int stationAiD, int stationBiD) {
+        List<Schedule> schedulesA = stationDAO.findStation(stationAiD).getSchedules();
+        List<Schedule> schedulesB = stationDAO.findStation(stationBiD).getSchedules();
 
         List<Integer> trainsA = schedulesA.stream().map(schedule -> {return schedule.getTrain().getTrainNumber();})
                 .collect(Collectors.toList());
@@ -40,29 +35,13 @@ public class SelectServiceImpl implements SelectService {
     }
 
     @Override
-    public List<Schedule> findDepartureTrainsForTrip(String stationNameA, String stationNameB, String departureTimeA) throws ParseException {
-        List<Station> stationsA = stationDAO.findStationsByName(stationNameA);
-        List<Station> stationsB = stationDAO.findStationsByName(stationNameB);
-        Station stationA = stationsA.get(0);
-        Station stationB = stationsB.get(0);
-
-        List<Schedule> schedulesA = stationA.getSchedules();
-        List<Schedule> schedulesB = stationB.getSchedules();
-
-        List<Integer> trainsA = schedulesA.stream().map(schedule -> {return schedule.getTrain().getTrainNumber();})
-                .collect(Collectors.toList());
-
-        List<Integer> trainsB = schedulesB.stream().map(schedule -> {return schedule.getTrain().getTrainNumber();})
-                .collect(Collectors.toList());
-
-        trainsA.retainAll(trainsB);
-
+    public List<Schedule> findDepartureTrainsForTrip(List<Integer> commonTrains, String departureTimeA) throws ParseException {
         List<Schedule> resultSchedulesA = new ArrayList<Schedule>();
 
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm");
         Date departureTimeFormatedA = format.parse(departureTimeA);
 
-        for (int train:trainsA) {
+        for (int train:commonTrains) {
             for (Schedule schedule:schedulesA) {
                 if(schedule.getTrain().getTrainNumber() == train && schedule.getDepartureTime().before(departureTimeFormatedA)) {
                     resultSchedulesA.add(schedule);
@@ -73,29 +52,13 @@ public class SelectServiceImpl implements SelectService {
     }
 
     @Override
-    public List<Schedule> findArrivalTrainsForTrip(String stationNameA, String stationNameB, String arrivalTimeB) throws ParseException {
-        List<Station> stationsA = stationDAO.findStationsByName(stationNameA);
-        List<Station> stationsB = stationDAO.findStationsByName(stationNameB);
-        Station stationA = stationsA.get(0);
-        Station stationB = stationsB.get(0);
-
-        List<Schedule> schedulesA = stationA.getSchedules();
-        List<Schedule> schedulesB = stationB.getSchedules();
-
-        List<Integer> trainsA = schedulesA.stream().map(schedule -> {return schedule.getTrain().getTrainNumber();})
-                .collect(Collectors.toList());
-
-        List<Integer> trainsB = schedulesB.stream().map(schedule -> {return schedule.getTrain().getTrainNumber();})
-                .collect(Collectors.toList());
-
-        trainsA.retainAll(trainsB);
-
+    public List<Schedule> findArrivalTrainsForTrip(List<Integer> commonTrains, String arrivalTimeB) throws ParseException {
         List<Schedule> resultSchedulesB = new ArrayList<Schedule>();
 
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm");
         Date arrivalTimeFormatedB = format.parse(arrivalTimeB);
 
-        for (int train:trainsA) {
+        for (int train:commonTrains) {
             for (Schedule schedule:schedulesB) {
                 if(schedule.getTrain().getTrainNumber() == train && arrivalTimeFormatedB.before(schedule.getArrivalTime())) {
                     resultSchedulesB.add(schedule);

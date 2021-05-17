@@ -37,11 +37,14 @@ public class SelectController {
         int stationBiD = Integer.parseInt(request.getParameter("stationBiD"));
         String departureTimeA = request.getParameter("departureTimeA");
         String arrivalTimeB = request.getParameter("arrivalTimeB");
-//        try {
-//            selectService.findTrainsForTrip(stationAiD, stationBiD, departureTimeA, arrivalTimeB);
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//        }
+
+
+
+        try {
+            selectService.findTrainsForTrip(stationAiD, stationBiD, departureTimeA, arrivalTimeB);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         showSelector();
     }
 }
