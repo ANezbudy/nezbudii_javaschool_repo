@@ -2,13 +2,12 @@ package com.project.dao.impl;
 
 import com.project.dao.api.StationDAO;
 import com.project.entity.Station;
-import com.project.utils.StationMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -55,5 +54,12 @@ public class StationDAOImpl implements StationDAO {
         entityManager.detach(station);
         station.setStationName(stationName);
         entityManager.merge(station);
+    }
+
+    @Override
+    public List<Station> findStationsByName(String stationName) {
+        Query query = entityManager.createQuery("FROM Station WHERE stationName = :stationName");
+        query.setParameter("stationName", stationName);
+        return query.getResultList();
     }
 }

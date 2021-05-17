@@ -58,7 +58,7 @@
         <c:forEach var="scheduleDTO" items="${scheduleDTOList}" varStatus="theCount">
             <tr>
                 <th scope="row">${theCount.count}</th>
-                <td type="date">${scheduleDTO.trainNumber}</td>
+                <td type="date">${scheduleDTO.train.trainNumber}</td>
                 <td>${scheduleDTO.arrivalTime}</td>
                 <td>${scheduleDTO.departureTime}</td>
                 <sec:authorize access="hasRole('ADMIN')">

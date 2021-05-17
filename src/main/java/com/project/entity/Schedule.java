@@ -1,9 +1,6 @@
 package com.project.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -13,11 +10,13 @@ public class Schedule {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "train_number")
-    private int trainNumber;
+    @ManyToOne
+    @JoinColumn(name = "trainNumber")
+    private Train train;
 
-    @Column(name = "station_id")
-    private int stationId;
+    @ManyToOne
+    @JoinColumn(name = "station_id")
+    private Station station;
 
     @Column(name = "arrival_time")
     private Date arrivalTime;
@@ -33,20 +32,12 @@ public class Schedule {
         this.id = id;
     }
 
-    public int getTrainNumber() {
-        return trainNumber;
+    public Station getStation() {
+        return station;
     }
 
-    public void setTrainNumber(int trainNumber) {
-        this.trainNumber = trainNumber;
-    }
-
-    public int getStationId() {
-        return stationId;
-    }
-
-    public void setStationId(int stationId) {
-        this.stationId = stationId;
+    public void setStation(Station station) {
+        this.station = station;
     }
 
     public Date getArrivalTime() {
@@ -63,5 +54,13 @@ public class Schedule {
 
     public void setDepartureTime(Date departureTime) {
         this.departureTime = departureTime;
+    }
+
+    public Train getTrain() {
+        return train;
+    }
+
+    public void setTrain(Train train) {
+        this.train = train;
     }
 }

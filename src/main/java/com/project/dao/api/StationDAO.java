@@ -9,6 +9,8 @@ import java.util.List;
 public interface StationDAO {
     Station findStation(int id);
 
+    List<Station> findStationsByName(String stationName);
+
     List<Station> findAllStations();
 
     void createStation(Station station);

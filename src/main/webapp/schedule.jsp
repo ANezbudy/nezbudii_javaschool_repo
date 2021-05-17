@@ -15,7 +15,7 @@
 <div class="container">
     <form>
         <h3>Schedule for station: ${resultScheduleDTO.stationId}</h3>
-        <h4>Train number: ${resultScheduleDTO.trainNumber}</h4>
+        <h4>Train number: ${resultScheduleDTO.train}</h4>
         <div class="input-group mb-1">
             <span class="input-group-text">Train arrival</span>
             <input class="form-control" type="datetime-local" aria-label="Time" name="arrivalTime" value="${resultScheduleDTO.arrivalTime}"/>
@@ -26,7 +26,7 @@
         </div>
 
         <div class="input-group mb-1">
-            <input type="hidden" name="trainNumber" value="${resultScheduleDTO.trainNumber}">
+            <input type="hidden" name="trainNumber" value="${resultScheduleDTO.train}">
             <input type="hidden" name="stationId" value="${resultScheduleDTO.stationId}">
             <input type="hidden" name="id" value="${resultScheduleDTO.id}">
             <button type="submit" class="btn btn-success" formaction="schduleeditsubmit">Submit</button>

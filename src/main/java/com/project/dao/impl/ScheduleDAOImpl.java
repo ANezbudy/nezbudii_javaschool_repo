@@ -2,6 +2,7 @@ package com.project.dao.impl;
 
 import com.project.dao.api.ScheduleDAO;
 import com.project.entity.Schedule;
+import com.project.entity.Station;
 import com.project.utils.ScheduleMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,12 +39,18 @@ public class ScheduleDAOImpl implements ScheduleDAO {
     }
 
     @Override
-    public List<Schedule> findStationSchedule(int stationId) {
-        Query query = entityManager.createQuery("FROM Schedule WHERE stationId = :id");
-        query.setParameter("id", stationId);
+    public List<Schedule> findStationSchedule(Station station) {
+        Query query = entityManager.createQuery("FROM Schedule WHERE station = :station");
+        query.setParameter("station", station);
         return query.getResultList();
     }
 
+//    @Override
+//    public List<Schedule> findTrip(Date departureTimeA, Date arrivalTimeD, int stationIdA, int stationIdB) {
+//        List<Schedule> schedulesA =
+//
+//        return null;
+//    }
 
     @Override
     public int deleteSchedule(int scheduleId) {
@@ -59,8 +66,8 @@ public class ScheduleDAOImpl implements ScheduleDAO {
     public void updateSchedule(Schedule schedule) {
         Schedule foundSchedule = entityManager.find(Schedule.class, schedule.getId());
         entityManager.detach(foundSchedule);
-        foundSchedule.setTrainNumber(schedule.getTrainNumber());
-        foundSchedule.setStationId(schedule.getStationId());
+        foundSchedule.setTrain(schedule.getTrain());
+        foundSchedule.setStation(schedule.getStation());
         foundSchedule.setArrivalTime(schedule.getArrivalTime());
         foundSchedule.setDepartureTime(schedule.getDepartureTime());
         entityManager.merge(foundSchedule);

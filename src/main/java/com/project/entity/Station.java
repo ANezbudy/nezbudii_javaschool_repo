@@ -13,16 +13,15 @@ public class Station {
     @Column(name = "station_name")
     private String stationName;
 
-//    @Column(name = "train_number")
-//    private int train_number;
+    @OneToMany(mappedBy = "station", fetch = FetchType.EAGER)
+    private List<Schedule> schedules;
 
-
-    @ManyToMany(mappedBy = "stations")
+//    @ManyToMany
 //    @JoinTable(name = "schedule",
 //        joinColumns = @JoinColumn (name = "station_id"),
-//        inverseJoinColumns = @JoinColumn(name = "train_numder")
+//        inverseJoinColumns = @JoinColumn(name = "trainNumber")
 //    )
-    private List<Train> trains;
+//    private List<Train> trains;
 
     public int getId() {
         return id;
@@ -40,4 +39,7 @@ public class Station {
         this.stationName = station_name;
     }
 
+    public List<Schedule> getSchedules() {
+        return schedules;
+    }
 }

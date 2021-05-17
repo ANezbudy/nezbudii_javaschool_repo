@@ -25,37 +25,38 @@
                 <div class="col">
                     <div class="input-group mb-1">
                         <label class="input-group-text" for="inputGroupSelect01">Departure Station:</label>
-                        <select class="form-select" name="trainNumber" id="inputGroupSelect01">
+                        <select class="form-select" name="stationAiD" id="inputGroupSelect01">
                             <option selected>Choose...</option>
                             <c:forEach var="stationDTO" items="${stationDTOList}">
-                                <option value="${stationDTO.stationName}">${stationDTO.stationName}</option>
+                                <option value="${stationDTO.id}">${stationDTO.stationName}</option>
                             </c:forEach>
                         </select>
                     </div>
                     <div class="input-group mb-1">
                         <span class="input-group-text">Departure time:</span>
-                        <input class="form-control" type="datetime-local" aria-label="Time" name="arrivalTime"/>
+                        <input class="form-control" type="datetime-local" aria-label="Time" name="departureTimeA"/>
                     </div>
                 </div>
 
                 <div class="col">
                     <div class="input-group mb-1">
                         <label class="input-group-text" for="inputGroupSelect02">Arrival Station:</label>
-                        <select class="form-select" name="trainNumber" id="inputGroupSelect02">
+                        <select class="form-select" name="stationBiD" id="inputGroupSelect02">
                             <option selected>Choose...</option>
                             <c:forEach var="stationDTO" items="${stationDTOList}">
-                                <option value="${stationDTO.stationName}">${stationDTO.stationName}</option>
+                                <option value="${stationDTO.id}">${stationDTO.stationName}</option>
                             </c:forEach>
                         </select>
                     </div>
                     <div class="input-group mb-1">
                         <span class="input-group-text">Arrival time:</span>
-                        <input class="form-control" type="datetime-local" aria-label="Time" name="arrivalTime"/>
+                        <input class="form-control" type="datetime-local" aria-label="Time" name="arrivalTimeB"/>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <button type="submit" class="btn btn-success" formaction="schedulesubmit">Find the train</button>
+
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <button type="submit" class="btn btn-success" formaction="findtrip">Find the train</button>
             </div>
         </form>
 </div>

@@ -1,12 +1,13 @@
 package com.project.dto;
 
+import com.project.entity.Train;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
 public class ScheduleDTO {
     private int id;
-    private int trainNumber;
+    private Train train;
     private int stationId;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'hh:mm")
@@ -23,13 +24,12 @@ public class ScheduleDTO {
         this.id = Integer.parseInt(id);
     }
 
-    public int getTrainNumber() {
-        return trainNumber;
+    public Train getTrain() {
+        return train;
     }
 
-    public void setTrainNumber(String trainNumber) {
-        int number = Integer.parseInt(trainNumber);
-        this.trainNumber = number;
+    public void setTrain(Train train) {
+        this.train = train;
     }
 
     public int getStationId() {
