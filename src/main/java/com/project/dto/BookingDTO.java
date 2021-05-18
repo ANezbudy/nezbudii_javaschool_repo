@@ -1,7 +1,5 @@
 package com.project.dto;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -17,8 +15,17 @@ public class BookingDTO {
 
     String passengerLastName;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd'T'hh:mm")
     Date passengerBirthDate;
+
+    public Date getDepartureTime() {
+        return departureTime;
+    }
+
+    public void setDepartureTime(Date departureTime) {
+        this.departureTime = departureTime;
+    }
+
+    Date departureTime;
 
     public int getTrainNumber() {
         return trainNumber;

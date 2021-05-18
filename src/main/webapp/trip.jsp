@@ -47,6 +47,7 @@
                         <input type="hidden" name="scheduleId" value="${tripDTO.scheduleId}">
                         <input type="hidden" name="departureStationName" value="${tripDTO.departureStationName}">
                         <input type="hidden" name="trainNumber" value="${tripDTO.trainNumber}">
+                        <input type="hidden" name="departureTime" value="${tripDTO.departureTime}">
                     </form>
                 </td>
             </tr>

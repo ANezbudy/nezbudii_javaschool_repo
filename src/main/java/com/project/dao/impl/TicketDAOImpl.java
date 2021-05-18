@@ -1,9 +1,7 @@
 package com.project.dao.impl;
 
 import com.project.dao.api.TicketDAO;
-import com.project.entity.Passenger;
 import com.project.entity.Ticket;
-import com.project.entity.Train;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
@@ -26,11 +24,18 @@ public class TicketDAOImpl implements TicketDAO {
     }
 
     @Override
-    public int createTicket(Passenger passenger, int trainNumber) {
+    public List<Ticket> findTrainAndPassengerTickets(int trainNumber, int passengerId) {
+        Query query = entityManager.createQuery("FROM Ticket WHERE trainNumber = :trainNumber AND passengerId = :passengerId");
+        query.setParameter("trainNumber", trainNumber);
+        query.setParameter("passengerId", passengerId);
+        return query.getResultList();
+    }
+
+    @Override
+    public void createTicket(int passengerId, int trainNumber) {
         Ticket ticket = new Ticket();
-//        ticket.setPassenger(passenger);
-        ticket.setTranNumber(trainNumber);
+        ticket.setPassengerId(passengerId);
+        ticket.setTrainNumber(trainNumber);
         entityManager.persist(ticket);
-        return ticket.getId();
     }
 }

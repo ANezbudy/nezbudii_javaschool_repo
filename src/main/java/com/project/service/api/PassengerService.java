@@ -10,7 +10,7 @@ public interface PassengerService {
 
     List<PassengerDTO> findAllPassengers();
 
-    int createPassenger(PassengerDTO passengerDTO);
+    void createPassenger(PassengerDTO passengerDTO);
 
     int deletePassengerById(PassengerDTO passengerDTO);
 

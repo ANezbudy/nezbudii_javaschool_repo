@@ -35,7 +35,7 @@
                 <button type="submit" class="btn btn-success" formaction="bookTicket">Book a ticket to ride!!!</button>
                 <input type="hidden" name="trainNumber" value="${bookingDTO.trainNumber}">
                 <input type="hidden" name="scheduleId" value="${bookingDTO.scheduleId}">
-                <input type="hidden" name="scheduleId" value="${bookingDTO.stationName}">
+                <input type="hidden" name="departureTime" value="${bookingDTO.departureTime}">
             </div>
         </form>
 </div>

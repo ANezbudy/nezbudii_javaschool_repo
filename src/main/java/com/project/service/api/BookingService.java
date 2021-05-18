@@ -7,9 +7,9 @@ import java.util.concurrent.TimeUnit;
 
 public interface BookingService {
 
-    boolean isBookReady(String trainNumber, String scheduleId);
+    boolean isEmptyPlacesOnTrain(int trainNumber);
 
     long dateDiff(Date data1, Date data2, TimeUnit timeUnit);
 
-    String bookTheTicket(BookingDTO bookingDTO);
+    String bookTicket(BookingDTO bookingDTO);
 }

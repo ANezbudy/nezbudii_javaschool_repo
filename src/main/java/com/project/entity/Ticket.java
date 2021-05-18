@@ -9,20 +9,11 @@ public class Ticket {
     @Column(name = "ID")
     private int id;
 
-//    @ManyToOne
-//    @JoinColumn(name = "trainNumber")
-//    private Train train;
-
     @Column
-    private int tranNumber;
+    private int trainNumber;
 
     @Column
     private int passengerId;
-
-//    @ManyToOne
-//    @JoinColumn(name = "passengerId")
-//    private Passenger passenger;
-
 
     public int getId() {
         return id;
@@ -32,28 +23,12 @@ public class Ticket {
         this.id = id;
     }
 
-//    public Passenger getPassenger() {
-//        return passenger;
-//    }
-
-//    public Train getTrain() {
-//        return train;
-//    }
-//
-//    public void setTrain(Train train) {
-//        this.train = train;
-//    }
-
-//    public void setPassenger(Passenger passenger) {
-//        this.passenger = passenger;
-//    }
-
-    public int getTranNumber() {
-        return tranNumber;
+    public int getTrainNumber() {
+        return trainNumber;
     }
 
-    public void setTranNumber(int tranNumber) {
-        this.tranNumber = tranNumber;
+    public void setTrainNumber(int trainNumber) {
+        this.trainNumber = trainNumber;
     }
 
     public int getPassengerId() {

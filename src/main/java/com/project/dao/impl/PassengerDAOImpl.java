@@ -44,9 +44,8 @@ public class PassengerDAOImpl implements PassengerDAO {
     }
 
     @Override
-    public int createPassenger(Passenger passenger) {
+    public void createPassenger(Passenger passenger) {
         entityManager.persist(passenger);
-        return passenger.getId();
     }
 
     @Override

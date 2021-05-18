@@ -23,8 +23,8 @@ public class ResultDTO {
         return trainNumber;
     }
 
-    public void setTrainNumber(int trainNumber) {
-        this.trainNumber = trainNumber;
+    public void setTrainNumber(String trainNumber) {
+        this.trainNumber = Integer.parseInt(trainNumber);
     }
 
     public Date getDepartureTime() {

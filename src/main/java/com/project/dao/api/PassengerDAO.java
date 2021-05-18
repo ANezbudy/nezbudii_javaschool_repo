@@ -13,7 +13,7 @@ public interface PassengerDAO {
 
     List<Passenger> findAllPassengers();
 
-    int createPassenger(Passenger passenger);
+    void createPassenger(Passenger passenger);
 
     Passenger createPassenger(String passengerName, String passengerLastName, Date passengerBirthDate);
 
