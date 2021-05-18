@@ -16,4 +16,6 @@ public interface TrainDAO {
     int deleteTrain(int trainNumber);
 
     void updateTrain(int trainNumber, int numPlaces);
+
+    int changeEmptyPlaces(int trainNumber, int emptyPlaces);
 }

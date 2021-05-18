@@ -17,8 +17,8 @@
 
     <jsp:include page="header.jsp" />
         <div class="row">
-            <h3 style="text-align:center">Train number: ${bookDTO.trainNumber}</h3>
-            <h4 style="text-align:center">Station name: ${bookDTO.stationName}</h4>
+            <h3 style="text-align:center">Train number: ${bookingDTO.trainNumber}</h3>
+            <h4 style="text-align:center">Station name: ${bookingDTO.stationName}</h4>
         </div>
 
         <form class="row">
@@ -33,6 +33,9 @@
 
             <div class="d-grid gap-2 col-6 mx-auto">
                 <button type="submit" class="btn btn-success" formaction="bookTicket">Book a ticket to ride!!!</button>
+                <input type="hidden" name="trainNumber" value="${bookingDTO.trainNumber}">
+                <input type="hidden" name="scheduleId" value="${bookingDTO.scheduleId}">
+                <input type="hidden" name="scheduleId" value="${bookingDTO.stationName}">
             </div>
         </form>
 </div>

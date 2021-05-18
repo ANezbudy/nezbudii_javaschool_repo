@@ -59,4 +59,13 @@ public class TrainDAOImpl implements TrainDAO {
         train.setNumPlaces(numPlaces);
         entityManager.merge(train);
     }
+
+    @Override
+    public int changeEmptyPlaces(int trainNumber, int emptyPlaces) {
+        Train train = entityManager.find(Train.class, trainNumber);
+        entityManager.detach(train);
+        train.setEmptyPlaces(emptyPlaces);
+        entityManager.merge(train);
+        return train.getEmptyPlaces();
+    }
 }

@@ -31,9 +31,9 @@ public class PassengerServiceImpl implements PassengerService {
     }
 
     @Override
-    public void createPassenger(PassengerDTO passengerDTO) {
+    public int createPassenger(PassengerDTO passengerDTO) {
         Passenger passenger = passengerMapper.toEntity(passengerDTO);
-        passengerDAO.createPassenger(passenger);
+        return passengerDAO.createPassenger(passenger);
     }
 
     @Override

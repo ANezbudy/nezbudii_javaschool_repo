@@ -44,8 +44,19 @@ public class PassengerDAOImpl implements PassengerDAO {
     }
 
     @Override
-    public void createPassenger(Passenger passenger) {
+    public int createPassenger(Passenger passenger) {
         entityManager.persist(passenger);
+        return passenger.getId();
+    }
+
+    @Override
+    public Passenger createPassenger(String passengerName, String passengerLastName, Date passengerBirthDate) {
+        Passenger passenger = new Passenger();
+        passenger.setPassengerName(passengerName);
+        passenger.setPassengerLastName(passengerLastName);
+        passenger.setPassengerBirthDate(passengerBirthDate);
+        entityManager.persist(passenger);
+        return passenger;
     }
 
     @Override
@@ -68,11 +79,15 @@ public class PassengerDAOImpl implements PassengerDAO {
     }
 
     @Override
-    public List<Passenger> findPassenger(String fistName, String lastName, Date birthDate) {
-        Query query = entityManager.createQuery("FROM (FROM (FROM Passenger WHERE passengerName = :fistName) WHERE passengerLastName = :lastName) WHERE passengerBirthDate = :birthDate");
+    public Passenger findPassenger(String fistName, String lastName, Date birthDate) {
+//        Query query = entityManager.createQuery("FROM (FROM (FROM Passenger WHERE passengerName = :fistName) as pName WHERE passengerLastName = :lastName) as pLastName WHERE passengerBirthDate = :birthDate");
+        Query query = entityManager.createQuery("FROM Passenger WHERE passengerName = :fistName AND passengerLastName = :lastName AND passengerBirthDate = :birthDate");
+
         query.setParameter("fistName", fistName);
         query.setParameter("lastName", lastName);
         query.setParameter("birthDate", birthDate);
-        return query.getResultList();
+        if (query.getResultList().size() > 0) {
+            return (Passenger)query.getResultList().get(0);
+        } else return null;
     }
 }

@@ -13,13 +13,15 @@ public interface PassengerDAO {
 
     List<Passenger> findAllPassengers();
 
-    void createPassenger(Passenger passenger);
+    int createPassenger(Passenger passenger);
+
+    Passenger createPassenger(String passengerName, String passengerLastName, Date passengerBirthDate);
 
     // why returns int??
     int deletePassengerById(int id);
 
     void updatePassenger(int id, String passengerName, String passengerLastName, Date passengerBirthDate);
 
-    List<Passenger> findPassenger(String fistName, String lastName, Date birthDate);
+    Passenger findPassenger(String fistName, String lastName, Date birthDate);
 
 }

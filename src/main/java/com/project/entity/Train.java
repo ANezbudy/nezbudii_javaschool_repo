@@ -13,6 +13,15 @@ public class Train {
     @Column(name = "num_places")
     private int numPlaces;
 
+    @Column(name = "emptyPlaces")
+    private int emptyPlaces;
+
+//    @OneToMany(mappedBy = "train", fetch = FetchType.LAZY)
+//    private List<Ticket> tickets;
+
+    @OneToMany(mappedBy = "train", fetch = FetchType.EAGER)
+    private List<Schedule> schedules;
+
     public int getEmptyPlaces() {
         return emptyPlaces;
     }
@@ -21,9 +30,9 @@ public class Train {
         this.emptyPlaces = emptyPlaces;
     }
 
-    public void setTickets(List<Ticket> tickets) {
-        this.tickets = tickets;
-    }
+//    public void setTickets(List<Ticket> tickets) {
+//        this.tickets = tickets;
+//    }
 
     public List<Schedule> getSchedules() {
         return schedules;
@@ -33,14 +42,7 @@ public class Train {
         this.schedules = schedules;
     }
 
-    @Column(name = "emptyPlaces")
-    private int emptyPlaces;
 
-    @OneToMany(mappedBy = "train", fetch = FetchType.EAGER)
-    private List<Ticket> tickets;
-
-    @OneToMany(mappedBy = "train", fetch = FetchType.LAZY)
-    private List<Schedule> schedules;
 
     public int getTrainNumber() {
         return trainNumber;
@@ -58,8 +60,8 @@ public class Train {
         this.numPlaces = num_places;
     }
 
-    public List<Ticket> getTickets() {
-        return tickets;
-    }
+//    public List<Ticket> getTickets() {
+//        return tickets;
+//    }
 
 }

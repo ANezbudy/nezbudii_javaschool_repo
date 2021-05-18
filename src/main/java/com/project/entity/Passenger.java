@@ -1,8 +1,10 @@
 package com.project.entity;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "passengers")
@@ -20,13 +22,13 @@ public class Passenger {
     @Column(name = "birthdate", nullable = false)
     private Date passengerBirthDate;
 
-    @OneToMany (mappedBy = "passenger", fetch = FetchType.EAGER)
-    private List<Ticket> tickets;
+//    @OneToMany (mappedBy = "passenger", fetch = FetchType.EAGER)
+//    private List<Ticket> tickets;
 
 
-    public List<Ticket> getTickets() {
-        return tickets;
-    }
+//    public List<Ticket> getTickets() {
+//        return tickets;
+//    }
 
     public String getPassengerName() {
         return passengerName;

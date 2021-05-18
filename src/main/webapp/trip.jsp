@@ -45,7 +45,8 @@
                     <form action="initbooking">
                         <button type="submit" class="btn btn-success">Buy</button>
                         <input type="hidden" name="scheduleId" value="${tripDTO.scheduleId}">
-<%--                        <input type="hidden" name="departureStationName" value="${tripDTO.departureStationName}">--%>
+                        <input type="hidden" name="departureStationName" value="${tripDTO.departureStationName}">
+                        <input type="hidden" name="trainNumber" value="${tripDTO.trainNumber}">
                     </form>
                 </td>
             </tr>
