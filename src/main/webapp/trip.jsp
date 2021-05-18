@@ -24,7 +24,7 @@
             <th scope="col">Departure Station Name</th>
             <th scope="col">Departure Time</th>
             <th scope="col">Arrival Station Name</th>
-            <th scope="col">Arrival Time</th>
+<%--            <th scope="col">Arrival Time</th>--%>
             <th scope="col">Train Number</th>
             <th scope="col">Buy</th>
         </tr>
@@ -39,7 +39,7 @@
                 <td>${tripDTO.departureStationName}</td>
                 <td>${tripDTO.departureTime}</td>
                 <td>${tripDTO.arrivalStationName}</td>
-                <td>${tripDTO.arrivalTime}</td>
+<%--                <td>${tripDTO.arrivalTime}</td>--%>
                 <td>${tripDTO.trainNumber}</td>
                 <td>
                     <form action="initbooking">

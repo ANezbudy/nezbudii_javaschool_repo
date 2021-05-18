@@ -1,5 +1,7 @@
 package com.project.utils;
 
+import com.project.dao.api.StationDAO;
+import com.project.dao.api.TrainDAO;
 import com.project.dto.ScheduleDTO;
 import com.project.entity.Schedule;
 import org.modelmapper.ModelMapper;
@@ -13,6 +15,12 @@ public class ScheduleMapper {
     @Autowired
     private ModelMapper mapper;
 
+    @Autowired
+    StationDAO stationDAO;
+
+    @Autowired
+    TrainDAO trainDAO;
+
     public Schedule toEntity(ScheduleDTO dto) {
         return Objects.isNull(dto) ? null : mapper.map(dto, Schedule.class);
     }
@@ -23,16 +31,16 @@ public class ScheduleMapper {
 
 //    @PostConstruct
 //    public void setupMapper() {
-//        mapper.createTypeMap(Schedule.class, ScheduleDTO.class)
-//                .addMappings(m -> m.skip(ScheduleDTO::setArrivalTime))
-//                .addMappings(m -> m.skip(ScheduleDTO::setDepartureTime))
-//                .setPostConverter(toDtoConverter());
+////        mapper.createTypeMap(Schedule.class, ScheduleDTO.class)
+////                .addMappings(m -> m.skip(ScheduleDTO::setArrivalTime))
+////                .addMappings(m -> m.skip(ScheduleDTO::setDepartureTime))
+////                .setPostConverter(toDtoConverter());
 //        mapper.createTypeMap(ScheduleDTO.class, Schedule.class)
-//                .addMappings(m -> m.skip(Schedule::setArrivalTime))
-//                .addMappings(m -> m.skip(Schedule::setDepartureTime))
+//                .addMappings(m -> m.skip(Schedule::setTrain))
+//                .addMappings(m -> m.skip(Schedule::setStation))
 //                .setPostConverter(toEntityConverter());
 //    }
-
+//
 //    public Converter<ScheduleDTO, Schedule> toEntityConverter() {
 //        return context -> {
 //            ScheduleDTO source = context.getSource();
@@ -46,28 +54,33 @@ public class ScheduleMapper {
 //        };
 //    }
 //
-//    public Converter<Schedule, ScheduleDTO> toDtoConverter() {
-//        return context -> {
-//            Schedule source = context.getSource();
-//            ScheduleDTO destination = context.getDestination();
-//            mapSpecificFields(source, destination);
-//            return context.getDestination();
-//        };
-//    }
-
-//    public void mapSpecificFields(Schedule source, ScheduleDTO destination) {
+////    public Converter<Schedule, ScheduleDTO> toDtoConverter() {
+////        return context -> {
+////            Schedule source = context.getSource();
+////            ScheduleDTO destination = context.getDestination();
+////            mapSpecificFields(source, destination);
+////            return context.getDestination();
+////        };
+////    }
+//
+////    public void mapSpecificFields(Schedule source, ScheduleDTO destination) {
 ////        destination.setArrivalTime(
-////                new SimpleDateFormat("yyyy-MM-dd hh:mm").format(source.getArrivalTime())
+//////                new SimpleDateFormat("yyyy-MM-dd hh:mm").format(source.getArrivalTime())
+////                source.getArrivalTime()
 ////        );
 ////        destination.setDepartureTime(
-////                new SimpleDateFormat("yyyy-MM-dd hh:mm").format(source.getDepartureTime())
+//////                new SimpleDateFormat("yyyy-MM-dd hh:mm").format(source.getDepartureTime())
+////                source.getDepartureTime()
 ////        );
-//    }
+////    }
 //    //TODO exception!
 //    public void mapSpecificFields(ScheduleDTO source, Schedule destination) throws ParseException {
-////        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm");
-////        destination.setArrivalTime(format.parse(source.getArrivalTime().replace('T', ' ')));
-////        destination.setDepartureTime(format.parse(source.getDepartureTime().replace('T', ' ')));
+//        int trainNumber = source.getTrainNumber();
+//        int stationId = source.getStationId();
+//
+//        destination.setTrain(trainDAO.findTrain(trainNumber));
+//        destination.setStation(stationDAO.findStation(stationId));
+//
 //    }
 }
 
