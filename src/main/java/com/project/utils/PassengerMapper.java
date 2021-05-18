@@ -64,7 +64,7 @@ public class PassengerMapper {
 
     // will convert the data from view to DTO in a needed format. Not sure if it is needed
     public void mapSpecificFields(PassengerDTO source, Passenger destination) throws ParseException {
-        SimpleDateFormat format = new SimpleDateFormat("MM-dd-yyyy");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         destination.setPassengerBirthDate(format.parse(source.getPassengerBirthDate()));
     }
 
