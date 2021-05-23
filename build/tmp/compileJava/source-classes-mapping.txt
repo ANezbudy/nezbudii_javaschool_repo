@@ -48,34 +48,34 @@ com/project/controller/TrainController.java
  com.project.controller.TrainController
 com/project/utils/UrlAuthenticationSuccessHandler.java
  com.project.utils.UrlAuthenticationSuccessHandler
-com/project/controller/ScheduleController.java
- com.project.controller.ScheduleController
+com/project/service/impl/PassengerServiceImpl.java
+ com.project.service.impl.PassengerServiceImpl
+com/project/utils/PassengerMapper.java
+ com.project.utils.PassengerMapper
 com/project/service/impl/ScheduleServiceImpl.java
  com.project.service.impl.ScheduleServiceImpl
-com/project/entity/Station.java
- com.project.entity.Station
 com/project/config/HibernateConfig.java
  com.project.config.HibernateConfig
 com/project/service/api/PassengerService.java
  com.project.service.api.PassengerService
 com/project/config/SecurityConfig.java
  com.project.config.SecurityConfig
-com/project/dto/StationDTO.java
- com.project.dto.StationDTO
+com/project/service/api/ScheduleService.java
+ com.project.service.api.ScheduleService
 com/project/service/api/TicketService.java
  com.project.service.api.TicketService
 com/project/config/MapperConfig.java
  com.project.config.MapperConfig
 com/project/config/WebConfig.java
  com.project.config.WebConfig
-com/project/init/MainWebAppInitializer.java
- com.project.init.MainWebAppInitializer
+com/project/dto/ScheduleDTO.java
+ com.project.dto.ScheduleDTO
 com/project/service/impl/TrainServiceImpl.java
  com.project.service.impl.TrainServiceImpl
 com/project/dao/api/StationDAO.java
  com.project.dao.api.StationDAO
-com/project/entity/Ticket.java
- com.project.entity.Ticket
+com/project/controller/ScheduleController.java
+ com.project.controller.ScheduleController
 com/project/service/impl/StationServiceImpl.java
  com.project.service.impl.StationServiceImpl
 com/project/service/api/TrainService.java
@@ -100,15 +100,15 @@ com/project/service/impl/TicketServiceImpl.java
  com.project.service.impl.TicketServiceImpl
 com/project/controller/SelectController.java
  com.project.controller.SelectController
-com/project/dto/ResultDTO.java
- com.project.dto.ResultDTO
-com/project/dto/ScheduleDTO.java
- com.project.dto.ScheduleDTO
 com/project/utils/ScheduleMapper.java
  com.project.utils.ScheduleMapper
-com/project/service/api/ScheduleService.java
- com.project.service.api.ScheduleService
-com/project/service/impl/PassengerServiceImpl.java
- com.project.service.impl.PassengerServiceImpl
-com/project/utils/PassengerMapper.java
- com.project.utils.PassengerMapper
+com/project/dto/StationDTO.java
+ com.project.dto.StationDTO
+com/project/dto/ResultDTO.java
+ com.project.dto.ResultDTO
+com/project/entity/Ticket.java
+ com.project.entity.Ticket
+com/project/entity/Station.java
+ com.project.entity.Station
+com/project/init/MainWebAppInitializer.java
+ com.project.init.MainWebAppInitializer

@@ -48,7 +48,12 @@ public class ScheduleController {
     public ModelAndView scheduleCreate(HttpServletRequest request) {
         ScheduleDTO scheduleDTO = new ScheduleDTO();
         scheduleDTO.setStationId(request.getParameter("stationId"));
-        scheduleDTO.setTrainNumber(request.getParameter("trainNumber"));
+        try {
+            scheduleDTO.setTrainNumber(request.getParameter("trainNumber"));
+        } catch (NumberFormatException exception) {
+
+        }
+
         scheduleDTO.setArrivalTime(request.getParameter("arrivalTime"));
         scheduleDTO.setDepartureTime(request.getParameter("departureTime"));
 
