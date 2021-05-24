@@ -29,7 +29,6 @@ dependencies {
     implementation("org.springframework.security:spring-security-config:$springframeworkVersion")
     implementation("org.springframework.security:spring-security-taglibs:$springframeworkVersion")
 
-
     implementation 'javax.servlet:javax.servlet-api:4.0.0'
     implementation 'org.glassfish:javax.servlet.jsp.jstl:3.1.1-b11'
     implementation 'javax.servlet:jstl:1.2'
