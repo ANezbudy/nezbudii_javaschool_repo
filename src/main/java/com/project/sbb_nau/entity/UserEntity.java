@@ -1,7 +1,6 @@
 package com.project.sbb_nau.entity;
 
 import lombok.Data;
-import org.springframework.context.annotation.EnableLoadTimeWeaving;
 
 import javax.persistence.*;
 

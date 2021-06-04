@@ -3,6 +3,7 @@ package com.project.sbb_nau.controller;
 import com.project.sbb_nau.entity.Station;
 import com.project.sbb_nau.service.StationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,7 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user/stations")
+@RequestMapping("/stations")
+@CrossOrigin("http://localhost:8081")
 public class StationController {
     @Autowired
     StationService stationService;
