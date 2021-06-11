@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.List;
 
 @Entity
 @Table(name = "stations")
@@ -19,6 +20,6 @@ public class Station {
     @NotBlank
     private String stationName;
 
-//    @OneToMany(mappedBy = "station", fetch = FetchType.EAGER)
-//    private List<Schedule> schedules;
+    @OneToMany(mappedBy = "station", fetch = FetchType.EAGER)
+    private List<Schedule> schedules;
 }

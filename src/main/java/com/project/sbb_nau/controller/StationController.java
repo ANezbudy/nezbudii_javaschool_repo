@@ -1,24 +1,45 @@
 package com.project.sbb_nau.controller;
 
+import com.project.sbb_nau.config.dto.StationDto;
 import com.project.sbb_nau.entity.Station;
 import com.project.sbb_nau.service.StationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/stations")
+@RequestMapping("/admin")
 @CrossOrigin("http://localhost:8081")
 public class StationController {
     @Autowired
     StationService stationService;
 
-    @GetMapping("")
+    @GetMapping("/stations")
     public List<Station> listAllStations() {
         return stationService.listAllStations();
     }
+
+    @PostMapping("/stations/create")
+    public String createStation(@RequestBody StationDto stationDto) {
+        Station station = new Station();
+        station.setStationName(stationDto.getStationName());
+        stationService.saveStation(station);
+        return "Station created";
+    }
+
+    @PutMapping("/station/update")
+    public String updateStation(@RequestBody StationDto stationDto) {
+        Station station = stationService.getStation(stationDto.getId());
+        station.setStationName(stationDto.getStationName());
+        stationService.saveStation(station);
+        return "Station updated";
+    }
+
+    @DeleteMapping("/station/delete")
+    public String deleteStation(@RequestBody StationDto stationDto) {
+        stationService.deleteStation(stationDto.getId());
+        return "Station deleted";
+    }
+
 }

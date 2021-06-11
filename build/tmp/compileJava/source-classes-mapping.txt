@@ -6,6 +6,8 @@ com/project/sbb_nau/ServletInitializer.java
  com.project.sbb_nau.ServletInitializer
 com/project/sbb_nau/controller/StationController.java
  com.project.sbb_nau.controller.StationController
+com/project/sbb_nau/config/dto/RegistrationRequestDto.java
+ com.project.sbb_nau.config.dto.RegistrationRequestDto
 com/project/sbb_nau/controller/TestSecurityController.java
  com.project.sbb_nau.controller.TestSecurityController
 com/project/sbb_nau/service/StationService.java
@@ -26,8 +28,8 @@ com/project/sbb_nau/controller/AuthResponse.java
  com.project.sbb_nau.controller.AuthResponse
 com/project/sbb_nau/config/CustomUserDetailsService.java
  com.project.sbb_nau.config.CustomUserDetailsService
-com/project/sbb_nau/controller/RegistrationRequest.java
- com.project.sbb_nau.controller.RegistrationRequest
+com/project/sbb_nau/config/dto/StationDto.java
+ com.project.sbb_nau.config.dto.StationDto
 com/project/sbb_nau/config/SecurityConfig.java
  com.project.sbb_nau.config.SecurityConfig
 com/project/sbb_nau/repository/UserEntityRepository.java

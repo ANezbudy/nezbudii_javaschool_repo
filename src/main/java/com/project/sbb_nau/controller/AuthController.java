@@ -1,5 +1,6 @@
 package com.project.sbb_nau.controller;
 
+import com.project.sbb_nau.config.dto.RegistrationRequestDto;
 import com.project.sbb_nau.config.jwt.JwtProvider;
 import com.project.sbb_nau.entity.UserEntity;
 import com.project.sbb_nau.service.UserService;
@@ -21,10 +22,10 @@ public class AuthController {
     private JwtProvider jwtProvider;
 
     @PostMapping("/register")
-    public String registerUser(@RequestBody @Valid RegistrationRequest registrationRequest) {
+    public String registerUser(@RequestBody @Valid RegistrationRequestDto registrationRequestDto) {
         UserEntity u = new UserEntity();
-        u.setPassword(registrationRequest.getPassword());
-        u.setLogin(registrationRequest.getLogin());
+        u.setPassword(registrationRequestDto.getPassword());
+        u.setLogin(registrationRequestDto.getLogin());
         userService.saveUser(u);
         return "OK";
     }
@@ -33,6 +34,6 @@ public class AuthController {
     public AuthResponse auth(@RequestBody AuthRequest request) {
         UserEntity userEntity = userService.findByLoginAndPassword(request.getLogin(), request.getPassword());
         String token = jwtProvider.generateToken(userEntity.getLogin());
-        return new AuthResponse(token);
+        return new AuthResponse(token, userEntity.getLogin());
     }
 }
