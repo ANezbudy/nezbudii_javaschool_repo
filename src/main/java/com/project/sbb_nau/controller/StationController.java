@@ -1,6 +1,7 @@
 package com.project.sbb_nau.controller;
 
 import com.project.sbb_nau.config.dto.StationDto;
+import com.project.sbb_nau.entity.Schedule;
 import com.project.sbb_nau.entity.Station;
 import com.project.sbb_nau.service.StationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,11 @@ public class StationController {
     public String deleteStation(@RequestBody StationDto stationDto) {
         stationService.deleteStation(stationDto.getId());
         return "Station deleted";
+    }
+
+    @GetMapping("/station/schedules")
+    public List<Schedule> getStationSchedule(@RequestBody StationDto stationDto) {
+        return stationService.getStationSchedules(stationDto.getId());
     }
 
 }

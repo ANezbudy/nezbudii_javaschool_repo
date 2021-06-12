@@ -1,5 +1,3 @@
-com/project/sbb_nau/repository/StationRepository.java
- com.project.sbb_nau.repository.StationRepository
 com/project/sbb_nau/entity/Station.java
  com.project.sbb_nau.entity.Station
 com/project/sbb_nau/ServletInitializer.java
@@ -10,35 +8,51 @@ com/project/sbb_nau/config/dto/RegistrationRequestDto.java
  com.project.sbb_nau.config.dto.RegistrationRequestDto
 com/project/sbb_nau/controller/TestSecurityController.java
  com.project.sbb_nau.controller.TestSecurityController
+com/project/sbb_nau/service/TrainService.java
+ com.project.sbb_nau.service.TrainService
 com/project/sbb_nau/service/StationService.java
  com.project.sbb_nau.service.StationService
 com/project/sbb_nau/config/jwt/JwtProvider.java
  com.project.sbb_nau.config.jwt.JwtProvider
 com/project/sbb_nau/repository/RoleEntityRepository.java
  com.project.sbb_nau.repository.RoleEntityRepository
-com/project/sbb_nau/SbbNauApplication.java
- com.project.sbb_nau.SbbNauApplication
-com/project/sbb_nau/entity/RoleEntity.java
- com.project.sbb_nau.entity.RoleEntity
+com/project/sbb_nau/repository/TrainRepository.java
+ com.project.sbb_nau.repository.TrainRepository
 com/project/sbb_nau/entity/UserEntity.java
  com.project.sbb_nau.entity.UserEntity
 com/project/sbb_nau/config/jwt/JwtFilter.java
  com.project.sbb_nau.config.jwt.JwtFilter
 com/project/sbb_nau/controller/AuthResponse.java
  com.project.sbb_nau.controller.AuthResponse
+com/project/sbb_nau/service/ScheduleService.java
+ com.project.sbb_nau.service.ScheduleService
 com/project/sbb_nau/config/CustomUserDetailsService.java
  com.project.sbb_nau.config.CustomUserDetailsService
-com/project/sbb_nau/config/dto/StationDto.java
- com.project.sbb_nau.config.dto.StationDto
 com/project/sbb_nau/config/SecurityConfig.java
  com.project.sbb_nau.config.SecurityConfig
 com/project/sbb_nau/repository/UserEntityRepository.java
  com.project.sbb_nau.repository.UserEntityRepository
-com/project/sbb_nau/controller/AuthRequest.java
- com.project.sbb_nau.controller.AuthRequest
-com/project/sbb_nau/controller/AuthController.java
- com.project.sbb_nau.controller.AuthController
 com/project/sbb_nau/service/UserService.java
  com.project.sbb_nau.service.UserService
+com/project/sbb_nau/entity/Schedule.java
+ com.project.sbb_nau.entity.Schedule
 com/project/sbb_nau/config/CustomUserDetails.java
  com.project.sbb_nau.config.CustomUserDetails
+com/project/sbb_nau/repository/StationRepository.java
+ com.project.sbb_nau.repository.StationRepository
+com/project/sbb_nau/SbbNauApplication.java
+ com.project.sbb_nau.SbbNauApplication
+com/project/sbb_nau/entity/Train.java
+ com.project.sbb_nau.entity.Train
+com/project/sbb_nau/entity/RoleEntity.java
+ com.project.sbb_nau.entity.RoleEntity
+com/project/sbb_nau/config/dto/StationDto.java
+ com.project.sbb_nau.config.dto.StationDto
+com/project/sbb_nau/repository/ScheduleRepository.java
+ com.project.sbb_nau.repository.ScheduleRepository
+com/project/sbb_nau/controller/AuthRequest.java
+ com.project.sbb_nau.controller.AuthRequest
+com/project/sbb_nau/controller/TrainController.java
+ com.project.sbb_nau.controller.TrainController
+com/project/sbb_nau/controller/AuthController.java
+ com.project.sbb_nau.controller.AuthController

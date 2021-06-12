@@ -12,10 +12,10 @@ public class Schedule {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer id;
+    public Integer scheduleId;
 
-    @Column
-    public Integer stationid;
+//    @Column
+//    public Integer stationId;
 
     @Column
     public Date arrivalTime;
@@ -23,8 +23,8 @@ public class Schedule {
     @Column
     public Date departureTime;
 
-    @Column
-    public Integer trainNumber;
+//    @Column
+//    public Integer trainNumber;
 
     @ManyToOne
     @JoinColumn(name = "id", nullable = false)
