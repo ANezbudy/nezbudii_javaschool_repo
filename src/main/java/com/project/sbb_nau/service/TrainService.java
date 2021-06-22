@@ -14,9 +14,6 @@ public class TrainService {
     @Autowired
     private TrainRepository trainRepository;
 
-//    @Autowired
-//    private ScheduleRepository scheduleRepository;
-
     public List<Train> listAllTrains() {
         return trainRepository.findAll();
     }
@@ -25,15 +22,16 @@ public class TrainService {
         trainRepository.save(train);
     }
     //TODO manage the exception from get
-    public Train getTrain(Integer trainNumber) {
-        return trainRepository.findById(trainNumber).get();
+    public Train getTrainById(Integer id) {
+        return trainRepository.findById(id).get();
+    }
+    
+    public Train getTrainByTrainNumber(int trainNumber) {
+        return trainRepository.findByTrainNumber(trainNumber);
     }
 
     public void deleteTrain(Integer trainNumber) {
         trainRepository.deleteById(trainNumber);
     }
 
-//    public List<Schedule> getSchedulesForTrain(int trainNumber) {
-//        return scheduleRepository.findByTrainNumber(trainNumber);
-//    }
 }

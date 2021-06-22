@@ -3,7 +3,6 @@ package com.project.sbb_nau.entity;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "trains")
@@ -11,6 +10,10 @@ import java.util.List;
 public class Train {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Integer id;
+
+    @Column(nullable = false, unique = true)
     public Integer trainNumber;
 
     @Column
@@ -19,6 +22,4 @@ public class Train {
     @Column
     private Integer emptyPlaces;
 
-    @OneToMany(mappedBy = "train", fetch = FetchType.EAGER)
-    private List<Schedule> schedules;
 }

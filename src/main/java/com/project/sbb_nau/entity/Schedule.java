@@ -1,6 +1,8 @@
 package com.project.sbb_nau.entity;
 
 import lombok.Data;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -12,10 +14,7 @@ public class Schedule {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer scheduleId;
-
-//    @Column
-//    public Integer stationId;
+    public Integer id;
 
     @Column
     public Date arrivalTime;
@@ -23,16 +22,17 @@ public class Schedule {
     @Column
     public Date departureTime;
 
-//    @Column
-//    public Integer trainNumber;
 
-    @ManyToOne
-    @JoinColumn(name = "id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "station_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+//    @JsonIgnore
     private Station station;
 
-    @ManyToOne
-    @JoinColumn(name = "trainNumber", nullable = false)
-    private Station train;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "train_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Train train;
 
 
 }

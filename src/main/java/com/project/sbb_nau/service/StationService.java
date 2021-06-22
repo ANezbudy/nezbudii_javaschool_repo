@@ -1,6 +1,5 @@
 package com.project.sbb_nau.service;
 
-import com.project.sbb_nau.entity.Schedule;
 import com.project.sbb_nau.entity.Station;
 import com.project.sbb_nau.repository.StationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +30,7 @@ public class StationService {
         stationRepository.deleteById(id);
     }
 
-    public List<Schedule> getStationSchedules(int id) {
-        return stationRepository.findSchedulesById(id);
-    }
+//    public List<Schedule> getStationSchedules(int id) {
+//        return stationRepository.findSchedulesById(id);
+//    }
 }

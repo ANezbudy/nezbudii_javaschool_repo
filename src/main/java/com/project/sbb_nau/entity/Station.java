@@ -6,7 +6,6 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import java.util.List;
 
 @Entity
 @Table(name = "stations")
@@ -15,11 +14,10 @@ import java.util.List;
 @NoArgsConstructor
 public class Station {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @NotBlank
     private String stationName;
 
-    @OneToMany(mappedBy = "station", fetch = FetchType.EAGER)
-    private List<Schedule> schedules;
 }

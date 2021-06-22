@@ -14,6 +14,8 @@ com/project/sbb_nau/service/StationService.java
  com.project.sbb_nau.service.StationService
 com/project/sbb_nau/config/jwt/JwtProvider.java
  com.project.sbb_nau.config.jwt.JwtProvider
+com/project/sbb_nau/controller/ScheduleController.java
+ com.project.sbb_nau.controller.ScheduleController
 com/project/sbb_nau/repository/RoleEntityRepository.java
  com.project.sbb_nau.repository.RoleEntityRepository
 com/project/sbb_nau/repository/TrainRepository.java
@@ -48,6 +50,8 @@ com/project/sbb_nau/entity/RoleEntity.java
  com.project.sbb_nau.entity.RoleEntity
 com/project/sbb_nau/config/dto/StationDto.java
  com.project.sbb_nau.config.dto.StationDto
+com/project/sbb_nau/config/dto/TrainDto.java
+ com.project.sbb_nau.config.dto.TrainDto
 com/project/sbb_nau/repository/ScheduleRepository.java
  com.project.sbb_nau.repository.ScheduleRepository
 com/project/sbb_nau/controller/AuthRequest.java
