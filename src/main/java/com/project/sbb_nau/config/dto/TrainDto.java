@@ -2,6 +2,7 @@ package com.project.sbb_nau.config.dto;
 
 import lombok.Data;
 
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotEmpty;
 
 @Data

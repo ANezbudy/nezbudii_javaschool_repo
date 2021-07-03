@@ -3,6 +3,7 @@ package com.project.sbb_nau.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "trains")
